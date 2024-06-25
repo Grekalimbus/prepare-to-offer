@@ -1,6 +1,6 @@
 .footer {
-    height: 60px;
     position: relative;
+    height: 60px;
     background-color: var(--blue-pale);
     display: flex;
     align-items: center;
