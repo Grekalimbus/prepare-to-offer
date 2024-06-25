@@ -1,0 +1,33 @@
+.footer {
+    height: 60px;
+    position: relative;
+    background-color: var(--blue-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialMediaSection {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socialMediaLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    width: 75px;
+    height: 65px;
+    color: var(--blue-lightest);
+    cursor: pointer;
+}
+
+.socialMediaIcon {
+    width: 80%;
+    height: 80%;
+}

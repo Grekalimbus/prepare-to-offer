@@ -1,0 +1,63 @@
+/* Custom  */
+:root {
+    --blue-lightest: #48a6fd;
+    --blue-light: #0085ff;
+    --blue-dark: #005873;
+    --white: #ffffff;
+    --blue-pale: #cce7ff;
+    --body-color: #ecf6ff;
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    user-select: none;
+    border: none;
+}
+
+html,
+body {
+    height: 100%;
+    border-color: var(--body-color);
+}
+
+body {
+    line-height: 1;
+    font-size: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: "";
+    content: none;
+}
