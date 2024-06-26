@@ -1,3 +1,5 @@
+import NavBar from "@/app/modules/navBar/NavBar";
+import { NavigationProvider } from "@/app/modules/navBar/NavigationContext";
 import React, { ReactNode } from "react";
 import MainFooter from "../MainFooter/MainFooter";
 import MainHeader from "../MainHeader/MainHeader";
@@ -9,9 +11,12 @@ type MainLayoutProps = {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
         <main className={styles.layout}>
-            <MainHeader />
-            {children}
-            <MainFooter />
+            <NavigationProvider>
+                <MainHeader />
+                {children}
+                <NavBar />
+                <MainFooter />
+            </NavigationProvider>
         </main>
     );
 };
