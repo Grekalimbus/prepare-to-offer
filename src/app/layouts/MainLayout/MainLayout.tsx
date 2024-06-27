@@ -1,3 +1,5 @@
+import ModalAuth from "@/app/modules/ModalAuth/ModalAuth";
+import { ModalAuthProvider } from "@/app/modules/ModalAuth/ModalAuthContext";
 import NavBar from "@/app/modules/navBar/NavBar";
 import { NavigationProvider } from "@/app/modules/navBar/NavigationContext";
 import React, { ReactNode } from "react";
@@ -12,10 +14,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
         <main className={styles.layout}>
             <NavigationProvider>
-                <MainHeader />
-                {children}
-                <NavBar />
-                <MainFooter />
+                <ModalAuthProvider>
+                    <MainHeader />
+                    {children}
+                    <MainFooter />
+                    <NavBar />
+                    <ModalAuth />
+                </ModalAuthProvider>
             </NavigationProvider>
         </main>
     );
