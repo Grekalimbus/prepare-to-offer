@@ -1,19 +1,30 @@
 "use client";
 import ButtonHide from "@/app/ui/Buttons/ButtonHide";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useContext, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { MouseEvent, useContext, useEffect } from "react";
+import { ModalAuthContext } from "../ModalAuth/ModalAuthContext";
 import styles from "./NavBar.module.css";
 import { NavigationContext } from "./NavigationContext";
 
 const NavBar = () => {
     const session = useSession();
     const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
-    const router = usePathname();
+    const { setIsModalActive } = useContext(ModalAuthContext);
+    const path = usePathname();
+    const router = useRouter();
     useEffect(() => {
         setIsNavigationActive(prev => !prev);
-    }, [router]);
+    }, [path]);
+    const handleRoutePushOrShowModal = (e: MouseEvent<HTMLButtonElement>, url: string) => {
+        if (!session.data) {
+            e.preventDefault();
+            setIsModalActive(true);
+        } else {
+            router.push(url);
+        }
+    };
 
     console.log("session", session);
     return (
@@ -21,9 +32,9 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                        <Link href={"/"} className={styles.navLink}>
+                        <button onClick={e => handleRoutePushOrShowModal(e, "/test")} className={styles.navLink}>
                             Технические вопросы
-                        </Link>
+                        </button>
                         <Link href={"/"} className={styles.navLink}>
                             Информация о компаниях
                         </Link>
@@ -39,9 +50,15 @@ const NavBar = () => {
                         <Link href={"/"} className={styles.navLink}>
                             Политика конфиденциальности
                         </Link>
-                        <Link href={"/"} className={styles.navLink}>
-                            Вход / Регистрация
-                        </Link>
+                        {session?.data ? (
+                            <button onClick={() => signOut({ callbackUrl: "/" })} className={styles.navLink}>
+                                Выход
+                            </button>
+                        ) : (
+                            <Link href="/api/auth/signin" className={styles.navLink}>
+                                Вход / Регистрация
+                            </Link>
+                        )}
                     </div>
                     <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)}></ButtonHide>
                 </nav>
@@ -52,17 +69,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-{
-    /* <div style={{ display: "flex", justifyContent: "space-between" }}>
-<Link href="/">Home</Link>
-<Link href="/authPage">Auth</Link>
-{session?.data && <Link href="/profile">Profile</Link>}
-{session?.data ? (
-    <Link href="/" onClick={() => signOut({ callbackUrl: "/" })}>
-        signOut
-    </Link>
-) : (
-    <Link href="/api/auth/signin">signIn</Link>
-)}
-</div> */
-}
