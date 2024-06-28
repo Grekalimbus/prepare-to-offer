@@ -22,7 +22,7 @@
     padding: 20px 60px 20px 60px;
     border-radius: 3px;
     background: var(--shadow-black);
-    border: 2px solid var(--shadow-white);
+    border: 2px solid var(--flamingo);
 }
 .buttonClose {
     position: absolute;
