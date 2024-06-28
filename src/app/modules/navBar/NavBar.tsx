@@ -27,6 +27,7 @@ const NavBar = () => {
     };
 
     console.log("session", session);
+
     return (
         <>
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
