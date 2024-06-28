@@ -32,7 +32,10 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                        <button onClick={e => handleRoutePushOrShowModal(e, "/test")} className={styles.navLink}>
+                        <button
+                            onClick={e => handleRoutePushOrShowModal(e, "/companiesPage")}
+                            className={styles.navLink}
+                        >
                             Технические вопросы
                         </button>
                         <Link href={"/"} className={styles.navLink}>

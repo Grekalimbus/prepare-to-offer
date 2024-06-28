@@ -1,6 +1,6 @@
 .header {
     height: 60px;
-    background-color: var(--blue-pale);
+    background-color: var(--shadow-black);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,9 +17,20 @@
 .iconHomePage {
     width: 40px;
     height: 30px;
-    color: var(--blue-lightest);
-    background-color: var(--blue-pale);
+    color: var(--white);
     cursor: pointer;
+    background: none;
+    transition: color 0.4s;
+}
+@media (hover: hover) {
+    .iconHomePage:hover {
+        color: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .iconHomePage:active {
+        color: var(--flamingo);
+    }
 }
 .wrapperButtonsLogin {
     display: flex;
@@ -34,8 +45,8 @@
 .menuMobileButtonIcon {
     width: 50px;
     height: 50px;
-    color: var(--blue-lightest);
-    background-color: var(--blue-pale);
+    color: var(--shadow-white);
+    background-color: var(--shadow-black);
 }
 
 .content {

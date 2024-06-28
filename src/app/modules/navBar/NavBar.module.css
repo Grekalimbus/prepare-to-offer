@@ -35,8 +35,8 @@
     justify-content: space-between;
     width: 100%;
     height: 100vh;
-    background: var(--body-color);
-    border-right: 3px solid var(--blue-light);
+    background: var(--dark);
+    border-right: 3px solid var(--flamingo);
     z-index: 10;
 }
 .flexContainer {
@@ -52,20 +52,22 @@
     background: none;
     font-weight: 600px;
     font-size: 16px;
-    border-bottom: 2px solid var(--blue-light);
-    color: var(--blue-light);
+    border-bottom: 2px solid var(--flamingo);
+    color: var(--white);
     font-weight: 600;
-    transition: background-color 0.4s;
+    transition: background-color 0.4s, color 0.4s;
     cursor: pointer;
 }
 @media (hover: hover) {
     .navLink:hover {
-        background-color: var(--blue-pale);
+        background-color: var(--shadow-black);
+        color: var(--flamingo);
     }
 }
 @media (hover: none) {
     .navLink:active {
-        background-color: var(--blue-pale);
+        background-color: var(--shadow-black);
+        color: var(--flamingo);
     }
 }
 .shadowBlock {

@@ -1,11 +1,10 @@
 /* Custom  */
 :root {
-    --blue-lightest: #48a6fd;
-    --blue-light: #0085ff;
-    --blue-dark: #005873;
+    --shadow-white: rgba(255, 255, 255, 0.137);
+    --flamingo: #f84465;
     --white: #ffffff;
-    --blue-pale: #cce7ff;
-    --body-color: #ecf6ff;
+    --shadow-black: #00000056;
+    --dark: #161616;
 }
 
 /* CSS Reset */
@@ -15,6 +14,7 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
+    font-size: 16px;
     user-select: none;
     border: none;
     text-decoration: none;
@@ -23,14 +23,12 @@
 html,
 body {
     height: 100%;
-    border-color: var(--body-color);
-}
-
-body {
     line-height: 1;
     font-size: 100%;
+    background-image: url("/bgImage.jpg");
+    background-size: cover;
+    background-position: center;
 }
-
 ul,
 ol {
     list-style: none;
