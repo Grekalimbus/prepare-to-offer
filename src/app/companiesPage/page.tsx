@@ -19,6 +19,7 @@ const CompaniesPage = () => {
     return (
         <div className={styles.wrapper}>
             <CompanyNavButtons isHidden={isHidden} setIsHidden={setIsHidden} />
+            {/* <CompanyCard /> */}
         </div>
     );
 };

@@ -11,7 +11,7 @@ const ModalAuth = () => {
     const router = useRouter();
     const routeToSignIn = (): void => {
         setIsModalActive(prev => !prev);
-        router.push("/api/auth/signin");
+        router.push("/api/auth/signin?callbackUrl=%2FcompaniesPage");
     };
     return (
         <div className={`${styles.modalWrapper} ${isModalActive ? styles.active : ""}`}>
