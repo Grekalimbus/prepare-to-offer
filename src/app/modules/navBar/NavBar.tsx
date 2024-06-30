@@ -33,15 +33,15 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
+                        <Link href={"/"} className={styles.navLink}>
+                            Технические вопросы
+                        </Link>
                         <button
                             onClick={e => handleRoutePushOrShowModal(e, "/companiesPage")}
                             className={styles.navLink}
                         >
-                            Технические вопросы
-                        </button>
-                        <Link href={"/"} className={styles.navLink}>
                             Информация о компаниях
-                        </Link>
+                        </button>
                         <Link href={"/"} className={styles.navLink}>
                             Задачи с собеседований
                         </Link>

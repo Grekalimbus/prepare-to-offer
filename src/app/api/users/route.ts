@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: "Пользователь с таким username существует" }, { status: 400 });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("hashedPassword", hashedPassword);
     const userRole = await Role.findOne({ value: "USER" });
     const user = new User({ email, password: hashedPassword, roles: [userRole.value] });
     await user.save();
