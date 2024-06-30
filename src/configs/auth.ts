@@ -38,7 +38,6 @@ export const authConfig: AuthOptions = {
             },
         }),
     ],
-
     callbacks: {
         async signIn({ user, account, profile }) {
             const { email, name, image } = user;
@@ -60,6 +59,7 @@ export const authConfig: AuthOptions = {
             return true;
         },
     },
+    pages: { signIn: "/signIn" },
 };
 const handler = nextAuth(authConfig);
 export { handler as GET, handler as POST };

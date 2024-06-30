@@ -23,7 +23,7 @@ const MainHeader = () => {
                 <div className={styles.wrapperButtonsLogin}>
                     {!session.data ? (
                         <>
-                            <Button text={"Вход"} onClick={() => router.push("/api/auth/signin")} />
+                            <Button text={"Вход"} onClick={() => router.push("/login")} />
                             <Button text={"Регистрация"} onClick={() => router.push("/api/auth/signin")} />
                         </>
                     ) : (

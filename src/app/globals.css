@@ -60,3 +60,8 @@ q::after {
     content: "";
     content: none;
 }
+input:focus {
+    outline: none; /* Убирает стандартную обводку фокуса */
+    box-shadow: none; /* Убирает любые тени */
+    border: none; /* Убирает любую границу (если есть) */
+}

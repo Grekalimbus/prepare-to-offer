@@ -15,7 +15,7 @@ const NavBar = () => {
     const path = usePathname();
     const router = useRouter();
     useEffect(() => {
-        setIsNavigationActive(prev => !prev);
+        setIsNavigationActive(false);
     }, [path]);
     const handleRoutePushOrShowModal = (e: MouseEvent<HTMLButtonElement>, url: string) => {
         if (!session.data) {
@@ -59,7 +59,7 @@ const NavBar = () => {
                                 Выход
                             </button>
                         ) : (
-                            <Link href="/api/auth/signin" className={styles.navLink}>
+                            <Link href="/signIn" className={styles.navLink}>
                                 Вход / Регистрация
                             </Link>
                         )}
