@@ -1,18 +1,21 @@
 import connetctMongoAuthDB from "@/libs/mongodbAuth";
-import RoleModal from "@/models/auth/role";
-import UserModel from "@/models/auth/user";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import Role from "@/models/auth/role";
+import User from "@/models/auth/user";
+import bcrypt from "bcryptjs";
+import { NextResponse, type NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
-    const { username, password } = await request.json();
+export async function POST(req: NextRequest) {
     await connetctMongoAuthDB();
-    const candidate = await UserModel.findOne({ username });
+    const { email, password } = await req.json();
+
+    const candidate = await User.findOne({ email });
     if (candidate) {
         return NextResponse.json({ message: "Пользователь с таким username существует" }, { status: 400 });
     }
-    const userRole = await RoleModal.findOne({ value: "USER" });
-    const user = new UserModel({ username, password, roles: [userRole.value] });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("hashedPassword", hashedPassword);
+    const userRole = await Role.findOne({ value: "USER" });
+    const user = new User({ email, password: hashedPassword, roles: [userRole.value] });
     await user.save();
     return NextResponse.json({ message: "User Created" }, { status: 201 });
 }
