@@ -6,16 +6,20 @@ const CompaniesPage = () => {
     const [isHidden, setIsHidden] = useState<boolean>(false);
     useEffect(() => {
         function handleResize() {
-            if (window.innerWidth > 915) {
+            if (typeof window !== "undefined" && window.innerWidth > 915) {
                 setIsHidden(false);
             }
         }
-        handleResize();
-        window.addEventListener("resize", handleResize);
+        if (typeof window !== "undefined") {
+            handleResize();
+            window.addEventListener("resize", handleResize);
+        }
         return () => {
-            window.removeEventListener("resize", handleResize);
+            if (typeof window !== "undefined") {
+                window.removeEventListener("resize", handleResize);
+            }
         };
-    }, [window.innerWidth]);
+    }, []);
     return (
         <div className={styles.wrapper}>
             <CompanyNavButtons isHidden={isHidden} setIsHidden={setIsHidden} />

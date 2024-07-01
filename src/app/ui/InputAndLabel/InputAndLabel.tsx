@@ -1,5 +1,12 @@
-import styles from "../SignIn.module.css";
-import { PropsInputAndLabel } from "../types/types";
+import styles from "./InputAndLabel.module.css";
+
+export interface PropsInputAndLabel {
+    type?: null | boolean;
+    name: string;
+    inputType: string;
+    placeholder: string;
+    error?: string;
+}
 
 const InputAndLabel = ({ type, name, inputType, placeholder, error }: PropsInputAndLabel) => {
     return (

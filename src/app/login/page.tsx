@@ -1,24 +1,38 @@
 "use client";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
+import InputAndLabel from "../ui/InputAndLabel/InputAndLabel";
 import styles from "./Login.module.css";
+import LowerSectionForm from "./components/LowerSectionForm";
+import { handleSubmitForm } from "./helpers/handleSubmitForm";
+export interface FormDataStatus {
+    email: boolean | null;
+}
+
 const Login = () => {
+    const [isFormStatus, setIsFormStatus] = useState<FormDataStatus>({
+        email: null,
+    });
+    const router = useRouter();
+    const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        await handleSubmitForm({ event, setIsFormStatus, router });
+    };
     return (
         <section className={styles.wrapperForm}>
-            <form className={styles.formSignIn}>
+            <form onSubmit={onSubmitHandler} className={styles.formSignIn}>
                 <p className={styles.title}>Регистрация</p>
-                <input placeholder="email@gmail.com" className={styles.input} name="email" type="text" required />
-                <input placeholder="password" className={styles.input} name="password" type="password" required />
+                <InputAndLabel
+                    type={isFormStatus.email}
+                    name="email"
+                    inputType="text"
+                    placeholder="email@gmail.com"
+                    error={`Неверный логин или пароль`}
+                />
+                <InputAndLabel name="password" inputType="password" placeholder="Пароль" />
 
-                <button className={styles.buttonSubmit}>Войти</button>
-                <div className={styles.separator}>
-                    <span className={styles.separatorElem}></span>
-                    <span className={styles.separatorText}>OR</span>
-                    <span className={styles.separatorElem}></span>
-                </div>
-                <button className={styles.buttonGoogle} onClick={() => signIn("google", { callbackUrl: "/" })}>
-                    Продолжить с Google
-                </button>
+                <LowerSectionForm />
             </form>
             <Link href={"/signIn"} className={styles.login}>
                 Зарегистрироваться

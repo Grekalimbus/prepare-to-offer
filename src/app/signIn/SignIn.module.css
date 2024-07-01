@@ -23,11 +23,6 @@
     font-weight: 600;
     margin-bottom: 15px;
 }
-.error {
-    color: var(--flamingo);
-    font-size: 12px;
-    margin-bottom: 5px;
-}
 .titleWarning {
     font-size: 14px;
     color: #ffffff91;
@@ -37,15 +32,6 @@
     color: var(--flamingo);
     margin-left: 5px;
     cursor: pointer;
-}
-.input {
-    width: 100%;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    height: 50px;
-    padding-left: 20px;
-    font-weight: 600;
-    font-size: 16px;
 }
 .buttonSubmit {
     width: 100%;

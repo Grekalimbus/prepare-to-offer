@@ -4,9 +4,8 @@ import { NextResponse, type NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
     await connetctMongoAuthDB();
-    const { email } = await req.json();
-
-    const candidate = await User.findOne({ email });
+    const { email, password } = await req.json();
+    const candidate = await User.findOne({ email, password });
     if (candidate) {
         return NextResponse.json({ email: candidate.email }, { status: 201 });
     }
