@@ -8,33 +8,33 @@
     align-items: center;
     font-weight: 500;
     color: var(--white);
-    border: 3px solid var(--blue-light);
-    background: var(--blue-lightest);
+    border: 2px solid var(--flamingo);
+    background: var(--shadow-white);
     cursor: pointer;
     transition: background-color 0.4s;
 }
 .buttonHide {
     height: 60px;
-    background-color: var(--blue-lightest);
+    background-color: var(--shadow-black);
     color: var(--white);
     font-weight: 600;
     cursor: pointer;
-    border-top: 2px solid var(--blue-light);
+    border-top: 2px solid var(--flamingo);
     transition: background-color 0.4s;
 }
 @media (hover: hover) {
     .button:hover {
-        background: var(--blue-light);
+        background: var(--flamingo);
     }
     .buttonHide:hover {
-        background: var(--blue-light);
+        background: var(--flamingo);
     }
 }
 @media (hover: none) {
     .button:active {
-        background: var(--blue-light);
+        background: var(--flamingo);
     }
     .buttonHide:active {
-        background: var(--blue-light);
+        background: var(--flamingo);
     }
 }
