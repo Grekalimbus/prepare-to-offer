@@ -15,7 +15,7 @@ const NavBar = () => {
     const path = usePathname();
     const router = useRouter();
     useEffect(() => {
-        setIsNavigationActive(prev => !prev);
+        setIsNavigationActive(false);
     }, [path]);
     const handleRoutePushOrShowModal = (e: MouseEvent<HTMLButtonElement>, url: string) => {
         if (!session.data) {
@@ -27,17 +27,21 @@ const NavBar = () => {
     };
 
     console.log("session", session);
+
     return (
         <>
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                        <button onClick={e => handleRoutePushOrShowModal(e, "/test")} className={styles.navLink}>
-                            Технические вопросы
-                        </button>
                         <Link href={"/"} className={styles.navLink}>
-                            Информация о компаниях
+                            Технические вопросы
                         </Link>
+                        <button
+                            onClick={e => handleRoutePushOrShowModal(e, "/companiesPage")}
+                            className={styles.navLink}
+                        >
+                            Информация о компаниях
+                        </button>
                         <Link href={"/"} className={styles.navLink}>
                             Задачи с собеседований
                         </Link>
@@ -55,7 +59,7 @@ const NavBar = () => {
                                 Выход
                             </button>
                         ) : (
-                            <Link href="/api/auth/signin" className={styles.navLink}>
+                            <Link href="/signIn" className={styles.navLink}>
                                 Вход / Регистрация
                             </Link>
                         )}

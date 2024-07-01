@@ -1,0 +1,83 @@
+.wrapperForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+}
+.formSignIn {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid var(--flamingo);
+    background: var(--shadow-black);
+    border-radius: 5px;
+}
+.title {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.span {
+    color: var(--flamingo);
+    margin-left: 5px;
+    cursor: pointer;
+}
+.input {
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    height: 50px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.buttonSubmit {
+    width: 100%;
+    height: 50px;
+    background: var(--flamingo);
+    border-radius: 3px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.separator {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.separatorElem {
+    width: 40%;
+    border: 1px solid var(--flamingo);
+    height: 1px;
+}
+.separatorText {
+    color: var(--white);
+    font-size: 18px;
+}
+.buttonGoogle {
+    background: var(--white);
+    color: var(--flamingo);
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login {
+    color: var(--flamingo);
+    padding: 20px 100px;
+}
