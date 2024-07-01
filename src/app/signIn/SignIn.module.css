@@ -23,6 +23,11 @@
     font-weight: 600;
     margin-bottom: 15px;
 }
+.error {
+    color: var(--flamingo);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
 .titleWarning {
     font-size: 14px;
     color: #ffffff91;
