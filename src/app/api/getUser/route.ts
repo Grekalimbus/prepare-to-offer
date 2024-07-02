@@ -7,6 +7,6 @@ export async function POST(req: NextRequest) {
     const { email } = await req.json();
     const candidate = await User.findOne({ email });
     if (candidate) {
-        return NextResponse.json({ email: candidate.email }, { status: 201 });
+        return NextResponse.json({ email: candidate.email, roles: candidate.roles }, { status: 201 });
     }
 }
