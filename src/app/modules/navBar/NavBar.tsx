@@ -5,12 +5,15 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { MouseEvent, useContext, useEffect } from "react";
 import { ModalAuthContext } from "../ModalAuth/ModalAuthContext";
+import { ModalPolicyContext } from "../modalPolicy/ModalPolicyContext";
 import styles from "./NavBar.module.css";
 import { NavigationContext } from "./NavigationContext";
 
 const NavBar = () => {
     const session = useSession();
     const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
+    const { setIsModalActive: setIsModalPolicyActive } = useContext(ModalPolicyContext);
+
     const { setIsModalActive } = useContext(ModalAuthContext);
     const path = usePathname();
     const router = useRouter();
@@ -51,9 +54,9 @@ const NavBar = () => {
                         <Link href={"/"} className={styles.navLink}>
                             Служба поддержки
                         </Link>
-                        <Link href={"/"} className={styles.navLink}>
+                        <button className={styles.navLink} onClick={() => setIsModalPolicyActive(prev => !prev)}>
                             Политика конфиденциальности
-                        </Link>
+                        </button>
                         {session?.data ? (
                             <button onClick={() => signOut({ callbackUrl: "/" })} className={styles.navLink}>
                                 Выход
