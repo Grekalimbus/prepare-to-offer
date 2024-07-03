@@ -1,11 +1,20 @@
+import { useState } from "react";
 import styles from "../Admin.module.css";
 const CategoryActionNav = () => {
+    const [isActive, setIsActive] = useState<string>("Добавить");
+    const buttons: string[] = ["Добавить", "Изменить", "Удалить", "Входящие заявки"];
     return (
         <aside className={styles.navBar}>
-            <button className={`${styles.navButton} ${styles.activeNavButton}`}>Входящие заявки на ХХХ</button>
-            <button className={styles.navButton}>Добавить ХХХ</button>
-            <button className={styles.navButton}>Изменить ХХХ</button>
-            <button className={styles.navButton}>Удалить ХХХ</button>
+            {buttons.map((text: string) => {
+                return (
+                    <button
+                        onClick={() => setIsActive(text)}
+                        className={`${styles.navButton} ${text === isActive ? styles.activeNavButton : ""}`}
+                    >
+                        {text}
+                    </button>
+                );
+            })}
         </aside>
     );
 };
