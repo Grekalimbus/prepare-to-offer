@@ -1,5 +1,5 @@
 import Button from "@/app/ui/Buttons/Button";
-import InputAndLabel from "@/app/ui/InputAndLabel/InputAndLabel";
+import CustomInput from "@/app/ui/Input/CustomInput";
 import TextareaAndLabel from "@/app/ui/textareaAndLabel/TextareaAndLabel";
 import { FormEvent } from "react";
 import styles from "./QuestionCreate.module.css";
@@ -21,19 +21,8 @@ const QuestionCreate = () => {
     return (
         <section className={styles.wrapper}>
             <form onSubmit={handleSubmit} className={styles.formBlock}>
-                <InputAndLabel
-                    type={null}
-                    name="question"
-                    inputType="text"
-                    placeholder="Введите вопрос"
-                    error="Обязательно для заполнения"
-                />
-                <TextareaAndLabel
-                    type={null}
-                    name="answer"
-                    placeholder="Введите ответ на вопрос"
-                    error="Обязательно для заполнения"
-                />
+                <CustomInput required={true} name="question" inputType="text" placeholder="Введите вопрос" />
+                <TextareaAndLabel name="answer" placeholder="Введите ответ на вопрос" />
                 <SliceOfCode />
                 <UsefulLinks />
                 <CustomCheckbox />

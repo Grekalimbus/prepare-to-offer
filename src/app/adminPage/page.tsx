@@ -3,6 +3,7 @@ import { BASE_URL } from "@/configs/baseURL";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
 import styles from "./Admin.module.css";
 import CategoryActionNav from "./components/CategoryActionNav";
@@ -19,6 +20,9 @@ interface Props {
 const DynamicComponent = ({ navButton, category }: Props) => {
     if (navButton === "Добавить" && category === "Технические вопросы") {
         return <QuestionCreate />;
+    }
+    if (navButton === "Добавить" && category === "Компании") {
+        return <CompanyCreate />;
     }
 };
 
