@@ -16,7 +16,7 @@ const InputAndLabel = ({ type, name, inputType, placeholder, error }: Props) => 
                     {error}
                 </label>
             )}
-            <input placeholder={placeholder} className={styles.input} name={name} type={inputType} required />
+            <input placeholder={placeholder} className={styles.inputWithLabel} name={name} type={inputType} required />
         </>
     );
 };

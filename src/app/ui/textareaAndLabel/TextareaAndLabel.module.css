@@ -27,3 +27,6 @@
     border-radius: 3px;
     background: var(--flamingo);
 }
+.field::placeholder {
+    font-size: 14px;
+}

@@ -56,36 +56,6 @@
     width: 40px;
     color: var(--flamingo);
 }
-.wrapperInput {
-    width: 100%;
-    height: 50px;
-    background: var(--shadow-white);
-    border-radius: 4px;
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-.wrapperInput:focus-within {
-    border: 2px solid var(--flamingo);
-}
-.inputForLink {
-    width: 100%;
-    height: 100%;
-    padding-left: 20px;
-    font-weight: 600;
-    font-size: 16px;
-    background: none;
-    color: var(--white);
-}
-.iconDeleteLink {
-    width: 40px;
-    height: 40px;
-    color: var(--flamingo);
-    margin-right: 5px;
-    cursor: pointer;
-}
 /* Кастомный чекБокс */
 .customCheckbox {
     display: flex;

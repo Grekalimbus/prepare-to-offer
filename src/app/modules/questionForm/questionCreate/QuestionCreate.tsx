@@ -1,10 +1,11 @@
 import Button from "@/app/ui/Buttons/Button";
-import CustomInput from "@/app/ui/Input/CustomInput";
+import Input from "@/app/ui/Input/Input";
+import FieldForCodeSlice from "@/app/ui/fieldForCodeSlice/FieldForCodeSlice";
 import TextareaAndLabel from "@/app/ui/textareaAndLabel/TextareaAndLabel";
 import { FormEvent } from "react";
+import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";
 import CustomCheckbox from "./components/CustomCheckbox";
-import SliceOfCode from "./components/SliceOfCode";
 import UsefulLinks from "./components/UsefulLinks";
 
 const QuestionCreate = () => {
@@ -21,9 +22,9 @@ const QuestionCreate = () => {
     return (
         <section className={styles.wrapper}>
             <form onSubmit={handleSubmit} className={styles.formBlock}>
-                <CustomInput required={true} name="question" inputType="text" placeholder="Введите вопрос" />
+                <Input required={true} name="question" inputType="text" placeholder="Введите вопрос" />
                 <TextareaAndLabel name="answer" placeholder="Введите ответ на вопрос" />
-                <SliceOfCode />
+                <FieldForCodeSlice text="Добавить снипет кода" icon={<FaRegFileCode />} />
                 <UsefulLinks />
                 <CustomCheckbox />
                 <span className={styles.line}></span>

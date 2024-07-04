@@ -1,6 +1,7 @@
+import ButtonAddField from "@/app/ui/Buttons/ButtonAddField";
+import InputWithRemoveButton from "@/app/ui/Input/InputWithRemoveButton";
 import { useState } from "react";
-import { MdDeleteForever, MdLink } from "react-icons/md";
-import styles from "../QuestionCreate.module.css";
+import { MdLink } from "react-icons/md";
 
 const UsefulLinks = () => {
     const [numberLinks, setNumberLinks] = useState<[] | string[]>([]);
@@ -13,34 +14,28 @@ const UsefulLinks = () => {
 
     const handleDecrement = (value: string) => {
         setNumberLinks(prev => prev.filter(item => item !== value));
+        console.log("it work");
     };
     return (
         <>
-            <button onClick={handleIncrement} className={styles.buttonAdd}>
-                Добавить ссылки на материалы
-                <MdLink className={styles.iconInButton} />
-            </button>
             {numberLinks.length > 0 && (
                 <>
                     {numberLinks.map(item => {
                         return (
-                            <div key={item} className={styles.wrapperInput}>
-                                <input
-                                    type="text"
-                                    name="link"
-                                    placeholder="https://any-resourses.io"
-                                    className={styles.inputForLink}
-                                    required
-                                />
-                                <MdDeleteForever
-                                    className={styles.iconDeleteLink}
-                                    onClick={() => handleDecrement(item)}
-                                />
-                            </div>
+                            <InputWithRemoveButton
+                                key={item}
+                                valueKey={item}
+                                name="link"
+                                type="text"
+                                placeholder="https://any-resourses.io"
+                                required={true}
+                                handleDecrement={handleDecrement}
+                            />
                         );
                     })}
                 </>
             )}
+            <ButtonAddField icon={<MdLink />} handleIncrement={handleIncrement} text="Добавить ссылки на материалы" />
         </>
     );
 };

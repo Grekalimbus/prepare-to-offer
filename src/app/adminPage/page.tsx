@@ -31,6 +31,17 @@ const AdminPage = () => {
     const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
     const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
+    const handleChangeCategory = (text: string) => {
+        setIsActiveCategory(text);
+        localStorage.setItem("categoryButton", text);
+    };
+    useEffect(() => {
+        const categoryButton = localStorage.getItem("categoryButton");
+        if (!categoryButton) {
+            localStorage.setItem("categoryButton", isActiveCategory);
+        }
+        if (categoryButton) setIsActiveCategory(categoryButton);
+    }, []);
     useEffect(() => {
         if (session.data) {
             const email = session.data.user?.email;
@@ -45,11 +56,12 @@ const AdminPage = () => {
             fetchUser();
         }
     }, [session]);
+
     return !isAdmin ? (
         <div>Доступно только администраторам</div>
     ) : (
         <div className={styles.wrapper}>
-            <SelectCategoryButtons isActive={isActiveCategory} setIsActive={setIsActiveCategory} />
+            <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
             <section className={styles.flexContainer}>
                 <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
                 <DynamicComponent navButton={isActiveNavButton} category={isActiveCategory} />

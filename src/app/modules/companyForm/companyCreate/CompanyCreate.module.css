@@ -26,3 +26,57 @@
     background: var(--shadow-black);
     border-radius: 5px;
 }
+.textForSection {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+.wrapperSelectField {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 8px;
+}
+/* Кастомный radioCheckbox */
+.customCheckbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 200px;
+}
+.customCheckbox input[type="radio"] {
+    display: none;
+}
+.customCheckbox .checkmark {
+    width: 90%;
+    height: 40px;
+    border-radius: 4px;
+    background-color: var(--shadow-white);
+    border: 2px solid var(--flamingo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.customCheckbox input[type="radio"]:checked + .checkmark {
+    background-color: var(--flamingo);
+}
+
+.customCheckbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.customCheckbox input[type="radio"]:checked + .checkmark::after {
+    display: block;
+}
+.line {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--shadow-white);
+    margin-bottom: 15px;
+}

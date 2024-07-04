@@ -1,4 +1,4 @@
-import styles from "./CustomInput.module.css";
+import styles from "./Input.module.css";
 
 export interface Props {
     name: string;
@@ -7,7 +7,7 @@ export interface Props {
     required: boolean;
 }
 
-const CustomInput = ({ name, inputType, placeholder, required }: Props) => {
+const Input = ({ name, inputType, placeholder, required }: Props) => {
     return (
         <>
             <input
@@ -21,4 +21,4 @@ const CustomInput = ({ name, inputType, placeholder, required }: Props) => {
     );
 };
 
-export default CustomInput;
+export default Input;
