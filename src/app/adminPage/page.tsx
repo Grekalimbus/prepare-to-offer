@@ -3,6 +3,7 @@ import { BASE_URL } from "@/configs/baseURL";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
 import styles from "./Admin.module.css";
 import CategoryActionNav from "./components/CategoryActionNav";
 import SelectCategoryButtons from "./components/SelectCategoryButtons";
@@ -11,9 +12,20 @@ interface User {
     email: string;
     roles: string[];
 }
+interface Props {
+    navButton: string;
+    category: string;
+}
+const DynamicComponent = ({ navButton, category }: Props) => {
+    if (navButton === "Добавить" && category === "Технические вопросы") {
+        return <QuestionCreate />;
+    }
+};
 
 const AdminPage = () => {
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
+    const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
+    const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
     useEffect(() => {
         if (session.data) {
@@ -33,9 +45,10 @@ const AdminPage = () => {
         <div>Доступно только администраторам</div>
     ) : (
         <div className={styles.wrapper}>
-            <SelectCategoryButtons />
+            <SelectCategoryButtons isActive={isActiveCategory} setIsActive={setIsActiveCategory} />
             <section className={styles.flexContainer}>
-                <CategoryActionNav />
+                <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
+                <DynamicComponent navButton={isActiveNavButton} category={isActiveCategory} />
             </section>
         </div>
     );

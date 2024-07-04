@@ -1,14 +1,13 @@
-import styles from "./InputAndLabel.module.css";
+import styles from "./TextareaAndLabel.module.css";
 
 export interface Props {
     type?: null | boolean;
     name: string;
-    inputType: string;
     placeholder: string;
     error?: string;
 }
 
-const InputAndLabel = ({ type, name, inputType, placeholder, error }: Props) => {
+const TextareaAndLabel = ({ type, name, placeholder, error }: Props) => {
     return (
         <>
             {type !== null && (
@@ -16,9 +15,9 @@ const InputAndLabel = ({ type, name, inputType, placeholder, error }: Props) => 
                     {error}
                 </label>
             )}
-            <input placeholder={placeholder} className={styles.input} name={name} type={inputType} required />
+            <textarea placeholder={placeholder} className={styles.field} name={name} required />
         </>
     );
 };
 
-export default InputAndLabel;
+export default TextareaAndLabel;

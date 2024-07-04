@@ -37,6 +37,7 @@
 }
 .navBar {
     width: 300px;
+    min-width: 300px;
     height: 100%;
     background: var(--dark);
     border-right: 2px solid var(--flamingo);
