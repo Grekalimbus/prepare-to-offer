@@ -30,11 +30,11 @@ export const handleSubmit = async ({ event, setIsFormStatus, router }: Props) =>
 
     if (!validData) return;
 
-    await axios.post(`${process.env.BASE_URL || BASE_URL}/users`, {
+    await axios.post(`${BASE_URL}/users`, {
         email,
         password,
     });
-    const user = await axios.get(`${process.env.BASE_URL || BASE_URL}/getUser?email=${email}`);
+    const user = await axios.get(`${BASE_URL}/getUser?email=${email}`);
     if (!user) return;
 
     const res = await signIn("credentials", {
