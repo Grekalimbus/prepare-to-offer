@@ -1,5 +1,24 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
+interface IQuestion {
+    question: string;
+    answer: string;
+    sliceOfCode: string;
+    links: string[] | [];
+}
+
+interface ICompany {
+    companyName: string;
+    linkVacancy: string;
+    description: string;
+    difficulty: string;
+    liveCoding: string;
+    questions: string[] | [];
+    task: string;
+    status: string;
+    createdAt: Date;
+}
+
 interface IUser extends Document {
     email: string;
     name?: string;
@@ -11,17 +30,19 @@ interface IUser extends Document {
             ref: "Role";
         },
     ];
-    companies: Array<{
-        companyName: string;
-        linkVacancy: string;
-        description: string;
-        difficulty: string;
-        liveCoding: string;
-        questions: string[] | [];
-        task: string;
-        status: string;
-        createdAt: Date;
-    }>;
+    companies: ICompany[] | [];
+    questions: {
+        html: IQuestion[] | [];
+        css: IQuestion[] | [];
+        javascript: IQuestion[] | [];
+        typescript: IQuestion[] | [];
+        react: IQuestion[] | [];
+        nextJS: IQuestion[] | [];
+        redux: IQuestion[] | [];
+        architecture: IQuestion[] | [];
+        common: IQuestion[] | [];
+    };
+    favoriteQuestions: IQuestion[] | [];
     createdAt: Date;
 }
 
@@ -44,6 +65,18 @@ const userSchema = new Schema<IUser>({
             createdAt: { type: Date, default: Date.now },
         },
     ],
+    questions: {
+        html: [],
+        css: [],
+        javascript: [],
+        typescript: [],
+        react: [],
+        nextJS: [],
+        redux: [],
+        architecture: [],
+        common: [],
+    },
+    favoriteQuestions: [],
     createdAt: { type: Date, default: Date.now },
 });
 

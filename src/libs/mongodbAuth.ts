@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const URL = process.env.MONGODB_AUTH_URL;
-const connetctAuthMongoDB = async () => {
+const connectAuthMongoDB = async () => {
     if (mongoose.connections[0].readyState) {
         return;
     }
@@ -13,4 +13,4 @@ const connetctAuthMongoDB = async () => {
     }
 };
 
-export default connetctAuthMongoDB;
+export default connectAuthMongoDB;

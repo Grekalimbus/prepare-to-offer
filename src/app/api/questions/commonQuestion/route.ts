@@ -5,15 +5,16 @@ import { NextResponse } from "next/server";
 import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: Question = await request.json();
+    const { question, answer, sliceOfCode, links, status }: Question = await request.json();
     await connetctQuestionMongoDB();
-    await CommonQuestionModel.create({ question, answer });
+    await CommonQuestionModel.create({ question, answer, sliceOfCode, links, status: status || "PENDING" });
     return NextResponse.json({ message: "COMMON Question Created" }, { status: 201 });
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     await connetctQuestionMongoDB();
-    const common: Question[] = await CommonQuestionModel.find();
+    const status = request.nextUrl.searchParams.get("status");
+    const common: Question[] = await CommonQuestionModel.find({ status });
     return NextResponse.json({ common });
 }
 

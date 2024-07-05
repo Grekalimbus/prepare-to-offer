@@ -1,19 +1,20 @@
 import connetctQuestionMongoDB from "@/libs/mongodb";
 import TypescriptQuestionModel from "@/models/questions/typescriptQuestion";
-import { TQuestion } from "@/types/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: TQuestion = await request.json();
+    const { question, answer }: Question = await request.json();
     await connetctQuestionMongoDB();
     await TypescriptQuestionModel.create({ question, answer });
     return NextResponse.json({ message: "TYPESCRIPT Question Created" }, { status: 201 });
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     await connetctQuestionMongoDB();
-    const typescript: TQuestion[] = await TypescriptQuestionModel.find();
+    const status = request.nextUrl.searchParams.get("status");
+    const typescript: Question[] = await TypescriptQuestionModel.find({ status });
     return NextResponse.json({ typescript });
 }
 

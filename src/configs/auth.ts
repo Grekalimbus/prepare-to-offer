@@ -53,6 +53,8 @@ export const authConfig: AuthOptions = {
                     image,
                     roles: [userRole.value],
                     companies: [],
+                    questions: [],
+                    favoriteQuestions: [],
                     createdAt: new Date(),
                 });
             }

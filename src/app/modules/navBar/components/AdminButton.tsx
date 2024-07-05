@@ -18,7 +18,9 @@ const AdminButton = ({ email }: Props) => {
     useEffect(() => {
         if (email) {
             const fetchUser = async () => {
-                const { data: user } = await axios.post<User>(`${process.env.BASE_URL || BASE_URL}/getUser`, { email });
+                const { data: user } = await axios.get<User>(
+                    `${process.env.BASE_URL || BASE_URL}/getUser?email=${email}`,
+                );
                 user.roles.forEach(role => {
                     if (role === "ADMIN") {
                         setIsAdmin(true);

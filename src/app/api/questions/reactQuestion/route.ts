@@ -5,15 +5,16 @@ import { NextResponse } from "next/server";
 import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: Question = await request.json();
+    const { question, answer, sliceOfCode, links, status }: Question = await request.json();
     await connetctQuestionMongoDB();
-    await ReactQuestionModel.create({ question, answer });
+    await ReactQuestionModel.create({ question, answer, sliceOfCode, links, status: status || "PENDING" });
     return NextResponse.json({ message: "REACT Question Created" }, { status: 201 });
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     await connetctQuestionMongoDB();
-    const react: Question[] = await ReactQuestionModel.find();
+    const status = request.nextUrl.searchParams.get("status");
+    const react: Question[] = await ReactQuestionModel.find({ status });
     return NextResponse.json({ react });
 }
 
