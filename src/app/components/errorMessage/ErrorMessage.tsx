@@ -7,7 +7,7 @@ interface Props {
 }
 const ErrorMessage = ({ errorMessage, isError }: Props) => {
     return (
-        <aside className={`${styles.errorWrapper} ${!isError ? styles.hide : ""}`}>
+        <aside className={`${styles.errorWrapper} ${!isError ? styles.hide : styles.show}`}>
             <IoWarning className={styles.iconWarning} />
             <p className={styles.text}>{errorMessage}</p>
         </aside>
