@@ -41,21 +41,21 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
     }
     if (difficulty && liveCoding) {
         let isAdmin: boolean = false;
-        const { data: user } = await axios.get<User>(`${process.env.BASE_URL || BASE_URL}/getUser?email=${email}`);
+        const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
         user.roles.forEach(role => {
             if (role === "ADMIN") {
                 isAdmin = true;
             }
         });
-        await axios.patch(`${process.env.BASE_URL || BASE_URL}/userCompany`, { email, company: completeData });
+        await axios.patch(`${BASE_URL}/userCompany`, { email, company: completeData });
         if (isAdmin) {
-            await axios.post(`${process.env.BASE_URL || BASE_URL}/company`, {
+            await axios.post(`${BASE_URL}/company`, {
                 ...completeData,
                 status: "ACCEPT",
             });
         }
         if (!isAdmin) {
-            await axios.post(`${process.env.BASE_URL || BASE_URL}/company`, {
+            await axios.post(`${BASE_URL}/company`, {
                 ...completeData,
                 status: "PENDING",
             });
