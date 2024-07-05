@@ -1,15 +1,18 @@
+import ErrorMessage from "@/app/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/app/components/radioSelect/RadioSelect";
 import TextareaAndLabel from "@/app/components/textareaAndLabel/TextareaAndLabel";
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";
 import CustomCheckbox from "./components/CustomCheckbox";
 import UsefulLinks from "./components/UsefulLinks";
 
 const QuestionCreate = () => {
+    const [isError, setIsError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const arrayTechnologies = [
         { text: "HTML", value: "html" },
         { text: "CSS", value: "css" },
@@ -29,7 +32,16 @@ const QuestionCreate = () => {
         const sliceOfCode = formData.get("sliceOfCode");
         const link = formData.getAll("link");
         const checkbox = formData.get("checkbox");
-        console.log("question", { question, answer, sliceOfCode, link, checkbox });
+        const technology = formData.get("technology");
+        const completeData = { question, answer, sliceOfCode, link, checkbox, technology };
+        if (!technology) {
+            setErrorMessage("Чтобы отправить форму, выберите технологию из списка");
+            setIsError(true);
+            setTimeout(() => {
+                setIsError(false);
+            }, 2500);
+        }
+        console.log("completeData", completeData);
     };
     return (
         <section className={styles.wrapper}>
@@ -43,6 +55,7 @@ const QuestionCreate = () => {
                 <span className={styles.line}></span>
                 <Button text="Создать" />
             </form>
+            {!!errorMessage && <ErrorMessage errorMessage={errorMessage} isError={isError} />}
         </section>
     );
 };

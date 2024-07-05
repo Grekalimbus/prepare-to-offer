@@ -1,0 +1,50 @@
+.errorWrapper {
+    width: 270px;
+    height: 140px;
+    border: 1px solid var(--flamingo);
+    position: fixed;
+    transform: translateX(0);
+    top: 2%;
+    z-index: 2;
+    background: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 4px 4px 12px 0px #00000091;
+    padding: 10px;
+    animation: showError 0.5s forwards;
+}
+.errorWrapper.hide {
+    transform: translateX(500%);
+    animation: hideError 0.5s forwards;
+}
+
+@keyframes showError {
+    from {
+        transform: translateX(500%);
+    }
+    to {
+        transform: translateX(200%);
+    }
+}
+@keyframes hideError {
+    from {
+        transform: translateX(200%);
+    }
+    to {
+        transform: translateX(500%);
+    }
+}
+.text {
+    font-size: 16px;
+    font-weight: 600;
+    width: 90%;
+    margin-left: 15px;
+    color: rgb(235, 181, 3);
+}
+.iconWarning {
+    color: rgb(235, 181, 3);
+    width: 50px;
+    height: 50px;
+}
