@@ -1,33 +1,27 @@
+import ErrorMessage from "@/app/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/app/components/radioSelect/RadioSelect";
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
-import { FormEvent } from "react";
+import { useSession } from "next-auth/react";
+import { FormEvent, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
 import Questions from "./components/Questions";
+import handleSubmit from "./helpers/handleSubmit";
 
 const CompanyCreate = () => {
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const companyName = formData.get("companyName");
-        const linkVacancy = formData.get("linkVacancy");
-        const description = formData.get("description");
-        const sliceOfCode = formData.get("sliceOfCode");
-        const question = formData.getAll("question");
-        const difficulty = formData.get("difficulty");
-        const liveCoding = formData.get("liveCoding");
-        console.log("question", {
-            companyName,
-            linkVacancy,
-            description,
-            sliceOfCode,
-            question,
-            difficulty,
-            liveCoding,
-        });
+    const [isError, setIsError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const session = useSession();
+    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (session.data?.user?.email) {
+            const email = session.data.user?.email;
+            await handleSubmit({ event, setErrorMessage, setIsError, email });
+        }
     };
+
     const difficultyArray = [
         { text: "Легко", value: "easy" },
         { text: "Средне", value: "medium" },
@@ -39,7 +33,7 @@ const CompanyCreate = () => {
     ];
     return (
         <section className={styles.wrapper}>
-            <form className={styles.formBlock} onSubmit={handleSubmit}>
+            <form className={styles.formBlock} onSubmit={onSubmit}>
                 <p className={styles.textForSection}>
                     Информация добавится персонально, после чего проверится администратором и попадет в общий список для
                     всех пользователей
@@ -63,6 +57,7 @@ const CompanyCreate = () => {
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />
                 <Button text="Создать" />
             </form>
+            <ErrorMessage errorMessage={errorMessage} isError={isError} />
         </section>
     );
 };
