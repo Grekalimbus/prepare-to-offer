@@ -29,7 +29,6 @@ export const handleSubmit = async ({ event, setIsFormStatus, router }: Props) =>
     });
 
     if (!validData) return;
-    console.log(process.env.BASE_URL);
 
     await axios.post(`${process.env.BASE_URL || BASE_URL}/users`, {
         email,

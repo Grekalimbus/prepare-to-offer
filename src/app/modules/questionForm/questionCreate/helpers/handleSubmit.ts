@@ -31,25 +31,25 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
         }, 2500);
     }
     if (technology && !checkbox) {
-        await axios.patch(`${BASE_URL}/userQuestion`, { email, question: completeData });
+        await axios.patch(`${process.env.BASE_URL || BASE_URL}/userQuestion`, { email, question: completeData });
     }
     if (technology && checkbox) {
         let isAdmin: boolean = false;
-        const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
+        const { data: user } = await axios.get<User>(`${process.env.BASE_URL || BASE_URL}/getUser?email=${email}`);
         user.roles.forEach(role => {
             if (role === "ADMIN") {
                 isAdmin = true;
             }
         });
-        await axios.patch(`${BASE_URL}/userQuestion`, { email, question: completeData });
+        await axios.patch(`${process.env.BASE_URL || BASE_URL}/userQuestion`, { email, question: completeData });
         if (isAdmin) {
-            await axios.post(`${BASE_URL}/questions/${completeData.technology}Question`, {
+            await axios.post(`${process.env.BASE_URL || BASE_URL}/questions/${completeData.technology}Question`, {
                 ...completeData,
                 status: "ACCEPT",
             });
         }
         if (!isAdmin) {
-            await axios.post(`${BASE_URL}/questions/${completeData.technology}Question`, {
+            await axios.post(`${process.env.BASE_URL || BASE_URL}/questions/${completeData.technology}Question`, {
                 ...completeData,
                 status: "PENDING",
             });
