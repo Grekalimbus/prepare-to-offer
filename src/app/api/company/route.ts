@@ -21,19 +21,3 @@ export async function POST(request: NextRequest) {
     await companyPost.save();
     return NextResponse.json({ message: "Company Created" }, { status: 201 });
 }
-
-// export async function GET() {
-//     await connetctQuestionMongoDB();
-//     const architecture: TQuestion[] = await ArchitectureQuestionModel.find();
-//     return NextResponse.json({ architecture });
-// }
-
-// export async function DELETE(request: NextRequest) {
-//     const id = request.nextUrl.searchParams.get("id");
-//     if (!id) {
-//         return NextResponse.json({ message: "ID is required" }, { status: 400 });
-//     }
-//     await connetctQuestionMongoDB();
-//     await ArchitectureQuestionModel.findByIdAndDelete(id);
-//     return NextResponse.json({ message: "Architecture Question Deleted" }, { status: 200 });
-// }

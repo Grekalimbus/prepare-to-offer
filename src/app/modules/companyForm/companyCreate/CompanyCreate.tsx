@@ -1,11 +1,11 @@
 import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/app/components/radioSelect/RadioSelect";
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
 import { FormEvent } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
 import Questions from "./components/Questions";
-import SelectField from "./components/SelectField";
 
 const CompanyCreate = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -57,8 +57,8 @@ const CompanyCreate = () => {
                     placeholder="Описание (Интервью легкое, собеседующий душнил. Длительность собеса)"
                     required={false}
                 />
-                <SelectField array={difficultyArray} name="difficulty" textForSelect={`Сложность:`} />
-                <SelectField array={liveCodingArray} name="liveCoding" textForSelect={`LiveCoding (Был/Нет)`} />
+                <RadioSelect array={difficultyArray} name="difficulty" textForSelect={`Сложность:`} />
+                <RadioSelect array={liveCodingArray} name="liveCoding" textForSelect={`LiveCoding (Был/Нет)`} />
                 <Questions />
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />
                 <Button text="Создать" />

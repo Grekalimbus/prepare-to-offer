@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../CompanyCreate.module.css";
+import styles from "./RadioSelect.module.css";
 
 type SelectObject = {
     text: string;
@@ -11,7 +11,7 @@ interface Props {
     textForSelect: string;
 }
 
-const SelectField = ({ array, name, textForSelect }: Props) => {
+const RadioSelect = ({ array, name, textForSelect }: Props) => {
     const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
     return (
@@ -38,4 +38,4 @@ const SelectField = ({ array, name, textForSelect }: Props) => {
     );
 };
 
-export default SelectField;
+export default RadioSelect;
