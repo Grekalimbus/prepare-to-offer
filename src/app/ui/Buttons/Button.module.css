@@ -22,6 +22,7 @@
     border-top: 2px solid var(--flamingo);
     transition: background-color 0.4s;
 }
+
 @media (hover: hover) {
     .button:hover {
         background: var(--flamingo);

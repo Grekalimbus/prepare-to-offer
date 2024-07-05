@@ -1,19 +1,20 @@
-import connectMongoDB from "@/libs/mongodb";
+import connectAuthMongoDB from "@/libs/mongodbAuth";
 import HtmlQuestionModel from "@/models/questions/htmlQuestion";
-import { TQuestion } from "@/types/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: TQuestion = await request.json();
-    await connectMongoDB();
-    await HtmlQuestionModel.create({ question, answer });
+    const { question, answer, sliceOfCode, links, status }: Question = await request.json();
+    await connectAuthMongoDB();
+    await HtmlQuestionModel.create({ question, answer, sliceOfCode, links, status: status || "PENDING" });
     return NextResponse.json({ message: "HTML Question Created" }, { status: 201 });
 }
 
-export async function GET() {
-    await connectMongoDB();
-    const html: TQuestion[] = await HtmlQuestionModel.find();
+export async function GET(request: NextRequest) {
+    await connectAuthMongoDB();
+    const status = request.nextUrl.searchParams.get("status");
+    const html: Question[] = await HtmlQuestionModel.find({ status });
     return NextResponse.json({ html });
 }
 
@@ -22,7 +23,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
         return NextResponse.json({ message: "ID is required" }, { status: 400 });
     }
-    await connectMongoDB();
+    await connectAuthMongoDB();
     await HtmlQuestionModel.findByIdAndDelete(id);
     return NextResponse.json({ message: "HTML Question Deleted" }, { status: 200 });
 }
