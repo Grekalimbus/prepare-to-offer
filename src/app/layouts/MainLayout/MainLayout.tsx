@@ -1,7 +1,7 @@
-import ModalAuth from "@/app/modules/ModalAuth/ModalAuth";
-import { ModalAuthProvider } from "@/app/modules/ModalAuth/ModalAuthContext";
-import ModalPolicy from "@/app/modules/modalPolicy/ModalPolicy";
-import { ModalPolicyProvider } from "@/app/modules/modalPolicy/ModalPolicyContext";
+import ModalAuth from "@/app/components/modalWindow/ModalAuth/ModalAuth";
+import { ModalAuthProvider } from "@/app/components/modalWindow/ModalAuth/ModalAuthContext";
+import ModalPolicy from "@/app/components/modalWindow/modalPolicy/ModalPolicy";
+import { ModalPolicyProvider } from "@/app/components/modalWindow/modalPolicy/ModalPolicyContext";
 import NavBar from "@/app/modules/navBar/NavBar";
 import { NavigationProvider } from "@/app/modules/navBar/NavigationContext";
 import React, { ReactNode } from "react";

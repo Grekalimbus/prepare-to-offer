@@ -1,19 +1,20 @@
-import connectMongoDB from "@/libs/mongodb";
+import connectAuthMongoDB from "@/libs/mongodbAuth";
 import TypescriptQuestionModel from "@/models/questions/typescriptQuestion";
-import { TQuestion } from "@/types/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: TQuestion = await request.json();
-    await connectMongoDB();
+    const { question, answer }: Question = await request.json();
+    await connectAuthMongoDB();
     await TypescriptQuestionModel.create({ question, answer });
     return NextResponse.json({ message: "TYPESCRIPT Question Created" }, { status: 201 });
 }
 
-export async function GET() {
-    await connectMongoDB();
-    const typescript: TQuestion[] = await TypescriptQuestionModel.find();
+export async function GET(request: NextRequest) {
+    await connectAuthMongoDB();
+    const status = request.nextUrl.searchParams.get("status");
+    const typescript: Question[] = await TypescriptQuestionModel.find({ status });
     return NextResponse.json({ typescript });
 }
 
@@ -22,7 +23,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
         return NextResponse.json({ message: "ID is required" }, { status: 400 });
     }
-    await connectMongoDB();
+    await connectAuthMongoDB();
     await TypescriptQuestionModel.findByIdAndDelete(id);
     return NextResponse.json({ message: "TYPESCRIPT Question Deleted" }, { status: 200 });
 }
