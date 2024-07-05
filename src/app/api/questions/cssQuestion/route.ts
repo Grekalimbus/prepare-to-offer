@@ -1,19 +1,19 @@
-import connectMongoDB from "@/libs/mongodb";
+import connetctQuestionMongoDB from "@/libs/mongodb";
 import CssQuestionModel from "@/models/questions/cssQuestion";
-import { TQuestion } from "@/types/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: TQuestion = await request.json();
-    await connectMongoDB();
+    const { question, answer }: Question = await request.json();
+    await connetctQuestionMongoDB();
     await CssQuestionModel.create({ question, answer });
     return NextResponse.json({ message: "CSS Question Created" }, { status: 201 });
 }
 
 export async function GET() {
-    await connectMongoDB();
-    const css: TQuestion[] = await CssQuestionModel.find();
+    await connetctQuestionMongoDB();
+    const css: Question[] = await CssQuestionModel.find();
     return NextResponse.json({ css });
 }
 
@@ -22,7 +22,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
         return NextResponse.json({ message: "ID is required" }, { status: 400 });
     }
-    await connectMongoDB();
+    await connetctQuestionMongoDB();
     await CssQuestionModel.findByIdAndDelete(id);
     return NextResponse.json({ message: "CSS Question Deleted" }, { status: 200 });
 }

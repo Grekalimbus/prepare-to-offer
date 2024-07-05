@@ -1,9 +1,9 @@
-import connetctMongoAuthDB from "@/libs/mongodbAuth";
+import connetctAuthMongoDB from "@/libs/mongodbAuth";
 import User from "@/models/auth/user";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
-    await connetctMongoAuthDB();
+    await connetctAuthMongoDB();
     const { email } = await req.json();
     const candidate = await User.findOne({ email });
     if (candidate) {

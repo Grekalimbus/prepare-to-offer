@@ -52,6 +52,7 @@ export const authConfig: AuthOptions = {
                     name,
                     image,
                     roles: [userRole.value],
+                    companies: [],
                     createdAt: new Date(),
                 });
             }

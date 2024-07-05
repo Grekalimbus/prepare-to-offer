@@ -11,6 +11,17 @@ interface IUser extends Document {
             ref: "Role";
         },
     ];
+    companies: Array<{
+        companyName: string;
+        linkVacancy: string;
+        description: string;
+        difficulty: string;
+        liveCoding: string;
+        questions: string[] | [];
+        task: string;
+        status: string;
+        createdAt: Date;
+    }>;
     createdAt: Date;
 }
 
@@ -20,6 +31,19 @@ const userSchema = new Schema<IUser>({
     image: { type: String, required: false },
     password: { type: String, required: false },
     roles: [{ type: String, ref: "Role", required: true }],
+    companies: [
+        {
+            companyName: String,
+            linkVacancy: String,
+            description: String,
+            difficulty: String,
+            liveCoding: String,
+            questions: [String] || [],
+            task: String,
+            status: String,
+            createdAt: { type: Date, default: Date.now },
+        },
+    ],
     createdAt: { type: Date, default: Date.now },
 });
 
