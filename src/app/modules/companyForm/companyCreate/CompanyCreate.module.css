@@ -29,7 +29,7 @@
 .textForSection {
     font-weight: 600;
     color: var(--white);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 .wrapperSelectField {
     display: flex;

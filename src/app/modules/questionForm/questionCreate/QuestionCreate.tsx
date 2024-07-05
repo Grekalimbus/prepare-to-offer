@@ -1,7 +1,7 @@
+import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
+import TextareaAndLabel from "@/app/components/textareaAndLabel/TextareaAndLabel";
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
-import FieldForCodeSlice from "@/app/ui/fieldForCodeSlice/FieldForCodeSlice";
-import TextareaAndLabel from "@/app/ui/textareaAndLabel/TextareaAndLabel";
 import { FormEvent } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";

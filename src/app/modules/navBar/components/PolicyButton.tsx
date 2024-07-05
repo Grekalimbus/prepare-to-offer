@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ModalPolicyContext } from "../../modalPolicy/ModalPolicyContext";
+import { ModalPolicyContext } from "../../../components/modalWindow/modalPolicy/ModalPolicyContext";
 import styles from "../NavBar.module.css";
 const PolicyButton = () => {
     const { setIsModalActive } = useContext(ModalPolicyContext);

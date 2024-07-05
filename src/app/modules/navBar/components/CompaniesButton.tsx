@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { MouseEvent, useContext } from "react";
-import { ModalAuthContext } from "../../ModalAuth/ModalAuthContext";
+import { ModalAuthContext } from "../../../components/modalWindow/ModalAuth/ModalAuthContext";
 import styles from "../NavBar.module.css";
 
 const CompaniesButton = () => {

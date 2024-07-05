@@ -1,5 +1,8 @@
-import { IProps } from "./TypeButton";
-import styles from "./UIButton.module.css";
+import styles from "./Button.module.css";
+export interface IProps {
+    text: string;
+    onClick?: () => void;
+}
 
 const Button = ({ text, onClick }: IProps) => {
     return (

@@ -1,5 +1,5 @@
-import ButtonAddField from "@/app/ui/Buttons/ButtonAddField";
-import InputWithRemoveButton from "@/app/ui/Input/InputWithRemoveButton";
+import ButtonAddField from "@/app/components/button/ButtonAddField";
+import InputWithRemoveButton from "@/app/components/input/InputWithRemoveButton";
 import { useState } from "react";
 import { MdLink } from "react-icons/md";
 

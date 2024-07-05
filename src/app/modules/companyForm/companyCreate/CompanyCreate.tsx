@@ -1,5 +1,5 @@
+import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
 import Button from "@/app/ui/Buttons/Button";
-import FieldForCodeSlice from "@/app/ui/fieldForCodeSlice/FieldForCodeSlice";
 import Input from "@/app/ui/Input/Input";
 import { FormEvent } from "react";
 import { FaRegFileCode } from "react-icons/fa";
@@ -40,6 +40,10 @@ const CompanyCreate = () => {
     return (
         <section className={styles.wrapper}>
             <form className={styles.formBlock} onSubmit={handleSubmit}>
+                <p className={styles.textForSection}>
+                    Информация добавится персонально, после чего проверится администратором и попадет в общий список для
+                    всех пользователей
+                </p>
                 <Input name="companyName" inputType="text" placeholder="Название компании" required={true} />
                 <Input
                     name="linkVacancy"

@@ -1,0 +1,27 @@
+.buttonAdd {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    border: 1px solid var(--flamingo);
+    background: var(--shadow-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.4s;
+}
+.buttonAdd:active {
+    background: var(--shadow-white);
+}
+.iconInButton {
+    position: absolute;
+    right: 1%;
+    height: 30px;
+    width: 40px;
+    color: var(--flamingo);
+}

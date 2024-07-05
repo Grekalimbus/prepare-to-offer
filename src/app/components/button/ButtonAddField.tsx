@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import styles from "./UIButton.module.css";
+import styles from "./Button.module.css";
 
 interface Props {
     icon: ReactElement;

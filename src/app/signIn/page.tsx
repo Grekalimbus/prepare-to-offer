@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import InputAndLabel from "../ui/Input/InputAndLabel";
+import InputAndLabel from "../components/input/InputAndLabel";
 import styles from "./SignIn.module.css";
 import LowerSectionForm from "./components/LowerSectionForm";
 import { handleSubmit } from "./helpers/handleSubmitForm";
