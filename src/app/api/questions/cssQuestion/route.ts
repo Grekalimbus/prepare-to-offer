@@ -1,19 +1,20 @@
-import connectMongoDB from "@/libs/mongodb";
+import connectAuthMongoDB from "@/libs/mongodbAuth";
 import CssQuestionModel from "@/models/questions/cssQuestion";
-import { TQuestion } from "@/types/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
-    const { question, answer }: TQuestion = await request.json();
-    await connectMongoDB();
-    await CssQuestionModel.create({ question, answer });
+    const { question, answer, sliceOfCode, links, status }: Question = await request.json();
+    await connectAuthMongoDB();
+    await CssQuestionModel.create({ question, answer, sliceOfCode, links, status: status || "PENDING" });
     return NextResponse.json({ message: "CSS Question Created" }, { status: 201 });
 }
 
-export async function GET() {
-    await connectMongoDB();
-    const css: TQuestion[] = await CssQuestionModel.find();
+export async function GET(request: NextRequest) {
+    await connectAuthMongoDB();
+    const status = request.nextUrl.searchParams.get("status");
+    const css: Question[] = await CssQuestionModel.find({ status });
     return NextResponse.json({ css });
 }
 
@@ -22,7 +23,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
         return NextResponse.json({ message: "ID is required" }, { status: 400 });
     }
-    await connectMongoDB();
+    await connectAuthMongoDB();
     await CssQuestionModel.findByIdAndDelete(id);
     return NextResponse.json({ message: "CSS Question Deleted" }, { status: 200 });
 }

@@ -1,4 +1,4 @@
-import { ModalPolicyContext } from "@/app/modules/modalPolicy/ModalPolicyContext";
+import { ModalPolicyContext } from "@/app/components/modalWindow/modalPolicy/ModalPolicyContext";
 import { signIn } from "next-auth/react";
 import { useContext } from "react";
 import styles from "../SignIn.module.css";

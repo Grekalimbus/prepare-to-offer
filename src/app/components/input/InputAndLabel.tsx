@@ -1,6 +1,6 @@
-import styles from "./InputAndLabel.module.css";
+import styles from "./Input.module.css";
 
-export interface PropsInputAndLabel {
+export interface Props {
     type?: null | boolean;
     name: string;
     inputType: string;
@@ -8,7 +8,7 @@ export interface PropsInputAndLabel {
     error?: string;
 }
 
-const InputAndLabel = ({ type, name, inputType, placeholder, error }: PropsInputAndLabel) => {
+const InputAndLabel = ({ type, name, inputType, placeholder, error }: Props) => {
     return (
         <>
             {type !== null && (
@@ -16,7 +16,7 @@ const InputAndLabel = ({ type, name, inputType, placeholder, error }: PropsInput
                     {error}
                 </label>
             )}
-            <input placeholder={placeholder} className={styles.input} name={name} type={inputType} required />
+            <input placeholder={placeholder} className={styles.inputWithLabel} name={name} type={inputType} required />
         </>
     );
 };

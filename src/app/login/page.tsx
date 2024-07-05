@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import InputAndLabel from "../ui/InputAndLabel/InputAndLabel";
+import InputAndLabel from "../components/input/InputAndLabel";
 import styles from "./Login.module.css";
 import LowerSectionForm from "./components/LowerSectionForm";
 import { handleSubmitForm } from "./helpers/handleSubmitForm";
@@ -19,6 +19,7 @@ const Login = () => {
         event.preventDefault();
         await handleSubmitForm({ event, setIsFormStatus, router });
     };
+
     return (
         <section className={styles.wrapperForm}>
             <form onSubmit={onSubmitHandler} className={styles.formSignIn}>
