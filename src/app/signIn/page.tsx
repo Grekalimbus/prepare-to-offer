@@ -1,8 +1,7 @@
 "use client";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import InputAndLabel from "../ui/Input/InputAndLabel";
 import styles from "./SignIn.module.css";
 import LowerSectionForm from "./components/LowerSectionForm";
@@ -17,10 +16,7 @@ const SignIn = () => {
     });
 
     const router = useRouter();
-    const session = useSession();
-    useEffect(() => {
-        if (session.data) router.push("/");
-    }, [session.data]);
+
     const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         await handleSubmit({ event, setIsFormStatus, router });

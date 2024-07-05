@@ -1,4 +1,4 @@
-import styles from "./InputAndLabel.module.css";
+import styles from "./Input.module.css";
 
 export interface Props {
     type?: null | boolean;

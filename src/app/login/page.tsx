@@ -19,6 +19,7 @@ const Login = () => {
         event.preventDefault();
         await handleSubmitForm({ event, setIsFormStatus, router });
     };
+
     return (
         <section className={styles.wrapperForm}>
             <form onSubmit={onSubmitHandler} className={styles.formSignIn}>
