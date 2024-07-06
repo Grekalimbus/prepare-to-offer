@@ -8,7 +8,8 @@
     align-items: center;
     width: 100%;
     height: 60px;
-    border-top: 2px solid var(--flamingo);
+    border-top: 1px solid var(--flamingo);
+    backdrop-filter: blur(4px);
 }
 .categoryButton {
     width: 33.28%;
@@ -21,13 +22,13 @@
     font-weight: 600;
     color: var(--white);
     cursor: pointer;
-    background: var(--shadow-white);
-    transition: background 0.5s;
+    background: var(--shadow-black);
+    transition: background 0.4s;
 }
 .categoryButton.active {
-    border: 2px solid var(--flamingo);
+    border-bottom: 1px solid var(--flamingo);
     border-top: none;
-    background: var(--shadow-black);
+    background: var(--dark);
 }
 .flexContainer {
     display: flex;
@@ -40,11 +41,12 @@
     width: 300px;
     min-width: 300px;
     height: 100%;
-    background: var(--dark);
+    background: var(--shadow-black);
     border-right: 2px solid var(--flamingo);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    backdrop-filter: blur(10px);
 }
 .navButton {
     width: 100%;
@@ -57,7 +59,7 @@
     font-size: 16px;
     font-weight: 600;
     transition: background 0.4s, color 0.4s;
-    border-bottom: 2px solid var(--flamingo);
+    border-bottom: 1px solid var(--flamingo);
     cursor: pointer;
 }
 .navButton.activeNavButton {
@@ -66,10 +68,10 @@
 }
 @media (hover: hover) {
     .categoryButton:hover {
-        background-color: var(--shadow-black);
+        background-color: var(--dark);
     }
     .navButton:hover {
-        background-color: var(--shadow-black);
+        background-color: var(--dark);
         color: var(--flamingo);
     }
 }

@@ -15,6 +15,7 @@
     height: 600px;
     width: 600px;
     margin-top: 20px;
+    backdrop-filter: blur(10px);
 }
 .wrapperCompany::-webkit-scrollbar {
     width: 10px;
@@ -32,14 +33,15 @@
     padding: 10px;
     padding-bottom: 0;
     border-radius: 3px;
-    border: 2px solid var(--flamingo);
+    border: 1px solid var(--flamingo);
     background: var(--shadow-white);
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 4px 20px 0px #000000ee;
 }
 .point {
     padding: 15px;
     font-weight: 600;
-    border-bottom: 2px solid var(--flamingo);
+    border-bottom: 1px solid var(--dark);
     color: var(--white);
 }

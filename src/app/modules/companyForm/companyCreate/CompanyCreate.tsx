@@ -23,18 +23,18 @@ const CompanyCreate = () => {
     };
 
     const difficultyArray = [
-        { text: "Легко", value: "easy" },
-        { text: "Средне", value: "medium" },
-        { text: "Сложно", value: "hard" },
+        { text: "Легко", value: "Легко" },
+        { text: "Средне", value: "Средне" },
+        { text: "Сложно", value: "Сложно" },
     ];
     const liveCodingArray = [
-        { text: "Был", value: "yes" },
-        { text: "Не был", value: "no" },
+        { text: "Был", value: "Был" },
+        { text: "Был", value: "Не был" },
     ];
     const typeOfInterview = [
-        { text: "Скрининг", value: "screening" },
-        { text: "Технический", value: "technical" },
-        { text: "Другой", value: "other" },
+        { text: "Скрининг", value: "Скрининг" },
+        { text: "Технический", value: "Технический" },
+        { text: "Другой", value: "Другой" },
     ];
     return (
         <section className={styles.wrapper}>
