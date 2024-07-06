@@ -15,11 +15,14 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    user-select: none;
     border: none;
     text-decoration: none;
 }
-
+button,
+p,
+label {
+    user-select: none;
+}
 html,
 body {
     height: 100%;
@@ -41,6 +44,7 @@ canvas,
 svg {
     display: block;
     max-width: 100%;
+    user-select: none;
 }
 
 table {
@@ -60,8 +64,9 @@ q::after {
     content: "";
     content: none;
 }
-input:focus {
-    outline: none; /* Убирает стандартную обводку фокуса */
-    box-shadow: none; /* Убирает любые тени */
-    border: none; /* Убирает любую границу (если есть) */
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
