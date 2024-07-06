@@ -1,5 +1,5 @@
-export type Company = {
-    _id: string;
+export interface Company {
+    _id?: string;
     companyName: string;
     linkVacancy: string;
     description: string;
@@ -8,4 +8,4 @@ export type Company = {
     questions: string[] | [];
     task: string;
     status: string;
-};
+}

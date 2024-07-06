@@ -1,17 +1,33 @@
 .companyWrapper {
-    height: calc(100%);
-    top: 0;
+    height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 2px solid rgb(255, 208, 0);
-    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: auto;
+}
+.wrapper {
+    border: 2px solid var(--dark);
+    border-radius: 4px;
+    background: var(--shadow-black);
+    padding: 15px;
+    overflow: auto;
+    height: 600px;
+    width: 600px;
+    margin-top: 20px;
+}
+.wrapper::-webkit-scrollbar {
+    width: 10px;
+    background: var(--shadow-white);
+    border-radius: 5px;
+}
+.wrapper::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: var(--shadow-black);
+    border-radius: 5px;
 }
 .companyContent {
-    width: 500px;
-    height: fit-content;
-    min-height: min-content;
+    width: 100%;
     margin-bottom: 30px;
     padding: 10px;
     padding-bottom: 0;
