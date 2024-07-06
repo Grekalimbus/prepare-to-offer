@@ -5,8 +5,18 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-    const { companyName, linkVacancy, description, difficulty, liveCoding, questions, task, status }: Company =
-        await request.json();
+    const {
+        companyName,
+        linkVacancy,
+        description,
+        difficulty,
+        liveCoding,
+        questions,
+        task,
+        status,
+        sliceOfCode,
+        typeOfInterview,
+    }: Company = await request.json();
     await connetctAuthMongoDB();
     const companyPost = await new CompanyModel({
         companyName,
@@ -16,6 +26,8 @@ export async function POST(request: NextRequest) {
         liveCoding,
         questions,
         task,
+        sliceOfCode,
+        typeOfInterview,
         status: status || "PENDING",
     });
     await companyPost.save();

@@ -9,6 +9,8 @@ const companySchema = new Schema({
     questions: [String] || [],
     task: String,
     status: String,
+    sliceOfCode: String,
+    typeOfInterview: String,
     createdAt: { type: Date, default: Date.now },
 });
 

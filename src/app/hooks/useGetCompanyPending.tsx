@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 interface OjbectCompany {
-    companies: Company;
+    companies: Company[];
 }
 
 const useGetCompanyPending = () => {
@@ -13,7 +13,7 @@ const useGetCompanyPending = () => {
         const { data } = await axios.get<OjbectCompany>(`${BASE_URL}/company?status=PENDING`);
         return data.companies;
     };
-    const fetchCreateCompany = async (company: Company) => {
+    const fetchCreateCompany = async (company: Company[]) => {
         const { data } = await axios.post<Company>(`${BASE_URL}/company`, company);
         return data;
     };

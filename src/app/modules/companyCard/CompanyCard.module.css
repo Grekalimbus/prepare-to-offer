@@ -1,4 +1,4 @@
-.companyWrapper {
+.commonWrapper {
     height: 100%;
     width: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
     overflow: auto;
 }
-.wrapper {
+.wrapperCompany {
     border: 2px solid var(--dark);
     border-radius: 4px;
     background: var(--shadow-black);
@@ -16,17 +16,17 @@
     width: 600px;
     margin-top: 20px;
 }
-.wrapper::-webkit-scrollbar {
+.wrapperCompany::-webkit-scrollbar {
     width: 10px;
     background: var(--shadow-white);
     border-radius: 5px;
 }
-.wrapper::-webkit-scrollbar-thumb {
+.wrapperCompany::-webkit-scrollbar-thumb {
     width: 10px;
     background: var(--shadow-black);
     border-radius: 5px;
 }
-.companyContent {
+.companyCard {
     width: 100%;
     margin-bottom: 30px;
     padding: 10px;
@@ -36,7 +36,6 @@
     background: var(--shadow-white);
     display: flex;
     flex-direction: column;
-    /* overflow: auto; */
 }
 .point {
     padding: 15px;

@@ -1,8 +1,10 @@
 "use client";
 import { BASE_URL } from "@/configs/baseURL";
+import { Company } from "@/types/company/company";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import useGetCompanyPending from "../hooks/useGetCompanyPending";
 import CompanyCard from "../modules/companyCard/CompanyCard";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
@@ -17,8 +19,15 @@ interface User {
 interface Props {
     navButton: string;
     category: string;
+    companies?:
+        | {
+              companiesPending: Company[] | undefined;
+              isLoading: boolean;
+              error: Error | null;
+          }
+        | undefined;
 }
-const DynamicComponent = ({ navButton, category }: Props) => {
+const DynamicComponent = ({ navButton, category, companies }: Props) => {
     if (navButton === "Добавить" && category === "Технические вопросы") {
         return <QuestionCreate />;
     }
@@ -26,11 +35,13 @@ const DynamicComponent = ({ navButton, category }: Props) => {
         return <CompanyCreate />;
     }
     if (navButton === "Входящие заявки" && category === "Компании") {
-        return <CompanyCard />;
+        return <CompanyCard companies={companies} />;
     }
 };
 
 const AdminPage = () => {
+    const companies = useGetCompanyPending();
+
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
     const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
@@ -68,7 +79,7 @@ const AdminPage = () => {
             <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
             <section className={styles.flexContainer}>
                 <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
-                <DynamicComponent navButton={isActiveNavButton} category={isActiveCategory} />
+                <DynamicComponent navButton={isActiveNavButton} category={isActiveCategory} companies={companies} />
             </section>
         </div>
     );

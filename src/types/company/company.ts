@@ -5,7 +5,10 @@ export interface Company {
     description: string;
     difficulty: string;
     liveCoding: string;
+    sliceOfCode: string;
+    typeOfInterview: string;
     questions: string[] | [];
     task: string;
-    status: string;
+    status?: string;
+    createdAt?: string;
 }

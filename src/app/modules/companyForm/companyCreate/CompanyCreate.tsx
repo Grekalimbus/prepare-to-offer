@@ -31,6 +31,11 @@ const CompanyCreate = () => {
         { text: "Был", value: "yes" },
         { text: "Не был", value: "no" },
     ];
+    const typeOfInterview = [
+        { text: "Скрининг", value: "screening" },
+        { text: "Технический", value: "technical" },
+        { text: "Другой", value: "other" },
+    ];
     return (
         <section className={styles.wrapper}>
             <form className={styles.formBlock} onSubmit={onSubmit}>
@@ -52,6 +57,7 @@ const CompanyCreate = () => {
                     required={false}
                 />
                 <RadioSelect array={difficultyArray} name="difficulty" textForSelect={`Сложность:`} />
+                <RadioSelect array={typeOfInterview} name="typeOfInterview" textForSelect={`Формат собеседования: `} />
                 <RadioSelect array={liveCodingArray} name="liveCoding" textForSelect={`LiveCoding (Был/Нет)`} />
                 <Questions />
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />

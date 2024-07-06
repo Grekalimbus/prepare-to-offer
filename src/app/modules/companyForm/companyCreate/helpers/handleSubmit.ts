@@ -21,24 +21,28 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
     const description = formData.get("description");
     const difficulty = formData.getAll("difficulty")[0];
     const liveCoding = formData.getAll("liveCoding")[0];
+    const typeOfInterview = formData.getAll("typeOfInterview")[0];
     const questions = formData.getAll("question");
     const sliceOfCode = formData.get("sliceOfCode") || "";
-    const completeData = { companyName, linkVacancy, description, sliceOfCode, difficulty, liveCoding, questions };
-    if (!liveCoding) {
-        setErrorMessage("Нужно выбрать 1 из вариантов раздела LiveCoding");
+    const completeData = {
+        companyName,
+        linkVacancy,
+        description,
+        sliceOfCode,
+        difficulty,
+        liveCoding,
+        questions,
+        typeOfInterview,
+    };
+    if (!liveCoding || !typeOfInterview || !difficulty) {
+        setErrorMessage("Выберите все обязательные опции (Сложность/Формат/LiveCoding)");
         setIsError(true);
         setTimeout(() => {
             setIsError(false);
-        }, 2500);
+        }, 3000);
     }
-    if (!difficulty) {
-        setErrorMessage("Нужно выбрать сложность из списка");
-        setIsError(true);
-        setTimeout(() => {
-            setIsError(false);
-        }, 2500);
-    }
-    if (difficulty && liveCoding) {
+    if (difficulty && liveCoding && typeOfInterview) {
+        console.log("completeData", completeData);
         let isAdmin: boolean = false;
         const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
         user.roles.forEach(role => {

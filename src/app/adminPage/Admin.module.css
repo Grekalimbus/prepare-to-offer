@@ -34,7 +34,6 @@
     align-items: center;
     justify-content: space-between;
     height: calc(100% - 60px);
-    border: 2px solid blue;
     box-sizing: border-box;
 }
 .navBar {
