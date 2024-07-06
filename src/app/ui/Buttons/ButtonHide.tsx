@@ -1,5 +1,9 @@
-import { IProps } from "./TypeButton";
-import styles from "./UIButton.module.css";
+import styles from "./Button.module.css";
+export interface IProps {
+    text: string;
+    onClick?: () => void;
+}
+
 const ButtonHide = ({ text, onClick }: IProps) => {
     return (
         <button className={styles.buttonHide} onClick={onClick}>

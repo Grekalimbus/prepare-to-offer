@@ -1,32 +1,24 @@
 "use client";
 import ButtonHide from "@/app/ui/Buttons/ButtonHide";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { MouseEvent, useContext, useEffect } from "react";
-import { ModalAuthContext } from "../ModalAuth/ModalAuthContext";
+import { usePathname } from "next/navigation";
+import { useContext, useEffect } from "react";
 import styles from "./NavBar.module.css";
 import { NavigationContext } from "./NavigationContext";
+import AdminButton from "./components/AdminButton";
+import CompaniesButton from "./components/CompaniesButton";
+import LoginAndLogOutButton from "./components/LoginAndLogOutButton";
+import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
     const session = useSession();
     const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
-    const { setIsModalActive } = useContext(ModalAuthContext);
+
     const path = usePathname();
-    const router = useRouter();
     useEffect(() => {
         setIsNavigationActive(false);
     }, [path]);
-    const handleRoutePushOrShowModal = (e: MouseEvent<HTMLButtonElement>, url: string) => {
-        if (!session.data) {
-            e.preventDefault();
-            setIsModalActive(true);
-        } else {
-            router.push(url);
-        }
-    };
-
-    console.log("session", session);
 
     return (
         <>
@@ -34,14 +26,11 @@ const NavBar = () => {
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <Link href={"/questionsPage"} className={styles.navLink}>
+                        <AdminButton email={session.data?.user?.email} />
+                        <Link href={"/"} className={styles.navLink}>
                             Технические вопросы
                         </Link>
-                        <button
-                            onClick={e => handleRoutePushOrShowModal(e, "/companiesPage")}
-                            className={styles.navLink}
-                        >
-                            Информация о компаниях
-                        </button>
+                        <CompaniesButton />
                         <Link href={"/"} className={styles.navLink}>
                             Задачи с собеседований
                         </Link>
@@ -51,18 +40,8 @@ const NavBar = () => {
                         <Link href={"/"} className={styles.navLink}>
                             Служба поддержки
                         </Link>
-                        <Link href={"/"} className={styles.navLink}>
-                            Политика конфиденциальности
-                        </Link>
-                        {session?.data ? (
-                            <button onClick={() => signOut({ callbackUrl: "/" })} className={styles.navLink}>
-                                Выход
-                            </button>
-                        ) : (
-                            <Link href="/signIn" className={styles.navLink}>
-                                Вход / Регистрация
-                            </Link>
-                        )}
+                        <PolicyButton />
+                        <LoginAndLogOutButton />
                     </div>
                     <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)}></ButtonHide>
                 </nav>

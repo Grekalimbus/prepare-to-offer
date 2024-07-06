@@ -45,6 +45,17 @@ export const authConfig: AuthOptions = {
 
             const existingUser = await UserModel.findOne({ email });
             const userRole = await Role.findOne({ value: "USER" });
+            const questions = {
+                html: [],
+                css: [],
+                javascript: [],
+                typescript: [],
+                react: [],
+                nextJS: [],
+                redux: [],
+                architecture: [],
+                common: [],
+            };
 
             if (!existingUser) {
                 await UserModel.create({
@@ -52,6 +63,9 @@ export const authConfig: AuthOptions = {
                     name,
                     image,
                     roles: [userRole.value],
+                    companies: [],
+                    questions,
+                    favoriteQuestions: [],
                     createdAt: new Date(),
                 });
             }
