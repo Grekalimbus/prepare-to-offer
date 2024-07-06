@@ -4,7 +4,7 @@ import RadioSelect from "@/app/components/radioSelect/RadioSelect";
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
 import { useSession } from "next-auth/react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
 import Questions from "./components/Questions";
@@ -14,11 +14,14 @@ const CompanyCreate = () => {
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const session = useSession();
+    const formRef = useRef<HTMLFormElement>(null);
+
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (session.data?.user?.email) {
             const email = session.data.user?.email;
             await handleSubmit({ event, setErrorMessage, setIsError, email });
+            formRef.current?.reset();
         }
     };
 
@@ -38,7 +41,7 @@ const CompanyCreate = () => {
     ];
     return (
         <section className={styles.wrapper}>
-            <form className={styles.formBlock} onSubmit={onSubmit}>
+            <form className={styles.formBlock} onSubmit={onSubmit} ref={formRef}>
                 <p className={styles.textForSection}>
                     Информация добавится персонально, после чего проверится администратором и попадет в общий список для
                     всех пользователей

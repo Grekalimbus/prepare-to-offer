@@ -63,7 +63,6 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
                 status: "PENDING",
             });
         }
-        event.currentTarget.reset();
     }
 };
 
