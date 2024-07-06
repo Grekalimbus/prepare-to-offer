@@ -6,18 +6,20 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import styles from "../CompanyCard.module.css";
 interface Props {
     company: Company;
+    isAdmin: boolean;
+    status: string;
 }
 
 const RussianTime = (dateString: string) => {
     const timeZone = "Europe/Moscow";
     const date = new Date(dateString);
     const zonedDate = toZonedTime(date, timeZone);
-    const formattedDate = format(zonedDate, "dd.MM.yyyy HH:mm:ss", { timeZone });
+    const formattedDate = format(zonedDate, "dd.MM.yyyy", { timeZone });
 
     return formattedDate;
 };
 
-const CompanyDetails = ({ company }: Props) => {
+const CompanyDetails = ({ company, isAdmin, status }: Props) => {
     const generateColor = (text: string) => {
         if (text === "Легко") return "#7bfd01";
         if (text === "Средне") return "#eec200";
@@ -56,13 +58,23 @@ const CompanyDetails = ({ company }: Props) => {
             {company.sliceOfCode && (
                 <div className={styles.wrapperSectiion}>
                     <p className={styles.questions}>Задачи: </p>
-                    <SyntaxHighlighter customStyle={{ width: "100%" }} language="javascript" style={atomOneDark}>
+                    <SyntaxHighlighter
+                        customStyle={{ width: "100%", borderRadius: "6px" }}
+                        language="javascript"
+                        style={atomOneDark}
+                    >
                         {company.sliceOfCode}
                     </SyntaxHighlighter>
                 </div>
             )}
             {company.createdAt && (
                 <div className={styles.wrapperSectiion}>Дата создания: {RussianTime(company.createdAt)}</div>
+            )}
+            {status === "PENDING" && isAdmin && (
+                <div className={styles.flexButtonContainer}>
+                    <button className={styles.buttonInFlex}>Отклонить заявку</button>
+                    <button className={styles.buttonInFlex}>Принять</button>
+                </div>
             )}
         </div>
     );

@@ -9,9 +9,11 @@ interface Props {
               error: Error | null;
           }
         | undefined;
+    status: string;
+    isAdmin: boolean;
 }
 
-const CompanyCard = ({ companies }: Props) => {
+const CompanyCard = ({ companies, status, isAdmin }: Props) => {
     console.log("companies?.companiesPending", companies?.companiesPending);
     if (companies?.isLoading) {
         return <div>LOADING</div>;
@@ -21,13 +23,18 @@ const CompanyCard = ({ companies }: Props) => {
     }
     if (companies?.companiesPending !== undefined) {
         return (
-            <section className={styles.commonWrapper}>
-                <div className={styles.wrapperCompany}>
-                    {companies.companiesPending.map(company => (
-                        <CompanyDetails key={company._id} company={company} />
-                    ))}
-                </div>
-            </section>
+            <div className={styles.flexContainer}>
+                <section className={styles.commonWrapper}>
+                    <div className={styles.wrapperCompany}>
+                        {companies.companiesPending.map(company => (
+                            <CompanyDetails status={status} isAdmin={isAdmin} key={company._id} company={company} />
+                        ))}
+                    </div>
+                    {status === "PENDING" && isAdmin && (
+                        <button className={styles.buttonAcceptAll}>Принять все заявки</button>
+                    )}
+                </section>
+            </div>
         );
     }
 };

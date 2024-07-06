@@ -24,10 +24,12 @@ interface Props {
               companiesPending: Company[] | undefined;
               isLoading: boolean;
               error: Error | null;
+              status: string;
           }
         | undefined;
+    isAdmin: boolean;
 }
-const DynamicComponent = ({ navButton, category, companies }: Props) => {
+const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) => {
     if (navButton === "Добавить" && category === "Технические вопросы") {
         return <QuestionCreate />;
     }
@@ -35,7 +37,9 @@ const DynamicComponent = ({ navButton, category, companies }: Props) => {
         return <CompanyCreate />;
     }
     if (navButton === "Входящие заявки" && category === "Компании") {
-        return <CompanyCard companies={companies} />;
+        if (companies?.status) {
+            return <CompanyCard status={companies?.status} companies={companies} isAdmin={isAdmin} />;
+        }
     }
 };
 
@@ -79,7 +83,12 @@ const AdminPage = () => {
             <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
             <section className={styles.flexContainer}>
                 <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
-                <DynamicComponent navButton={isActiveNavButton} category={isActiveCategory} companies={companies} />
+                <DynamicComponent
+                    navButton={isActiveNavButton}
+                    category={isActiveCategory}
+                    companies={companies}
+                    isAdmin={isAdmin}
+                />
             </section>
         </div>
     );
