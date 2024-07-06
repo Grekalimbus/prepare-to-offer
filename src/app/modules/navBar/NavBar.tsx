@@ -42,7 +42,7 @@ const NavBar = () => {
                         <PolicyButton />
                         <LoginAndLogOutButton />
                     </div>
-                    <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)}></ButtonHide>
+                    <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)} />
                 </nav>
             </aside>
             <div style={{ display: `${isNavigationActive ? "block" : "none"}` }} className={styles.shadowBlock}></div>

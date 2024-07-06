@@ -1,7 +1,7 @@
 import styles from "./CompanyCard.module.css";
 const CompanyCard = () => {
     return (
-        <>
+        <section className={styles.companyWrapper}>
             <div className={styles.companyContent}>
                 <div className={styles.point}>Название компании: Неизвестно</div>
                 <div className={styles.point}>Ссылка на вакансию если есть</div>
@@ -53,7 +53,7 @@ const CompanyCard = () => {
                 </div>
                 <div className={styles.point}>Дата создания : 25.05.2025</div>
             </div>
-        </>
+        </section>
     );
 };
 

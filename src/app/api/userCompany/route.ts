@@ -12,8 +12,6 @@ export async function PATCH(req: NextRequest) {
     await connetctAuthMongoDB();
 
     const { email, company }: User = await req.json();
-    console.log("email", email);
-    console.log("company", company);
     const candidate = await User.findOne({ email });
     if (candidate) {
         const updatedCompanies = [...candidate.companies, company];
