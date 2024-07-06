@@ -15,7 +15,6 @@ const CompanyCreate = () => {
     const [errorMessage, setErrorMessage] = useState<string>("");
     const session = useSession();
     const formRef = useRef<HTMLFormElement>(null);
-
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (session.data?.user?.email) {

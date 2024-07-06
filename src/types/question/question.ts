@@ -5,4 +5,5 @@ export interface Question {
     sliceOfCode: string;
     links: string[] | [];
     status?: string;
+    technology?: string;
 }

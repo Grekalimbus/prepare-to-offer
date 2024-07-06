@@ -1,5 +1,5 @@
 import { Company } from "@/types/company/company";
-import styles from "./CompanyCard.module.css";
+import styles from "./CompaniesCards.module.css";
 import CompanyDetails from "./components/CompanyDetails";
 interface Props {
     companies:
@@ -13,7 +13,7 @@ interface Props {
     isAdmin: boolean;
 }
 
-const CompanyCard = ({ companies, status, isAdmin }: Props) => {
+const CompaniesCards = ({ companies, status, isAdmin }: Props) => {
     console.log("companies?.companiesPending", companies?.companiesPending);
     if (companies?.isLoading) {
         return <div>LOADING</div>;
@@ -39,4 +39,4 @@ const CompanyCard = ({ companies, status, isAdmin }: Props) => {
     }
 };
 
-export default CompanyCard;
+export default CompaniesCards;

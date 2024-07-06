@@ -5,7 +5,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useGetCompanyPending from "../hooks/useGetCompanyPending";
-import CompanyCard from "../modules/companyCard/CompanyCard";
+import CompaniesCards from "../modules/companiesCards/CompaniesCards";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
 import styles from "./Admin.module.css";
@@ -38,7 +38,7 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) =>
     }
     if (navButton === "Входящие заявки" && category === "Компании") {
         if (companies?.status) {
-            return <CompanyCard status={companies?.status} companies={companies} isAdmin={isAdmin} />;
+            return <CompaniesCards status={companies?.status} companies={companies} isAdmin={isAdmin} />;
         }
     }
 };
