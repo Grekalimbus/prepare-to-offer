@@ -25,24 +25,27 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
+                    <Link href={"/questionsPage"} className={styles.navLink}>
+                            Технические вопросы
+                        </Link>                        
                         <AdminButton email={session.data?.user?.email} />
-                        <Link href={"/"} className={styles.navLink}>
+                        <Link href="/" className={styles.navLink}>
                             Технические вопросы
                         </Link>
                         <CompaniesButton />
-                        <Link href={"/"} className={styles.navLink}>
+                        <Link href="/" className={styles.navLink}>
                             Задачи с собеседований
                         </Link>
-                        <Link href={"/"} className={styles.navLink}>
+                        <Link href="/" className={styles.navLink}>
                             Вопросы от кадидата
                         </Link>
-                        <Link href={"/"} className={styles.navLink}>
+                        <Link href="/" className={styles.navLink}>
                             Служба поддержки
                         </Link>
                         <PolicyButton />
                         <LoginAndLogOutButton />
                     </div>
-                    <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)}></ButtonHide>
+                    <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)}/>
                 </nav>
             </aside>
             <div style={{ display: `${isNavigationActive ? "block" : "none"}` }} className={styles.shadowBlock}></div>
