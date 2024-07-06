@@ -52,6 +52,9 @@
     font-weight: 600;
     color: var(--white);
 }
+.linkVacancy {
+    color: #0373f3;
+}
 .questions {
     margin-bottom: 10px;
     font-weight: 600;
