@@ -29,7 +29,7 @@ const CompanyCreate = () => {
     ];
     const liveCodingArray = [
         { text: "Был", value: "Был" },
-        { text: "Был", value: "Не был" },
+        { text: "Не был", value: "Не был" },
     ];
     const typeOfInterview = [
         { text: "Скрининг", value: "Скрининг" },
