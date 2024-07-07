@@ -22,6 +22,16 @@ const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive }: Prop
     if (questions?.questions) {
         return (
             <div className={styles.flexContainer}>
+                <form className={styles.filterQuestions}>
+                    <input
+                        className={styles.inputFind}
+                        placeholder="Найти по названию"
+                        name="filter"
+                        type="text"
+                        required={false}
+                    />
+                    <button className={styles.buttonFind}>Найти</button>
+                </form>
                 <section className={styles.commonWrapper}>
                     <div className={styles.wrapperQuestion}>
                         {questions.questions.length < 1 && <div className={styles.point}>Пусто</div>}
