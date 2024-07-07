@@ -1,0 +1,132 @@
+.flexContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.commonWrapper {
+    height: 100%;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding: 0 15px 15px 0;
+}
+.wrapperCompany {
+    border: 2px solid var(--dark);
+    border-radius: 4px;
+    background: var(--shadow-black);
+    padding: 30px;
+    overflow: auto;
+    height: 600px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 8px 12px 10px -2px #000000a4;
+}
+.buttonQuestion {
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 5px;
+}
+.wrapperSection {
+    margin-top: 5px;
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 10px;
+}
+.wrapperCompany::-webkit-scrollbar {
+    width: 10px;
+    background: var(--shadow-white);
+    border-radius: 5px;
+}
+.wrapperCompany::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: var(--shadow-black);
+    border-radius: 5px;
+}
+.companyCard {
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid var(--flamingo);
+    background: var(--shadow-white);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 6px 6px 28px 0px #000000de;
+}
+.point {
+    padding: 10px;
+    font-weight: 600;
+    color: var(--white);
+}
+.linkVacancy {
+    color: #0373f3;
+}
+.questions {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.question {
+    margin-bottom: 8px;
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 6px;
+    background: var(--shadow-black);
+    border: 1px solid var(--dark);
+    user-select: text;
+}
+.buttonAcceptAll {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid var(--flamingo);
+    background: var(--shadow-black);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.4s;
+    backdrop-filter: blur(15px);
+}
+.flexButtonContainer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.buttonInFlex {
+    width: 48%;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid var(--flamingo);
+    background: var(--shadow-black);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+@media (hover: hover) {
+    .buttonAcceptAll:hover {
+        background: var(--flamingo);
+    }
+    .buttonInFlex:hover {
+        background: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .buttonAcceptAll:active {
+        background: var(--flamingo);
+    }
+    .buttonInFlex:hover {
+        background: var(--flamingo);
+    }
+}

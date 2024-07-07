@@ -1,8 +1,8 @@
 import connectAuthMongoDB from "@/libs/mongodbAuth";
 import CommonQuestionModel from "@/models/questions/commonQuestion";
+import { Question } from "@/types/question/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { Question } from "../types/question";
 
 export async function POST(request: NextRequest) {
     const { question, answer, sliceOfCode, links, status }: Question = await request.json();

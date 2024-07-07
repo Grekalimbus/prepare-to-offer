@@ -49,6 +49,7 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
             });
         }
         if (!isAdmin) {
+            await axios.post(`${BASE_URL}/pendingQuestion`, completeData);
             await axios.post(`${BASE_URL}/questions/${completeData.technology}Question`, {
                 ...completeData,
                 status: "PENDING",

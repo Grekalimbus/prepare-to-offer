@@ -5,7 +5,7 @@ import TextareaAndLabel from "@/app/components/textareaAndLabel/TextareaAndLabel
 import Button from "@/app/ui/Buttons/Button";
 import Input from "@/app/ui/Input/Input";
 import { useSession } from "next-auth/react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";
 import CustomCheckbox from "./components/CustomCheckbox";
@@ -27,18 +27,20 @@ const arrayTechnologies = [
 const QuestionCreate = () => {
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
+    const formRef = useRef<HTMLFormElement>(null);
     const session = useSession();
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (session.data?.user?.email) {
             const email = session.data.user?.email;
             await handleSubmit({ event, setErrorMessage, setIsError, email });
+            formRef.current?.reset();
         }
     };
 
     return (
         <section className={styles.wrapper}>
-            <form onSubmit={onSubmit} className={styles.formBlock}>
+            <form onSubmit={onSubmit} className={styles.formBlock} ref={formRef}>
                 <Input required={true} name="question" inputType="text" placeholder="Введите вопрос" />
                 <TextareaAndLabel name="answer" placeholder="Введите ответ на вопрос" />
                 <RadioSelect array={arrayTechnologies} name="technology" textForSelect="Выберите раздел" />

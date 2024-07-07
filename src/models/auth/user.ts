@@ -1,23 +1,6 @@
+import { Company } from "@/types/company/company";
+import { Question } from "@/types/question/question";
 import mongoose, { Document, Model, Schema } from "mongoose";
-
-interface IQuestion {
-    question: string;
-    answer: string;
-    sliceOfCode: string;
-    links: string[] | [];
-}
-
-interface ICompany {
-    companyName: string;
-    linkVacancy: string;
-    description: string;
-    difficulty: string;
-    liveCoding: string;
-    questions: string[] | [];
-    task: string;
-    status: string;
-    createdAt: Date;
-}
 
 interface IUser extends Document {
     email: string;
@@ -30,19 +13,19 @@ interface IUser extends Document {
             ref: "Role";
         },
     ];
-    companies: ICompany[] | [];
+    companies: Company[] | [];
     questions: {
-        html: IQuestion[] | [];
-        css: IQuestion[] | [];
-        javascript: IQuestion[] | [];
-        typescript: IQuestion[] | [];
-        react: IQuestion[] | [];
-        nextJS: IQuestion[] | [];
-        redux: IQuestion[] | [];
-        architecture: IQuestion[] | [];
-        common: IQuestion[] | [];
+        html: Question[] | [];
+        css: Question[] | [];
+        javascript: Question[] | [];
+        typescript: Question[] | [];
+        react: Question[] | [];
+        nextJS: Question[] | [];
+        redux: Question[] | [];
+        architecture: Question[] | [];
+        common: Question[] | [];
     };
-    favoriteQuestions: IQuestion[] | [];
+    favoriteQuestions: Question[] | [];
     createdAt: Date;
 }
 
