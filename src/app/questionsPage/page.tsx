@@ -1,18 +1,18 @@
 import styles from "./QuestionsPage.module.css";
-import FilterQuestion from "./components/FilterQuestion";
 
 import QuestionsNavBar from "./components/QuestionsNavBar";
 import SelectActionQuestion from "./components/SelectActionQuestion";
 
 const QuestionsPage = () => {
     return (
-        <div className={styles.wrapper}>
-            <QuestionsNavBar />
-            <div className={styles.searchBar}>
-                <SelectActionQuestion />
-                <FilterQuestion />
+        <>
+            <SelectActionQuestion />
+            <div className={styles.wrapper}>
+                <div className={styles.questionsContainer}>
+                    <QuestionsNavBar />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

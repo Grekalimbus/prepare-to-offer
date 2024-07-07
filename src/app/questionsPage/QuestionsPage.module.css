@@ -2,15 +2,47 @@
 .wrapper {
     height: 100%;
     width: 100%;
-    position: relative;
+    height: 100%;
+}
+.selectCategoryButton {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    border-top: 1px solid var(--flamingo);
+    backdrop-filter: blur(4px);
 }
 
+.categoryButton {
+    width: 33.28%;
+    height: 100%;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    background: var(--shadow-black);
+    transition: background 0.4s;
+}
+.categoryButton.active {
+    border-bottom: 1px solid var(--flamingo);
+    border-top: none;
+    background: var(--dark);
+}
+.questionsContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+}
 .wrapperNavBar {
     width: 350px;
     height: 100%;
 }
-
 .navBar {
     width: 100%;
     height: 100%;
@@ -18,16 +50,15 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background: var(--dark);
-    border-right: 3px solid var(--flamingo);
+    background: var(--shadow-black);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--flamingo);
 }
-
 .containerButtons {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-
 .interviewButton {
     display: flex;
     align-items: center;
@@ -36,23 +67,20 @@
     background: none;
     font-weight: 600px;
     font-size: 16px;
-    border-bottom: 2px solid var(--flamingo);
+    border-bottom: 1px solid var(--shadow-white);
     color: var(--white);
     font-weight: 600;
     transition: background-color 0.4s, color 0.4s;
     cursor: pointer;
 }
-
 .interviewButton.active {
     background-color: var(--shadow-black);
     color: var(--flamingo);
 }
-
 .wrapperNavBar.hidden {
     transform: translateX(-100%);
     animation: none;
 }
-
 .slideshowButton {
     width: 60px;
     height: 60px;
@@ -71,54 +99,6 @@
     padding-left: 10px;
 }
 
-.searchBar {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-}
-
-.selectCategoryButton {
-    display: flex;
-    height: 60px;
-    width: 100%;
-    background: var(--dark);
-}
-
-.categoryButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 33.33%;
-    height: 100%;
-    border: 2px solid var(--flamingo);
-    color: var(--white);
-    font-weight: 600;
-    transition: background-color 0.4s, color 0.4s;
-    cursor: pointer;
-    background: none;
-}
-
-.active {
-    background-color: var(--shadow-black);
-    color: var(--flamingo);
-}
-
-.searchForm {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.inputFindQuestion {
-    width: 600px;
-    height: 100%;
-    border-radius: 3px;
-    color: var(--white);
-    background-color: var(--shadow-white);
-    padding: 10px;
-}
-
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
@@ -134,8 +114,7 @@
         color: var(--flamingo);
     }
     .categoryButton:hover {
-        background-color: var(--shadow-black);
-        color: var(--flamingo);
+        background-color: var(--dark);
     }
 }
 @media (hover: none) {
@@ -145,6 +124,5 @@
     }
     .categoryButton:active {
         background-color: var(--shadow-black);
-        color: var(--flamingo);
     }
 }

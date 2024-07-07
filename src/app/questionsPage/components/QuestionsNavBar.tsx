@@ -5,18 +5,19 @@ import ButtonHide from "../../ui/Buttons/ButtonHide";
 import styles from "../QuestionsPage.module.css";
 
 const QuestionsNavBar = () => {
-    const [isVisible, setIsVisible] = useState<boolean>(false);
-    const [activeTech, setActiveTech] = useState<string>("React");
+    const [isVisible, setIsVisible] = useState<boolean>(true);
+    const [activeTech, setActiveTech] = useState<string>("Вопросы от кандидата");
 
     const technologies: string[] = [
+        "Вопросы от кандидата",
         "React",
-        "Next.js",
         "JavaScript",
         "TypeScript",
         "HTML",
         "CSS",
-        "Redux",
+        "Next.js",
         "Архитектура",
+        "Redux",
         "Общие вопросы",
     ];
 

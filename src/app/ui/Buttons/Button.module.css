@@ -8,9 +8,10 @@
     align-items: center;
     font-weight: 500;
     color: var(--white);
-    border: 2px solid var(--flamingo);
+    border: 1px solid var(--flamingo);
     background: var(--shadow-white);
     cursor: pointer;
+    backdrop-filter: blur(10px);
     transition: background-color 0.4s;
 }
 .buttonHide {
@@ -19,7 +20,7 @@
     color: var(--white);
     font-weight: 600;
     cursor: pointer;
-    border-top: 2px solid var(--flamingo);
+    border-top: 2px solid var(--shadow-white);
     transition: background-color 0.4s;
 }
 

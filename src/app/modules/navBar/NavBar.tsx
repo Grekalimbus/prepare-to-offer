@@ -25,13 +25,10 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                    <Link href={"/questionsPage"} className={styles.navLink}>
-                            Технические вопросы
-                        </Link>                        
-                        <AdminButton email={session.data?.user?.email} />
-                        <Link href="/" className={styles.navLink}>
+                        <Link href="/questionsPage" className={styles.navLink}>
                             Технические вопросы
                         </Link>
+                        <AdminButton email={session.data?.user?.email} />
                         <CompaniesButton />
                         <Link href="/" className={styles.navLink}>
                             Задачи с собеседований
