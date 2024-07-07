@@ -14,14 +14,13 @@ interface Props {
 }
 
 const CompaniesCards = ({ companies, status, isAdmin }: Props) => {
-    console.log("companies?.companiesPending", companies?.companiesPending);
     if (companies?.isLoading) {
         return <div>LOADING</div>;
     }
     if (companies?.error) {
         return <div>ERROR</div>;
     }
-    if (companies?.companiesPending !== undefined) {
+    if (companies?.companiesPending) {
         return (
             <div className={styles.flexContainer}>
                 <section className={styles.commonWrapper}>

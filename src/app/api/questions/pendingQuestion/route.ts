@@ -10,3 +10,9 @@ export async function POST(request: NextRequest) {
     await PendingQuestionQuestionModel.create({ question, answer, sliceOfCode, links, status: "PENDING", technology });
     return NextResponse.json({ message: "Question Created" }, { status: 201 });
 }
+
+export async function GET() {
+    await connectAuthMongoDB();
+    const pendingQuestions: Question[] = await PendingQuestionQuestionModel.find();
+    return NextResponse.json({ pendingQuestions });
+}

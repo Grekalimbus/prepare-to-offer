@@ -28,7 +28,7 @@ const useGetCompanyPending = () => {
     useEffect(() => {
         fetchData();
     }, [companiesPending]);
-    return { companiesPending, isLoading, error, status: "PENDING" };
+    return { companiesPending, isLoading, error };
 };
 
 export default useGetCompanyPending;

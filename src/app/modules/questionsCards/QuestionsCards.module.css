@@ -15,47 +15,31 @@
     overflow: auto;
     padding: 0 15px 15px 0;
 }
-.wrapperCompany {
+.wrapperQuestion {
     border: 2px solid var(--dark);
     border-radius: 4px;
     background: var(--shadow-black);
     padding: 30px;
+    padding-bottom: 0px;
     overflow: auto;
     height: 600px;
     width: 100%;
     backdrop-filter: blur(10px);
     box-shadow: 8px 12px 10px -2px #000000a4;
 }
-.buttonQuestion {
-    border: 2px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 4px;
-    color: var(--white);
-    width: 100%;
-    padding: 5px;
-}
-.wrapperSection {
-    margin-top: 5px;
-    border: 2px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 4px;
-    color: var(--white);
-    width: 100%;
-    padding: 10px;
-}
-.wrapperCompany::-webkit-scrollbar {
+.wrapperQuestion::-webkit-scrollbar {
     width: 10px;
     background: var(--shadow-white);
     border-radius: 5px;
 }
-.wrapperCompany::-webkit-scrollbar-thumb {
+.wrapperQuestion::-webkit-scrollbar-thumb {
     width: 10px;
     background: var(--shadow-black);
     border-radius: 5px;
 }
-.companyCard {
+.questionCard {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     padding: 10px;
     border-radius: 3px;
     border: 2px solid var(--flamingo);
@@ -64,26 +48,63 @@
     flex-direction: column;
     box-shadow: 6px 6px 28px 0px #000000de;
 }
+.buttonQuestion {
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.questionButtonFlex {
+    display: flex;
+    align-items: center;
+}
+.favoriteIcon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: color 0.4s;
+}
+.eyeIcon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: color 0.4s;
+}
+.sectionAnswer {
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
 .point {
     padding: 10px;
     font-weight: 600;
     color: var(--white);
-}
-.linkVacancy {
-    color: #0373f3;
-}
-.questions {
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-.question {
-    margin-bottom: 8px;
-    font-weight: 600;
-    padding: 8px;
-    border-radius: 6px;
-    background: var(--shadow-black);
-    border: 1px solid var(--dark);
     user-select: text;
+}
+.sectionLinks {
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.hideSectionLinks {
+    display: none;
 }
 .buttonAcceptAll {
     margin-top: 20px;
@@ -121,6 +142,18 @@
     .buttonInFlex:hover {
         background: var(--flamingo);
     }
+    .favoriteIcon:hover {
+        color: var(--flamingo);
+    }
+    .eyeIcon:hover {
+        color: var(--flamingo);
+    }
+    .buttonQuestion:hover {
+        background: var(--dark);
+    }
+    .buttonQuestion:hover .eyeIcon {
+        color: var(--flamingo);
+    }
 }
 @media (hover: none) {
     .buttonAcceptAll:active {
@@ -128,5 +161,17 @@
     }
     .buttonInFlex:hover {
         background: var(--flamingo);
+    }
+    .favoriteIcon:hover {
+        color: var(--flamingo);
+    }
+    .eyeIcon:hover {
+        color: var(--flamingo);
+    }
+    .buttonQuestion:active {
+        background: var(--dark);
+    }
+    .buttonQuestion:hover .eyeIcon {
+        color: var(--flamingo);
     }
 }

@@ -3,7 +3,7 @@ import { format, toZonedTime } from "date-fns-tz";
 import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import styles from "../CompanyCard.module.css";
+import styles from "../CompaniesCards.module.css";
 interface Props {
     company: Company;
     isAdmin: boolean;
@@ -15,7 +15,6 @@ const RussianTime = (dateString: string) => {
     const date = new Date(dateString);
     const zonedDate = toZonedTime(date, timeZone);
     const formattedDate = format(zonedDate, "dd.MM.yyyy", { timeZone });
-
     return formattedDate;
 };
 
@@ -27,7 +26,7 @@ const CompanyDetails = ({ company, isAdmin, status }: Props) => {
     };
     return (
         <div className={styles.companyCard}>
-            <section className={styles.wrapperSectiion}>
+            <section className={styles.wrapperSection}>
                 <div className={styles.point}>Название компании: {company.companyName}</div>
                 {company.linkVacancy && (
                     <div className={styles.point}>
@@ -47,7 +46,7 @@ const CompanyDetails = ({ company, isAdmin, status }: Props) => {
                 <div className={styles.point}>Формат: {company.typeOfInterview}</div>
                 <div className={styles.point}>Лайфкодинг: {company.liveCoding}</div>
             </section>
-            <div className={styles.wrapperSectiion}>
+            <div className={styles.wrapperSection}>
                 <p className={styles.questions}>Вопросы с собеседования: </p>
                 {company.questions.map((question, index) => (
                     <p key={question} className={styles.question}>
@@ -56,7 +55,7 @@ const CompanyDetails = ({ company, isAdmin, status }: Props) => {
                 ))}
             </div>
             {company.sliceOfCode && (
-                <div className={styles.wrapperSectiion}>
+                <div className={styles.wrapperSection}>
                     <p className={styles.questions}>Задачи: </p>
                     <SyntaxHighlighter
                         customStyle={{ width: "100%", borderRadius: "6px" }}
@@ -68,7 +67,7 @@ const CompanyDetails = ({ company, isAdmin, status }: Props) => {
                 </div>
             )}
             {company.createdAt && (
-                <div className={styles.wrapperSectiion}>Дата создания: {RussianTime(company.createdAt)}</div>
+                <div className={styles.wrapperSection}>Дата создания: {RussianTime(company.createdAt)}</div>
             )}
             {status === "PENDING" && isAdmin && (
                 <div className={styles.flexButtonContainer}>
