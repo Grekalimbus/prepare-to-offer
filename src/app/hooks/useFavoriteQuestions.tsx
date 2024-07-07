@@ -1,41 +1,38 @@
 import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-interface OjbectQuestions {
-    [key: string]: Question[];
+interface Props {
+    question: Question;
+    email: string | null | undefined;
 }
-
-const useFavoriteQuestions = () => {
+const useFavoriteQuestions = ({ question, email }: Props) => {
     const queryClient = useQueryClient();
-    // const fetchData = async () => {
-    //     const { data } = await axios.get<Question[]>(`${BASE_URL}/userFavoriteQuestion`);
-    //     return data;
-    // };
-    const fetchDataCreate = async ({ question, email }: { question: Question; email: string }) => {
-        const { data } = await axios.patch<Question[]>(`${BASE_URL}/userFavoriteQuestion`, { question, email });
+    const fetchData = async () => {
+        const { data } = await axios.get<Question[]>(`${BASE_URL}/userFavoriteQuestion?email=${email}`);
         return data;
     };
-    // const {
-    //     data: favoriteQuestions,
-    //     isLoading,
-    //     error,
-    // } = useQuery({
-    //     queryKey: [`favoriteQuestion`],
-    //     queryFn: fetchData,
-    // });
+    const fetchDataCreate = async ({ question, email }: Props) => {
+        const { data } = await axios.patch<Question[]>(`${BASE_URL}/userFavoriteQuestion?email=${email}`, {
+            question,
+            email,
+        });
+        return data;
+    };
+    const { data: favoriteQuestions } = useQuery({
+        queryKey: ["favoriteQuestion"],
+        queryFn: fetchData,
+    });
     const mutationCreate = useMutation({
         mutationFn: fetchDataCreate,
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: [`faviruteQuestion`] }),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: [`favoriteQuestion`] }),
     });
-    const createFavoriteQuestion = (newQuestion: Question, email: string) => {
-        mutationCreate.mutate({ question: newQuestion, email });
+    const createFavoriteQuestion = () => {
+        mutationCreate.mutate({ question, email });
     };
-    // useEffect(() => {
-    //     fetchData();
-    // }, [favoriteQuestions]);
-    return { createFavoriteQuestion };
+
+    return { createFavoriteQuestion, favoriteQuestions };
 };
 
 export default useFavoriteQuestions;

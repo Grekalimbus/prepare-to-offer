@@ -2,7 +2,6 @@ import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
 
 interface OjbectQuestions {
     pendingQuestions: Question[];
@@ -22,9 +21,7 @@ const useGetPendingQuestions = () => {
         queryKey: ["pendingQuestions"],
         queryFn: fetchData,
     });
-    useEffect(() => {
-        fetchData();
-    }, [questions]);
+
     return { questions, isLoading, error };
 };
 

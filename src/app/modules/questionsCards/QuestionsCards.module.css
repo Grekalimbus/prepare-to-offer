@@ -71,6 +71,9 @@
     cursor: pointer;
     transition: color 0.4s;
 }
+.favoriteIcon.active {
+    color: var(--flamingo);
+}
 .eyeIcon {
     width: 30px;
     height: 30px;

@@ -1,12 +1,11 @@
 "use client";
-import { BASE_URL } from "@/configs/baseURL";
 import { Company } from "@/types/company/company";
 import { Question } from "@/types/question/question";
-import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useGetCompanyPending from "../hooks/useGetCompanyPending";
 import useGetPendingQuestions from "../hooks/useGetPendingQuestions";
+import useUser from "../hooks/useUser";
 import CompaniesCards from "../modules/companiesCards/CompaniesCards";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
@@ -58,10 +57,12 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin, questions }
 const AdminPage = () => {
     const companies = useGetCompanyPending();
     const questions = useGetPendingQuestions();
-    const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
     const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
+    const email = session.data?.user?.email;
+    const user = useUser({ email });
+    const isAdmin = user.user?.roles[0] === "ADMIN" ? true : false;
     const handleChangeCategory = (text: string) => {
         setIsActiveCategory(text);
         localStorage.setItem("categoryButton", text);
@@ -73,20 +74,6 @@ const AdminPage = () => {
         }
         if (categoryButton) setIsActiveCategory(categoryButton);
     }, []);
-    useEffect(() => {
-        if (session.data) {
-            const email = session.data.user?.email;
-            const fetchUser = async () => {
-                const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
-                user.roles.forEach(role => {
-                    if (role === "ADMIN") {
-                        setIsAdmin(true);
-                    }
-                });
-            };
-            fetchUser();
-        }
-    }, [session]);
 
     return !isAdmin ? (
         <div>Доступно только администраторам</div>

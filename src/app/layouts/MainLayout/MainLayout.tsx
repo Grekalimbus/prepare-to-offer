@@ -4,6 +4,7 @@ import ModalPolicy from "@/app/components/modalWindow/modalPolicy/ModalPolicy";
 import { ModalPolicyProvider } from "@/app/components/modalWindow/modalPolicy/ModalPolicyContext";
 import NavBar from "@/app/modules/navBar/NavBar";
 import { NavigationProvider } from "@/app/modules/navBar/NavigationContext";
+import Provider from "@/app/Provider";
 import React, { ReactNode } from "react";
 import MainFooter from "../MainFooter/MainFooter";
 import MainHeader from "../MainHeader/MainHeader";
@@ -15,18 +16,20 @@ type MainLayoutProps = {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
         <main className={styles.layout}>
-            <NavigationProvider>
-                <ModalAuthProvider>
-                    <ModalPolicyProvider>
-                        <MainHeader />
-                        {children}
-                        <MainFooter />
-                        <NavBar />
-                        <ModalAuth />
-                        <ModalPolicy />
-                    </ModalPolicyProvider>
-                </ModalAuthProvider>
-            </NavigationProvider>
+            <Provider>
+                <NavigationProvider>
+                    <ModalAuthProvider>
+                        <ModalPolicyProvider>
+                            <MainHeader />
+                            {children}
+                            <MainFooter />
+                            <NavBar />
+                            <ModalAuth />
+                            <ModalPolicy />
+                        </ModalPolicyProvider>
+                    </ModalAuthProvider>
+                </NavigationProvider>
+            </Provider>
         </main>
     );
 };

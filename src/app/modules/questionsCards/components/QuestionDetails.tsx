@@ -22,7 +22,12 @@ const QuestionDetails = ({ question, isAdmin, status, index, allQuestionsActive 
     const [isActive, setIsActive] = useState<boolean>(allQuestionsActive || false);
     const session = useSession();
     const email = session.data?.user?.email;
-    const { createFavoriteQuestion } = useFavoriteQuestions();
+
+    const { favoriteQuestions, createFavoriteQuestion } = useFavoriteQuestions({ email, question });
+    const isFavoriteQuestion = favoriteQuestions?.filter(favoriteQuestion => {
+        return JSON.stringify(favoriteQuestion?.answer) === JSON.stringify(question.answer);
+    });
+
     return (
         <div className={styles.questionCard}>
             {question.technology && <p className={styles.point}>Категория: {question.technology}</p>}
@@ -30,8 +35,8 @@ const QuestionDetails = ({ question, isAdmin, status, index, allQuestionsActive 
                 <div className={styles.questionButtonFlex}>
                     {status !== "PENDING" && email && (
                         <BiSolidBookmarkPlus
-                            className={styles.favoriteIcon}
-                            onClick={() => createFavoriteQuestion(question, email)}
+                            className={`${styles.favoriteIcon} ${isFavoriteQuestion?.length ? styles.active : ""}`}
+                            onClick={createFavoriteQuestion}
                         />
                     )}
                     <p className={styles.point}>

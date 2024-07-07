@@ -1,7 +1,5 @@
-import { BASE_URL } from "@/configs/baseURL";
-import axios from "axios";
+import useUser from "@/app/hooks/useUser";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import styles from "../NavBar.module.css";
 
 interface Props {
@@ -14,20 +12,9 @@ interface User {
 }
 
 const AdminButton = ({ email }: Props) => {
-    const [isAdmin, setIsAdmin] = useState<boolean>(false);
-    useEffect(() => {
-        if (email) {
-            const fetchUser = async () => {
-                const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
-                user.roles.forEach(role => {
-                    if (role === "ADMIN") {
-                        setIsAdmin(true);
-                    }
-                });
-            };
-            fetchUser();
-        }
-    }, [email]);
+    const user = useUser({ email });
+    const isAdmin = user.user?.roles[0] === "ADMIN" ? true : false;
+
     return (
         <>
             {isAdmin && (
