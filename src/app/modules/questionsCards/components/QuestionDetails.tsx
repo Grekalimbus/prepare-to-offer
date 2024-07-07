@@ -12,11 +12,11 @@ interface Props {
     isAdmin: boolean;
     status: string;
     index: number;
-    allActive?: boolean;
+    allQuestionsActive?: boolean;
 }
 
-const QuestionDetails = ({ question, isAdmin, status, index, allActive }: Props) => {
-    const [isActive, setIsActive] = useState<boolean>(allActive || false);
+const QuestionDetails = ({ question, isAdmin, status, index, allQuestionsActive }: Props) => {
+    const [isActive, setIsActive] = useState<boolean>(allQuestionsActive || false);
     return (
         <div className={styles.questionCard}>
             <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>

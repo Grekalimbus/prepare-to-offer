@@ -48,7 +48,9 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin, questions }
     }
     if (navButton === "Входящие заявки" && category === "Технические вопросы") {
         if (questions) {
-            return <QuestionsCards status="PENDING" questions={questions} isAdmin={isAdmin} />;
+            return (
+                <QuestionsCards allQuestionsActive={true} status="PENDING" questions={questions} isAdmin={isAdmin} />
+            );
         }
     }
 };

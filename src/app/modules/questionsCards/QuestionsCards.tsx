@@ -9,12 +9,10 @@ interface Props {
     };
     status: string;
     isAdmin: boolean;
+    allQuestionsActive: boolean;
 }
 
-const QuestionsCards = ({ questions, status, isAdmin }: Props) => {
-    console.log("questions", questions);
-    console.log("status", status);
-    console.log("isAdmin", isAdmin);
+const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive }: Props) => {
     if (questions?.isLoading) {
         return <div>LOADING</div>;
     }
@@ -33,7 +31,7 @@ const QuestionsCards = ({ questions, status, isAdmin }: Props) => {
                                 key={question._id}
                                 question={question}
                                 index={index}
-                                allActive={true}
+                                allQuestionsActive={index === 0 ? true : allQuestionsActive}
                             />
                         ))}
                     </div>

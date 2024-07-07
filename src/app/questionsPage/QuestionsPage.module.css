@@ -53,6 +53,7 @@
     background: var(--shadow-black);
     backdrop-filter: blur(10px);
     border-right: 1px solid var(--flamingo);
+    border-top: 1px solid var(--shadow-white);
 }
 .containerButtons {
     width: 100%;
