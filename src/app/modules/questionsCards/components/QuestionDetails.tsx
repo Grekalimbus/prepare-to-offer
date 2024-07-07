@@ -1,7 +1,10 @@
+import useFavoriteQuestions from "@/app/hooks/useFavoriteQuestions";
 import { Question } from "@/types/question/question";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import { BiSolidBookmarkPlus } from "react-icons/bi";
+import { FaRegEyeSlash } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -17,17 +20,27 @@ interface Props {
 
 const QuestionDetails = ({ question, isAdmin, status, index, allQuestionsActive }: Props) => {
     const [isActive, setIsActive] = useState<boolean>(allQuestionsActive || false);
+    const session = useSession();
+    const email = session.data?.user?.email;
+    const { createFavoriteQuestion } = useFavoriteQuestions();
     return (
         <div className={styles.questionCard}>
+            {question.technology && <p className={styles.point}>Категория: {question.technology}</p>}
             <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>
                 <div className={styles.questionButtonFlex}>
-                    {status !== "PENDING" && <BiSolidBookmarkPlus className={styles.favoriteIcon} />}
+                    {status !== "PENDING" && email && (
+                        <BiSolidBookmarkPlus
+                            className={styles.favoriteIcon}
+                            onClick={() => createFavoriteQuestion(question, email)}
+                        />
+                    )}
                     <p className={styles.point}>
                         {index + 1}. &nbsp;
                         {question.question}
                     </p>
                 </div>
-                <LuEye className={styles.eyeIcon} />
+                {!isActive && <FaRegEyeSlash className={styles.eyeIcon} />}
+                {isActive && <LuEye className={styles.eyeIcon} />}
             </section>
             {isActive && (
                 <section className={styles.sectionAnswer}>

@@ -11,6 +11,7 @@ interface OjbectQuestions {
 const useGetPendingQuestions = () => {
     const fetchData = async () => {
         const { data } = await axios.get<OjbectQuestions>(`${BASE_URL}/questions/pendingQuestion`);
+        console.log("data.pendingQuestions", data.pendingQuestions);
         return data.pendingQuestions;
     };
     const {

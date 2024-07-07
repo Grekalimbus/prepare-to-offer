@@ -24,6 +24,7 @@ const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive }: Prop
             <div className={styles.flexContainer}>
                 <section className={styles.commonWrapper}>
                     <div className={styles.wrapperQuestion}>
+                        {questions.questions.length < 1 && <div className={styles.point}>Пусто</div>}
                         {questions.questions.map((question, index) => (
                             <QuestionDetails
                                 status={status}
