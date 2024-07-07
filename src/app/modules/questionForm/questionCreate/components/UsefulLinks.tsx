@@ -14,7 +14,6 @@ const UsefulLinks = () => {
 
     const handleDecrement = (value: string) => {
         setNumberLinks(prev => prev.filter(item => item !== value));
-        console.log("it work");
     };
     return (
         <>
