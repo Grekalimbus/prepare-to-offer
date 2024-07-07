@@ -1,4 +1,5 @@
 "use client";
+import { Question } from "@/types/question/question";
 import { useState } from "react";
 import useGetSomeQuestions from "../hooks/useGetSomeQuestions";
 import QuestionsCards from "../modules/questionsCards/QuestionsCards";
@@ -22,7 +23,8 @@ const technologies: string[] = [
 const QuestionsPage = () => {
     const [activeTech, setActiveTech] = useState<string>("React");
     const questions = useGetSomeQuestions(activeTech.toLocaleLowerCase());
-
+    const [filteredQuestions, setFilteredQuestions] = useState<null | Question[]>(null);
+    // setFilteredQuestions - прокинуть в форму и сделать функцию фильтрации внутри QuestionsCards
     return (
         <>
             <SelectActionQuestion />
@@ -33,7 +35,14 @@ const QuestionsPage = () => {
                         setActiveTech={setActiveTech}
                         activeTech={activeTech}
                     />
-                    <QuestionsCards allQuestionsActive={false} questions={questions} isAdmin={false} status="ACCEPT" />
+
+                    <QuestionsCards
+                        filteredQuestions={filteredQuestions}
+                        allQuestionsActive={false}
+                        questions={questions}
+                        isAdmin={false}
+                        status="ACCEPT"
+                    />
                 </div>
             </div>
         </>

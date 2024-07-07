@@ -10,9 +10,10 @@ interface Props {
     status: string;
     isAdmin: boolean;
     allQuestionsActive: boolean;
+    filteredQuestions: null | Question[];
 }
 
-const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive }: Props) => {
+const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive, filteredQuestions }: Props) => {
     if (questions?.isLoading) {
         return <div>LOADING</div>;
     }
@@ -35,16 +36,28 @@ const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive }: Prop
                 <section className={styles.commonWrapper}>
                     <div className={styles.wrapperQuestion}>
                         {questions.questions.length < 1 && <div className={styles.point}>Пусто</div>}
-                        {questions.questions.map((question, index) => (
-                            <QuestionDetails
-                                status={status}
-                                isAdmin={isAdmin}
-                                key={question._id}
-                                question={question}
-                                index={index}
-                                allQuestionsActive={index === 0 ? true : allQuestionsActive}
-                            />
-                        ))}
+                        {filteredQuestions &&
+                            filteredQuestions.map((question, index) => (
+                                <QuestionDetails
+                                    status={status}
+                                    isAdmin={isAdmin}
+                                    key={question._id}
+                                    question={question}
+                                    index={index}
+                                    allQuestionsActive={index === 0 ? true : allQuestionsActive}
+                                />
+                            ))}
+                        {!filteredQuestions &&
+                            questions.questions.map((question, index) => (
+                                <QuestionDetails
+                                    status={status}
+                                    isAdmin={isAdmin}
+                                    key={question._id}
+                                    question={question}
+                                    index={index}
+                                    allQuestionsActive={index === 0 ? true : allQuestionsActive}
+                                />
+                            ))}
                     </div>
                     {status === "PENDING" && isAdmin && (
                         <button className={styles.buttonAcceptAll}>Принять все заявки</button>

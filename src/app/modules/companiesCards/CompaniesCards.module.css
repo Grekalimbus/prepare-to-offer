@@ -21,7 +21,7 @@
     background: var(--shadow-black);
     padding: 30px;
     overflow: auto;
-    height: 600px;
+    height: 650px;
     width: 100%;
     backdrop-filter: blur(10px);
     box-shadow: 8px 12px 10px -2px #000000a4;
