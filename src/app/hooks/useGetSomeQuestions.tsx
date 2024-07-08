@@ -7,10 +7,12 @@ interface OjbectQuestions {
     [key: string]: Question[];
 }
 
-const useGetSomeQuestions = (technology: string) => {
-    const fetchData = async (technology: string) => {
-        const { data } = await axios.get<OjbectQuestions>(`${BASE_URL}/questions/${technology}Question?status=ACCEPT`);
-        const questions = data[technology];
+const useGetSomeQuestions = (currentTechonoly: string) => {
+    const fetchData = async (currentTechonoly: string) => {
+        const { data } = await axios.get<OjbectQuestions>(
+            `${BASE_URL}/questions/${currentTechonoly}Question?status=ACCEPT`,
+        );
+        const questions = data[currentTechonoly];
         return questions;
     };
     const {
@@ -18,8 +20,8 @@ const useGetSomeQuestions = (technology: string) => {
         isLoading,
         error,
     } = useQuery({
-        queryKey: [`${technology}Question`],
-        queryFn: () => fetchData(technology),
+        queryKey: [`${currentTechonoly}Question`],
+        queryFn: () => fetchData(currentTechonoly),
     });
 
     return { questions, isLoading, error };

@@ -38,10 +38,13 @@
     width: 100%;
     height: 100%;
     align-items: flex-start;
+    flex-direction: row-reverse;
+    border: 1px solid red;
 }
 .wrapperNavBar {
     width: 350px;
     height: 100%;
+    z-index: 3;
 }
 .navBar {
     width: 100%;
@@ -98,6 +101,7 @@
     font-weight: 24px;
     align-items: center;
     padding-left: 10px;
+    z-index: 0;
 }
 
 @keyframes slideIn {

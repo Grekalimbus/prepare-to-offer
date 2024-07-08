@@ -1,70 +1,20 @@
-import { Question } from "@/types/question/question";
 import styles from "./QuestionsCards.module.css";
-import QuestionDetails from "./components/QuestionDetails";
+import AcceptAll from "./components/AcceptAll";
+import FilterForm from "./components/FilterForm";
+import QuestionList from "./components/QuestionList";
 interface Props {
-    questions: {
-        questions: Question[] | undefined;
-        isLoading: boolean;
-        error: Error | null;
-    };
     status: string;
-    isAdmin: boolean;
-    allQuestionsActive: boolean;
-    filteredQuestions: null | Question[];
 }
 
-const QuestionsCards = ({ questions, status, isAdmin, allQuestionsActive, filteredQuestions }: Props) => {
-    if (questions?.isLoading) {
-        return <div>LOADING</div>;
-    }
-    if (questions?.error) {
-        return <div>ERROR</div>;
-    }
-    if (questions?.questions) {
-        return (
-            <div className={styles.flexContainer}>
-                <form className={styles.filterQuestions}>
-                    <input
-                        className={styles.inputFind}
-                        placeholder="Найти по названию"
-                        name="filter"
-                        type="text"
-                        required={false}
-                    />
-                    <button className={styles.buttonFind}>Найти</button>
-                </form>
-                <section className={styles.commonWrapper}>
-                    <div className={styles.wrapperQuestion}>
-                        {questions.questions.length < 1 && <div className={styles.point}>Пусто</div>}
-                        {filteredQuestions &&
-                            filteredQuestions.map((question, index) => (
-                                <QuestionDetails
-                                    status={status}
-                                    isAdmin={isAdmin}
-                                    key={question._id}
-                                    question={question}
-                                    index={index}
-                                    allQuestionsActive={index === 0 ? true : allQuestionsActive}
-                                />
-                            ))}
-                        {!filteredQuestions &&
-                            questions.questions.map((question, index) => (
-                                <QuestionDetails
-                                    status={status}
-                                    isAdmin={isAdmin}
-                                    key={question._id}
-                                    question={question}
-                                    index={index}
-                                    allQuestionsActive={index === 0 ? true : allQuestionsActive}
-                                />
-                            ))}
-                    </div>
-                    {status === "PENDING" && isAdmin && (
-                        <button className={styles.buttonAcceptAll}>Принять все заявки</button>
-                    )}
-                </section>
-            </div>
-        );
-    }
+const QuestionsCards = ({ status }: Props) => {
+    return (
+        <div className={styles.flexContainer}>
+            <FilterForm />
+            <section className={styles.commonWrapper}>
+                <QuestionList status={status} />
+                {status === "PENDING" && <AcceptAll />}
+            </section>
+        </div>
+    );
 };
 export default QuestionsCards;

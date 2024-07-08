@@ -21,7 +21,7 @@
     margin-bottom: 200px;
     padding: 20px 60px 20px 60px;
     border-radius: 3px;
-    background: var(--shadow-black);
+    background: var(--dark);
     border: 2px solid var(--flamingo);
 }
 .buttonClose {

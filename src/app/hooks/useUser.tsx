@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
 import { IUser } from "@/types/user/user";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 interface Props {
@@ -10,12 +10,12 @@ interface Props {
 }
 
 const useUser = ({ email, question }: Props) => {
-    const queryClient = useQueryClient();
     const fetchData = async (email: string | null | undefined) => {
         if (email) {
             const { data } = await axios.get<IUser>(`${BASE_URL}/getUser?email=${email}`);
             return data;
         }
+        return null;
     };
     const {
         data: user,

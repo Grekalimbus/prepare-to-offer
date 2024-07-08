@@ -1,6 +1,5 @@
 "use client";
 import { Company } from "@/types/company/company";
-import { Question } from "@/types/question/question";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useGetCompanyPending from "../hooks/useGetCompanyPending";
@@ -14,18 +13,9 @@ import styles from "./Admin.module.css";
 import CategoryActionNav from "./components/CategoryActionNav";
 import SelectCategoryButtons from "./components/SelectCategoryButtons";
 
-interface User {
-    email: string;
-    roles: string[];
-}
 interface Props {
     navButton: string;
     category: string;
-    questions?: {
-        questions: Question[] | undefined;
-        isLoading: boolean;
-        error: Error | null;
-    };
     companies?: {
         companiesPending: Company[] | undefined;
         isLoading: boolean;
@@ -33,7 +23,7 @@ interface Props {
     };
     isAdmin: boolean;
 }
-const DynamicComponent = ({ navButton, category, companies, isAdmin, questions }: Props) => {
+const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) => {
     if (navButton === "Добавить" && category === "Технические вопросы") {
         return <QuestionCreate />;
     }
@@ -46,17 +36,7 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin, questions }
         }
     }
     if (navButton === "Входящие заявки" && category === "Технические вопросы") {
-        if (questions) {
-            return (
-                <QuestionsCards
-                    filteredQuestions={null}
-                    allQuestionsActive={true}
-                    status="PENDING"
-                    questions={questions}
-                    isAdmin={isAdmin}
-                />
-            );
-        }
+        return <QuestionsCards status="PENDING" />;
     }
 };
 
@@ -89,7 +69,6 @@ const AdminPage = () => {
             <section className={styles.flexContainer}>
                 <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
                 <DynamicComponent
-                    questions={questions}
                     navButton={isActiveNavButton}
                     category={isActiveCategory}
                     companies={companies}

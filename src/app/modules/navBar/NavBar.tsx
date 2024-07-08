@@ -26,7 +26,7 @@ const NavBar = () => {
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton email={session.data?.user?.email} />
-                        <Link href="/questionsPage" className={styles.navLink}>
+                        <Link href="/questionsPage/questions/React" className={styles.navLink}>
                             Технические вопросы
                         </Link>
                         <CompaniesButton />

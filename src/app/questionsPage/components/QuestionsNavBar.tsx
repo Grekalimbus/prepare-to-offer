@@ -1,38 +1,42 @@
-import { useState } from "react";
-import { PiSlideshowLight } from "react-icons/pi";
-import ButtonHide from "../../ui/Buttons/ButtonHide";
+import Link from "next/link";
 import styles from "../QuestionsPage.module.css";
+import ButtonHideNav from "./ButtonHideNav";
+import ButtonShowNav from "./ButtonShowNav";
 
-interface Props {
-    technologies: string[];
-    setActiveTech: (value: string) => void;
-    activeTech: string;
-}
+const technologies: string[] = [
+    "React",
+    "JavaScript",
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "Next.js",
+    "Архитектура",
+    "Redux",
+    "Общие вопросы",
+    "Вопросы от кандидата",
+];
 
-const QuestionsNavBar = ({ technologies, setActiveTech, activeTech }: Props) => {
-    const [isVisible, setIsVisible] = useState<boolean>(true);
-
-    return isVisible ? (
-        <div className={styles.wrapperNavBar}>
-            <div className={styles.navBar}>
-                <div className={styles.containerButtons}>
-                    {technologies.map(technology => (
-                        <button
-                            key={technology}
-                            className={`${styles.interviewButton} ${technology === activeTech ? styles.active : ""}`}
-                            onClick={() => setActiveTech(technology)}
-                        >
-                            {technology}
-                        </button>
-                    ))}
+const QuestionsNavBar = () => {
+    return (
+        <>
+            <div id="tecnhologiesNavBar" className={styles.wrapperNavBar}>
+                <div className={styles.navBar}>
+                    <div className={styles.containerButtons}>
+                        {technologies.map(technology => (
+                            <Link
+                                href={`/questionsPage/questions/${technology}`}
+                                key={technology}
+                                className={`${styles.interviewButton}`}
+                            >
+                                {technology}
+                            </Link>
+                        ))}
+                    </div>
+                    <ButtonHideNav />
                 </div>
-                <ButtonHide text="Скрыть" onClick={() => setIsVisible(!isVisible)} />
             </div>
-        </div>
-    ) : (
-        <div className={styles.slideshowContainer}>
-            <PiSlideshowLight className={styles.slideshowButton} onClick={() => setIsVisible(!isVisible)} />
-        </div>
+            <ButtonShowNav />
+        </>
     );
 };
 
