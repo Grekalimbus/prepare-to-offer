@@ -11,7 +11,9 @@ const QuestionsCards = ({ status }: Props) => {
         <div className={styles.flexContainer}>
             <FilterForm />
             <section className={styles.commonWrapper}>
-                <QuestionList status={status} />
+                <div className={styles.wrapperQuestion}>
+                    <QuestionList status={status} />
+                </div>
                 {status === "PENDING" && <AcceptAll />}
             </section>
         </div>

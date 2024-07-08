@@ -16,7 +16,7 @@ interface Props {
 const QuestionList = ({ status }: Props) => {
     const { currentTechonoly } = useParams<Params>();
     const { questions, isLoading } = useGetSomeQuestions(currentTechonoly.toLocaleLowerCase());
-
+    console.log("currentTechonoly", currentTechonoly);
     if (isLoading) {
         return <LoadingSkeleton />;
     }
