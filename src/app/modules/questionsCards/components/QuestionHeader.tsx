@@ -36,11 +36,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                     {question.question}
                 </p>
             </div>
-            {!isActive && index !== 0 ? (
-                <FaRegEyeSlash className={styles.eyeIcon} />
-            ) : (
-                <LuEye className={styles.eyeIcon} />
-            )}
+            {!isActive ? <FaRegEyeSlash className={styles.eyeIcon} /> : <LuEye className={styles.eyeIcon} />}
         </section>
     );
 };
