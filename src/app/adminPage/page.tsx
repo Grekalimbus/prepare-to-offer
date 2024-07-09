@@ -3,7 +3,6 @@ import { Company } from "@/types/company/company";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useGetCompanyPending from "../hooks/useGetCompanyPending";
-import useGetPendingQuestions from "../hooks/useGetPendingQuestions";
 import useUser from "../hooks/useUser";
 import CompaniesCards from "../modules/companiesCards/CompaniesCards";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
@@ -42,7 +41,6 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) =>
 
 const AdminPage = () => {
     const companies = useGetCompanyPending();
-    const questions = useGetPendingQuestions();
     const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
     const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
