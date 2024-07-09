@@ -1,22 +1,34 @@
+import Link from "next/link";
 import styles from "../Admin.module.css";
 
-interface Props {
-    isActive: string;
-    setIsActive: (text: string) => void;
+interface ILink {
+    text: string;
+    endpoint: string;
 }
-const SelectCategoryButtons = ({ isActive, setIsActive }: Props) => {
-    const buttons: string[] = ["Компании", "Технические вопросы", "Вопросы от кандидата"];
+
+const links: ILink[] = [
+    { text: "Компании", endpoint: "companies" },
+    { text: "Технические вопросы", endpoint: "techQuestions" },
+    { text: "Вопросы от кандидата", endpoint: "questionsCandidate" },
+];
+interface Params {
+    params: { section: string; navAction: string };
+}
+
+const SelectCategoryButtons = ({ params }: Params) => {
+    const { section, navAction } = params;
+    console.log("params", params);
     return (
         <section className={styles.selectCategoryButtons}>
-            {buttons.map((text: string) => {
+            {links.map((link: ILink) => {
                 return (
-                    <button
-                        key={text}
-                        onClick={() => setIsActive(text)}
-                        className={`${styles.categoryButton} ${text === isActive ? styles.active : ""}`}
+                    <Link
+                        href={`/adminPage/section/${link.endpoint}/navAction/${navAction}`}
+                        key={link.endpoint}
+                        className={`${styles.categoryButton} ${section === link.endpoint && styles.active}`}
                     >
-                        {text}
-                    </button>
+                        {link.text}
+                    </Link>
                 );
             })}
         </section>

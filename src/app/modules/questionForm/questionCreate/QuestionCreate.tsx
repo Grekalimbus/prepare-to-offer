@@ -1,3 +1,4 @@
+"use client";
 import ErrorMessage from "@/app/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/app/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/app/components/radioSelect/RadioSelect";

@@ -55,22 +55,22 @@ const AdminPage = () => {
         if (categoryButton) setIsActiveCategory(categoryButton);
     }, []);
     return null;
-    // return !isAdmin ? (
-    //     <div>Доступно только администраторам</div>
-    // ) : (
-    //     <div className={styles.wrapper}>
-    //         <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
-    //         <section className={styles.flexContainer}>
-    //             <CategoryActionNav />
-    //             <DynamicComponent
-    //                 navButton={isActiveNavButton}
-    //                 category={isActiveCategory}
-    //                 companies={companies}
-    //                 isAdmin={isAdmin}
-    //             />
-    //         </section>
-    //     </div>
-    // );
 };
 
 export default AdminPage;
+// return !isAdmin ? (
+//     <div>Доступно только администраторам</div>
+// ) : (
+//     <div className={styles.wrapper}>
+//         <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
+//         <section className={styles.flexContainer}>
+//             <CategoryActionNav />
+//             <DynamicComponent
+//                 navButton={isActiveNavButton}
+//                 category={isActiveCategory}
+//                 companies={companies}
+//                 isAdmin={isAdmin}
+//             />
+//         </section>
+//     </div>
+// );
