@@ -17,7 +17,7 @@ interface QuestionHeaderProps {
 const QuestionHeader = ({ question, index, status, setIsActive, isActive }: QuestionHeaderProps) => {
     const session = useSession();
     const email = session.data?.user?.email;
-    const { favoriteQuestions, createFavoriteQuestion } = useFavoriteQuestions({ email, question });
+    const { favoriteQuestions, createFavoriteQuestion } = useFavoriteQuestions(question);
 
     const isFavoriteQuestion = favoriteQuestions?.some(
         favoriteQuestion => JSON.stringify(favoriteQuestion?.answer) === JSON.stringify(question.answer),

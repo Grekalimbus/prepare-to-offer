@@ -2,18 +2,17 @@ import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
-interface Props {
-    question: Question;
-    email: string | null | undefined;
-}
-const useFavoriteQuestions = ({ question, email }: Props) => {
+const useFavoriteQuestions = (question: Question) => {
+    const session = useSession();
+    const email = session.data?.user?.email;
     const queryClient = useQueryClient();
     const fetchData = async () => {
         const { data } = await axios.get<Question[]>(`${BASE_URL}/userFavoriteQuestion?email=${email}`);
         return data;
     };
-    const fetchDataCreate = async ({ question, email }: Props) => {
+    const fetchDataCreate = async (question: Question) => {
         const { data } = await axios.patch<Question[]>(`${BASE_URL}/userFavoriteQuestion?email=${email}`, {
             question,
             email,
@@ -29,7 +28,7 @@ const useFavoriteQuestions = ({ question, email }: Props) => {
         onSuccess: () => queryClient.invalidateQueries({ queryKey: [`favoriteQuestion`] }),
     });
     const createFavoriteQuestion = () => {
-        mutationCreate.mutate({ question, email });
+        mutationCreate.mutate(question);
     };
 
     return { createFavoriteQuestion, favoriteQuestions };
