@@ -1,5 +1,6 @@
 import CategoryActionNav from "@/app/adminPage/components/CategoryActionNav";
 import SelectCategoryButtons from "@/app/adminPage/components/SelectCategoryButtons";
+import CompaniesCards from "@/app/modules/companiesCards/CompaniesCards";
 import CompanyCreate from "@/app/modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "@/app/modules/questionForm/questionCreate/QuestionCreate";
 import QuestionsCards from "@/app/modules/questionsCards/QuestionsCards";
@@ -15,12 +16,8 @@ const DynamicComponent = ({ params }: Params) => {
     }
     if (navAction === "incoming") {
         if (section === "techQuestions") return <QuestionsCards status="PENDING" />;
+        if (section === "companies") return <CompaniesCards status="PENDING" />;
     }
-    // if (navAction === "incoming" && section === "companies") {
-    // 		if (companies) {
-    // 				return <CompaniesCards status="PENDING" companies={companies} isAdmin={isAdmin} />;
-    // 		}
-    // }
 };
 const page = ({ params }: Params) => {
     console.log("params", params);

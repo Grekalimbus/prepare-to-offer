@@ -1,26 +1,15 @@
-"use client";
-import ButtonHide from "@/app/ui/Buttons/ButtonHide";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useContext, useEffect } from "react";
 import styles from "./NavBar.module.css";
-import { NavigationContext } from "./NavigationContext";
 import AdminButton from "./components/AdminButton";
+import ButtonHideMenu from "./components/ButtonHideMenu";
 import CompaniesButton from "./components/CompaniesButton";
 import LoginAndLogOutButton from "./components/LoginAndLogOutButton";
 import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
-    const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
-
-    const path = usePathname();
-    useEffect(() => {
-        setIsNavigationActive(false);
-    }, [path]);
-
     return (
         <>
-            <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
+            <aside id="commonNavBar" className={`${styles.wrapperNavBar} ${styles.hidden}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton />
@@ -40,10 +29,10 @@ const NavBar = () => {
                         <PolicyButton />
                         <LoginAndLogOutButton />
                     </div>
-                    <ButtonHide text="Скрыть" onClick={() => setIsNavigationActive(prev => !prev)} />
+                    <ButtonHideMenu />
                 </nav>
             </aside>
-            <div style={{ display: `${isNavigationActive ? "block" : "none"}` }} className={styles.shadowBlock}></div>
+            <div id="shadow" className={styles.shadowBlock}></div>
         </>
     );
 };

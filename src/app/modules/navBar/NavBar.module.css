@@ -4,21 +4,18 @@
     z-index: 5;
     height: 100vh;
     width: 400px;
-    transform: translateX(-100%);
+    left: 0;
+    transform: translateX(-5%);
     animation: slideIn 0.5s forwards;
+    transition: transform 0.5s ease;
+}
+.wrapperNavBar.show {
+    transform: translateX(-5%);
 }
 .wrapperNavBar.hidden {
     transform: translateX(-100%);
-    animation: none;
 }
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
+
 .navBar {
     position: relative;
     z-index: 2;
@@ -63,7 +60,7 @@
     }
 }
 .shadowBlock {
-    background: #0000007c;
+    background: #00000056;
     position: fixed;
     top: 0;
     left: 0;
@@ -71,4 +68,5 @@
     height: 100vh;
     z-index: 1;
     backdrop-filter: blur(2px);
+    display: none;
 }

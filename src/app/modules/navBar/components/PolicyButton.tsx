@@ -1,3 +1,4 @@
+"use client";
 import { useContext } from "react";
 import { ModalPolicyContext } from "../../../components/modalWindow/modalPolicy/ModalPolicyContext";
 import styles from "../NavBar.module.css";

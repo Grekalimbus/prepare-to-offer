@@ -3,25 +3,25 @@ import { Company } from "@/types/company/company";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface OjbectCompany {
+interface OjbectCompanies {
     companies: Company[];
 }
 
 const useGetCompanyPending = () => {
     const fetchData = async () => {
-        const { data } = await axios.get<OjbectCompany>(`${BASE_URL}/company?status=PENDING`);
+        const { data } = await axios.get<OjbectCompanies>(`${BASE_URL}/company?status=PENDING`);
         return data.companies;
     };
     const {
-        data: companiesPending,
+        data: companies,
         isLoading,
         error,
     } = useQuery({
-        queryKey: ["companyPending"],
+        queryKey: ["companiesPending"],
         queryFn: fetchData,
     });
 
-    return { companiesPending, isLoading, error };
+    return { companies, isLoading, error };
 };
 
 export default useGetCompanyPending;

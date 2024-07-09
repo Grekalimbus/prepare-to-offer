@@ -1,8 +1,8 @@
 "use client";
 import useGetPendingQuestions from "@/app/hooks/useGetPendingQuestions";
 import useGetSomeQuestions from "@/app/hooks/useGetSomeQuestions";
-import { Question } from "@/types/question/question";
 import { useParams, usePathname } from "next/navigation";
+import { useEffect } from "react";
 import styles from "../QuestionsCards.module.css";
 import AdminControls from "./AdminControls";
 import LoadingSkeleton from "./LoadingSkeleton";
@@ -16,12 +16,14 @@ interface Props {
     status: string;
 }
 
-interface GetQuestionsResult {
-    questions: Question[] | undefined;
-    isLoading: boolean;
-}
-
 const QuestionList = ({ status }: Props) => {
+    useEffect(() => {
+        const navBar = document.querySelector("#commonNavBar") as HTMLElement;
+        const shadow = document.querySelector("#shadow") as HTMLElement;
+        navBar.classList.remove("NavBar_show__lCOAW");
+        navBar.classList.add("NavBar_hidden__EVgVS");
+        shadow.style.display = "none";
+    }, []);
     const { currentTechonoly } = useParams<Params>();
 
     const path = usePathname();
@@ -59,12 +61,3 @@ const QuestionList = ({ status }: Props) => {
 };
 
 export default QuestionList;
-// const getQuestions = (): GetQuestionsResult | []  => {
-//     if (questionsPath) {
-//         const { questions, isLoading } = useGetSomeQuestions(currentTechonoly.toLocaleLowerCase());
-//         return { questions, isLoading }
-//     }
-//     if (!questionsPath) return [];
-//     return []
-// };
-// const {questions, isLoading} = getQuestions();

@@ -41,7 +41,7 @@
     flex-direction: row-reverse;
 }
 .wrapperNavBar {
-    width: 350px;
+    min-width: 350px;
     height: 100%;
     z-index: 3;
 }
