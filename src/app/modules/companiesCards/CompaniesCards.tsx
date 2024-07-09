@@ -1,3 +1,4 @@
+import AcceptAll from "@/app/components/button/AcceptAll";
 import styles from "./CompaniesCards.module.css";
 import CompanyDetails from "./components/CompanyDetails";
 interface Props {
@@ -10,9 +11,7 @@ const CompaniesCards = ({ status }: Props) => {
                 <div className={styles.wrapperCompany}>
                     <CompanyDetails status={status} />
                 </div>
-                {/* {status === "PENDING" && isAdmin && (
-                    <button className={styles.buttonAcceptAll}>Принять все заявки</button>
-                )} */}
+                {status === "PENDING" && <AcceptAll />}
             </section>
         </div>
     );

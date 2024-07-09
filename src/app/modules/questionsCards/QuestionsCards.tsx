@@ -1,7 +1,7 @@
-import styles from "./QuestionsCards.module.css";
-import AcceptAll from "./components/AcceptAll";
+import AcceptAll from "@/app/components/button/AcceptAll";
 import FilterForm from "./components/FilterForm";
 import QuestionList from "./components/QuestionList";
+import styles from "./QuestionsCards.module.css";
 interface Props {
     status: string;
 }

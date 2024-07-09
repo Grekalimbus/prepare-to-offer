@@ -1,10 +1,10 @@
 "use client";
+import AdminControls from "@/app/components/button/AdminControls";
 import useGetPendingQuestions from "@/app/hooks/useGetPendingQuestions";
 import useGetSomeQuestions from "@/app/hooks/useGetSomeQuestions";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import styles from "../QuestionsCards.module.css";
-import AdminControls from "./AdminControls";
 import LoadingSkeleton from "./LoadingSkeleton";
 import QuestionContent from "./QuestionContent";
 

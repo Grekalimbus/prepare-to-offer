@@ -1,4 +1,5 @@
 "use client";
+import AdminControls from "@/app/components/button/AdminControls";
 import useGetCompanyPending from "@/app/hooks/useGetCompanyPending";
 import { Company } from "@/types/company/company";
 import { format, toZonedTime } from "date-fns-tz";
@@ -85,12 +86,7 @@ const CompanyDetails = ({ status }: Props) => {
                         {company.createdAt && (
                             <div className={styles.wrapperSection}>Дата создания: {RussianTime(company.createdAt)}</div>
                         )}
-                        {/* {status === "PENDING" && isAdmin && (
-                            <div className={styles.flexButtonContainer}>
-                                <button className={styles.buttonInFlex}>Отклонить заявку</button>
-                                <button className={styles.buttonInFlex}>Принять</button>
-                            </div>
-                        )} */}
+                        {status === "PENDING" && <AdminControls />}
                     </div>
                 );
             })}

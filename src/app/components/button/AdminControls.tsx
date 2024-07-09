@@ -1,5 +1,6 @@
+"use client";
 import useUser from "@/app/hooks/useUser";
-import styles from "../QuestionsCards.module.css";
+import styles from "./Button.module.css";
 
 const AdminControls = () => {
     const user = useUser();
