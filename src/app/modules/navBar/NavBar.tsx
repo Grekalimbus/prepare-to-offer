@@ -1,6 +1,5 @@
 "use client";
 import ButtonHide from "@/app/ui/Buttons/ButtonHide";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect } from "react";
@@ -12,7 +11,6 @@ import LoginAndLogOutButton from "./components/LoginAndLogOutButton";
 import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
-    const session = useSession();
     const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
 
     const path = usePathname();
@@ -25,7 +23,7 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : ""}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                        <AdminButton email={session.data?.user?.email} />
+                        <AdminButton />
                         <Link href="/questionsPage/questions/React" className={styles.navLink}>
                             Технические вопросы
                         </Link>

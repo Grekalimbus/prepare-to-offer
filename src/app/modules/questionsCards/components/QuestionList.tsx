@@ -4,6 +4,7 @@ import useGetSomeQuestions from "@/app/hooks/useGetSomeQuestions";
 import { Question } from "@/types/question/question";
 import { useParams, usePathname } from "next/navigation";
 import styles from "../QuestionsCards.module.css";
+import AdminControls from "./AdminControls";
 import LoadingSkeleton from "./LoadingSkeleton";
 import QuestionContent from "./QuestionContent";
 
@@ -49,7 +50,7 @@ const QuestionList = ({ status }: Props) => {
                     <div key={question._id} className={styles.questionCard}>
                         {question.technology && <p className={styles.point}>Категория: {question.technology}</p>}
                         {<QuestionContent question={question} index={index} status={status} />}
-                        {/* {status === "PENDING" && isAdmin && <AdminControls onReject={() => {}} onAccept={() => {}} />} */}
+                        {status === "PENDING" && <AdminControls />}
                     </div>
                 );
             })}

@@ -7,7 +7,12 @@ interface IUser extends Document {
     name?: string;
     image?: string;
     password?: string;
-    roles: string[];
+    roles: [
+        {
+            type: string;
+            ref: "Role";
+        },
+    ];
     companies: Company[] | [];
     questions: {
         html: Question[] | [];
@@ -29,7 +34,7 @@ const userSchema = new Schema<IUser>({
     name: { type: String, required: false },
     image: { type: String, required: false },
     password: { type: String, required: false },
-    roles: [String],
+    roles: [{ type: String, ref: "Role", required: true }],
     companies: [
         {
             companyName: String,

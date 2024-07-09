@@ -1,20 +1,16 @@
+import useUser from "@/app/hooks/useUser";
 import styles from "../QuestionsCards.module.css";
 
-interface AdminControlsProps {
-    onReject: () => void;
-    onAccept: () => void;
-}
-
-const AdminControls = ({ onReject, onAccept }: AdminControlsProps) => {
+const AdminControls = () => {
+    const user = useUser();
+    const isAdmin = user.user?.roles.includes("ADMIN");
     return (
-        <div className={styles.flexButtonContainer}>
-            <button className={styles.buttonInFlex} onClick={onReject}>
-                Отклонить заявку
-            </button>
-            <button className={styles.buttonInFlex} onClick={onAccept}>
-                Принять
-            </button>
-        </div>
+        isAdmin && (
+            <div className={styles.flexButtonContainer}>
+                <button className={styles.buttonInFlex}>Отклонить заявку</button>
+                <button className={styles.buttonInFlex}>Принять</button>
+            </div>
+        )
     );
 };
 
