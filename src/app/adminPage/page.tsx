@@ -8,9 +8,6 @@ import CompaniesCards from "../modules/companiesCards/CompaniesCards";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "../modules/questionForm/questionCreate/QuestionCreate";
 import QuestionsCards from "../modules/questionsCards/QuestionsCards";
-import styles from "./Admin.module.css";
-import CategoryActionNav from "./components/CategoryActionNav";
-import SelectCategoryButtons from "./components/SelectCategoryButtons";
 
 interface Props {
     navButton: string;
@@ -41,7 +38,6 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) =>
 
 const AdminPage = () => {
     const companies = useGetCompanyPending();
-    const [isActiveNavButton, setIsActiveNavButton] = useState<string>("Добавить");
     const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
     const email = session.data?.user?.email;
@@ -58,23 +54,23 @@ const AdminPage = () => {
         }
         if (categoryButton) setIsActiveCategory(categoryButton);
     }, []);
-
-    return !isAdmin ? (
-        <div>Доступно только администраторам</div>
-    ) : (
-        <div className={styles.wrapper}>
-            <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
-            <section className={styles.flexContainer}>
-                <CategoryActionNav isActive={isActiveNavButton} setIsActive={setIsActiveNavButton} />
-                <DynamicComponent
-                    navButton={isActiveNavButton}
-                    category={isActiveCategory}
-                    companies={companies}
-                    isAdmin={isAdmin}
-                />
-            </section>
-        </div>
-    );
+    return null;
+    // return !isAdmin ? (
+    //     <div>Доступно только администраторам</div>
+    // ) : (
+    //     <div className={styles.wrapper}>
+    //         <SelectCategoryButtons isActive={isActiveCategory} setIsActive={handleChangeCategory} />
+    //         <section className={styles.flexContainer}>
+    //             <CategoryActionNav />
+    //             <DynamicComponent
+    //                 navButton={isActiveNavButton}
+    //                 category={isActiveCategory}
+    //                 companies={companies}
+    //                 isAdmin={isAdmin}
+    //             />
+    //         </section>
+    //     </div>
+    // );
 };
 
 export default AdminPage;

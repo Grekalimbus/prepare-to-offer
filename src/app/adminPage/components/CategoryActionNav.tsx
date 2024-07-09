@@ -1,22 +1,24 @@
+import Link from "next/link";
 import styles from "../Admin.module.css";
 
-interface Props {
-    isActive: string;
-    setIsActive: (text: string) => void;
+interface ILink {
+    text: string;
+    endpoint: string;
 }
-const CategoryActionNav = ({ isActive, setIsActive }: Props) => {
-    const buttons: string[] = ["Добавить", "Изменить", "Удалить", "Входящие заявки"];
+const CategoryActionNav = () => {
+    const links: ILink[] = [
+        { text: "Добавить", endpoint: "add" },
+        { text: "Изменить", endpoint: "change" },
+        { text: "Удалить", endpoint: "delete" },
+        { text: "Входящие заявки", endpoint: "incoming" },
+    ];
     return (
         <aside className={styles.navBar}>
-            {buttons.map((text: string) => {
+            {links.map((link: ILink) => {
                 return (
-                    <button
-                        key={text}
-                        onClick={() => setIsActive(text)}
-                        className={`${styles.navButton} ${text === isActive ? styles.activeNavButton : ""}`}
-                    >
-                        {text}
-                    </button>
+                    <Link href={link.endpoint} key={link.endpoint} className={`${styles.navButton}`}>
+                        {link.text}
+                    </Link>
                 );
             })}
         </aside>
