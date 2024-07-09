@@ -1,8 +1,6 @@
 "use client";
 import { Company } from "@/types/company/company";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import useGetCompanyPending from "../hooks/useGetCompanyPending";
 import useUser from "../hooks/useUser";
 import CompaniesCards from "../modules/companiesCards/CompaniesCards";
 import CompanyCreate from "../modules/companyForm/companyCreate/CompanyCreate";
@@ -37,23 +35,9 @@ const DynamicComponent = ({ navButton, category, companies, isAdmin }: Props) =>
 };
 
 const AdminPage = () => {
-    const companies = useGetCompanyPending();
-    const [isActiveCategory, setIsActiveCategory] = useState<string>("Технические вопросы");
     const session = useSession();
     const email = session.data?.user?.email;
     const user = useUser({ email });
-    const isAdmin = user.user?.roles[0] === "ADMIN" ? true : false;
-    const handleChangeCategory = (text: string) => {
-        setIsActiveCategory(text);
-        localStorage.setItem("categoryButton", text);
-    };
-    useEffect(() => {
-        const categoryButton = localStorage.getItem("categoryButton");
-        if (!categoryButton) {
-            localStorage.setItem("categoryButton", isActiveCategory);
-        }
-        if (categoryButton) setIsActiveCategory(categoryButton);
-    }, []);
     return null;
 };
 

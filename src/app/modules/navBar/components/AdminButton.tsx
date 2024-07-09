@@ -18,7 +18,7 @@ const AdminButton = ({ email }: Props) => {
     return (
         <>
             {isAdmin && (
-                <Link href={"/adminPage"} className={styles.navLink}>
+                <Link href={"/adminPage/section/techQuestions/navAction/add"} className={styles.navLink}>
                     Админка
                 </Link>
             )}
