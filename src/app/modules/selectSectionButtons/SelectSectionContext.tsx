@@ -2,12 +2,12 @@
 import { Dispatch, FC, ReactNode, SetStateAction, createContext, useState } from "react";
 interface Section {
     section: string;
-    text: string;
+    value: string;
 }
 // Определяем интерфейс для значений контекста
 interface Section {
     section: string;
-    text: string;
+    value: string;
 }
 
 interface SelectSectionContextProps {
@@ -17,7 +17,7 @@ interface SelectSectionContextProps {
 
 // Создание контекста с начальными значениями по умолчанию
 export const SelectSectionContext = createContext<SelectSectionContextProps>({
-    activeSection: { section: "", text: "" },
+    activeSection: { section: "", value: "" },
     setActiveSection: () => {},
 });
 
@@ -28,7 +28,7 @@ interface SelectSectionProviderProps {
 
 // Провайдер контекста
 export const SelectSectionProvider: FC<SelectSectionProviderProps> = ({ children }) => {
-    const [activeSection, setActiveSection] = useState<Section>({ section: "", text: "" });
+    const [activeSection, setActiveSection] = useState<Section>({ section: "", value: "" });
 
     return (
         <SelectSectionContext.Provider value={{ activeSection, setActiveSection }}>

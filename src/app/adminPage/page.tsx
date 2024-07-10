@@ -35,7 +35,7 @@ const page = ({ params }: Params) => {
     return (
         <>
             <SelectCategoryButtons
-                currentSection={{ section: "adminSection", text: "Технические вопросы" }}
+                currentSection={{ section: "adminSection", value: "techQuestions" }}
                 sections={sections}
             />
             <div className={styles.wrapper}>

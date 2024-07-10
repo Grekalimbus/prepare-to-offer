@@ -22,7 +22,7 @@ const page = ({ params }: Props) => {
     return (
         <>
             <SelectCategoryButtons
-                currentSection={{ section: "questions", text: "Вопросы для всех" }}
+                currentSection={{ section: "questions", value: "forAllQuestions" }}
                 sections={sections}
             />
 
