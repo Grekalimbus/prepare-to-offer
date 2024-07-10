@@ -9,7 +9,7 @@ const AdminButton = () => {
     return (
         <>
             {isAdmin && (
-                <Link href={"/adminPage/section/techQuestions/navAction/add"} className={styles.navLink}>
+                <Link href={"/adminPage"} className={styles.navLink}>
                     Админка
                 </Link>
             )}

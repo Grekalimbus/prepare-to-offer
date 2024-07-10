@@ -4,35 +4,6 @@
     width: 100%;
     height: 100%;
 }
-.selectCategoryButton {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-height: 60px;
-    border-top: 1px solid var(--flamingo);
-    backdrop-filter: blur(4px);
-}
-
-.categoryButton {
-    width: 33.28%;
-    height: 100%;
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--white);
-    cursor: pointer;
-    background: var(--shadow-black);
-    transition: background 0.4s;
-}
-.categoryButton.active {
-    border-bottom: 1px solid var(--flamingo);
-    border-top: none;
-    background: var(--dark);
-}
 .questionsContainer {
     display: flex;
     width: 100%;
@@ -117,16 +88,10 @@
         background-color: var(--shadow-black);
         color: var(--flamingo);
     }
-    .categoryButton:hover {
-        background-color: var(--dark);
-    }
 }
 @media (hover: none) {
     .interviewButton:active {
         background-color: var(--shadow-black);
         color: var(--flamingo);
-    }
-    .categoryButton:active {
-        background-color: var(--shadow-black);
     }
 }

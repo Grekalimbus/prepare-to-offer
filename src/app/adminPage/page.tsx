@@ -1,13 +1,25 @@
-import CategoryActionNav from "@/app/adminPage/components/CategoryActionNav";
-import SelectCategoryButtons from "@/app/adminPage/components/SelectCategoryButtons";
 import CompaniesCards from "@/app/modules/companiesCards/CompaniesCards";
 import CompanyCreate from "@/app/modules/companyForm/companyCreate/CompanyCreate";
 import QuestionCreate from "@/app/modules/questionForm/questionCreate/QuestionCreate";
 import QuestionsCards from "@/app/modules/questionsCards/QuestionsCards";
-import styles from "../../../../Admin.module.css";
+import SelectCategoryButtons from "@/app/modules/selectSectionButtons/SelectSectionButtons";
+import styles from "./Admin.module.css";
+import CategoryActionNav from "./components/CategoryActionNav";
 interface Params {
     params: { section: string; navAction: string };
 }
+
+interface Section {
+    text: string;
+    section: string;
+}
+
+const sections: Section[] = [
+    { text: "Компании", section: "companies" },
+    { text: "Технические вопросы", section: "techQuestions" },
+    { text: "Вопросы от кандидата", section: "questionsCandidate" },
+];
+
 const DynamicComponent = ({ params }: Params) => {
     const { section, navAction } = params;
     if (navAction === "add") {
@@ -20,10 +32,12 @@ const DynamicComponent = ({ params }: Params) => {
     }
 };
 const page = ({ params }: Params) => {
-    console.log("params", params);
     return (
         <>
-            <SelectCategoryButtons params={params} />
+            <SelectCategoryButtons
+                currentSection={{ section: "adminSection", text: "Технические вопросы" }}
+                sections={sections}
+            />
             <div className={styles.wrapper}>
                 <CategoryActionNav params={params} />
                 <DynamicComponent params={params} />

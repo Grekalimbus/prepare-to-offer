@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "../Admin.module.css";
 
 interface ILink {
@@ -22,13 +21,12 @@ const CategoryActionNav = ({ params }: Params) => {
         <aside className={styles.navBar}>
             {links.map((link: ILink) => {
                 return (
-                    <Link
-                        href={link.endpoint}
+                    <button
                         key={link.endpoint}
                         className={`${styles.navButton} ${navAction === link.endpoint && styles.activeNavButton}`}
                     >
                         {link.text}
-                    </Link>
+                    </button>
                 );
             })}
         </aside>
