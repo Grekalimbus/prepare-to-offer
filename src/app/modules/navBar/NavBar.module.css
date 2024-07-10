@@ -15,7 +15,6 @@
 .wrapperNavBar.hidden {
     transform: translateX(-100%);
 }
-
 .navBar {
     position: relative;
     z-index: 2;
@@ -31,7 +30,7 @@
 .flexContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 .navLink {
     display: flex;
@@ -47,16 +46,31 @@
     transition: background-color 0.4s, color 0.4s;
     cursor: pointer;
 }
+.buttonHide {
+    height: 60px;
+    background-color: var(--shadow-black);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    border-top: 2px solid var(--shadow-white);
+    transition: background-color 0.4s;
+}
 @media (hover: hover) {
     .navLink:hover {
         background-color: var(--shadow-black);
         color: var(--flamingo);
+    }
+    .buttonHide:hover {
+        background: var(--flamingo);
     }
 }
 @media (hover: none) {
     .navLink:active {
         background-color: var(--shadow-black);
         color: var(--flamingo);
+    }
+    .buttonHide:active {
+        background: var(--flamingo);
     }
 }
 .shadowBlock {
@@ -68,5 +82,4 @@
     height: 100vh;
     z-index: 1;
     backdrop-filter: blur(2px);
-    display: none;
 }

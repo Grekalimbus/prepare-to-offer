@@ -1,13 +1,13 @@
-import styles from "../QuestionsCards.module.css";
+import styles from "./Loading.module.css";
 
 const LoadingSkeleton = () => (
     <>
-        {Array.from({ length: 6 }).map((_, index) => (
-            <section style={{ marginBottom: "15px" }} key={index} className={styles.buttonQuestion}>
+        {Array.from({ length: 3 }).map((_, index) => (
+            <div style={{ marginBottom: "15px" }} key={index} className={styles.wrapperSkeleton}>
                 <div className={styles.questionButtonFlex}>
                     <p className={styles.point}>Loading...</p>
                 </div>
-            </section>
+            </div>
         ))}
     </>
 );

@@ -1,4 +1,3 @@
-"use client";
 import useUser from "@/app/hooks/useUser";
 import Link from "next/link";
 import styles from "../NavBar.module.css";

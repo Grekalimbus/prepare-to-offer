@@ -3,9 +3,9 @@ import AdminControls from "@/app/components/button/AdminControls";
 import useGetPendingQuestions from "@/app/hooks/useGetPendingQuestions";
 import useGetSomeQuestions from "@/app/hooks/useGetSomeQuestions";
 import { useParams, usePathname } from "next/navigation";
-import { useEffect } from "react";
 import styles from "../QuestionsCards.module.css";
-import LoadingSkeleton from "./LoadingSkeleton";
+
+import LoadingSkeleton from "@/app/components/loading/LoadingSkeleton";
 import QuestionContent from "./QuestionContent";
 
 type Params = {
@@ -17,13 +17,6 @@ interface Props {
 }
 
 const QuestionList = ({ status }: Props) => {
-    useEffect(() => {
-        const navBar = document.querySelector("#commonNavBar") as HTMLElement;
-        const shadow = document.querySelector("#shadow") as HTMLElement;
-        navBar.classList.remove("NavBar_show__lCOAW");
-        navBar.classList.add("NavBar_hidden__EVgVS");
-        shadow.style.display = "none";
-    }, []);
     const { currentTechonoly } = useParams<Params>();
 
     const path = usePathname();

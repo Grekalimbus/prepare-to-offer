@@ -1,15 +1,24 @@
+"use client";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
 import styles from "./NavBar.module.css";
+import { NavigationContext } from "./NavigationContext";
 import AdminButton from "./components/AdminButton";
-import ButtonHideMenu from "./components/ButtonHideMenu";
+
+import { usePathname } from "next/navigation";
 import CompaniesButton from "./components/CompaniesButton";
 import LoginAndLogOutButton from "./components/LoginAndLogOutButton";
 import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
+    const path = usePathname();
+    const { isNavigationActive, setIsNavigationActive } = useContext(NavigationContext);
+    useEffect(() => {
+        setIsNavigationActive(false);
+    }, [path]);
     return (
         <>
-            <aside id="commonNavBar" className={`${styles.wrapperNavBar} ${styles.hidden}`}>
+            <aside className={`${styles.wrapperNavBar} ${!isNavigationActive ? styles.hidden : styles.show}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton />
@@ -17,22 +26,16 @@ const NavBar = () => {
                             Технические вопросы
                         </Link>
                         <CompaniesButton />
-                        <Link href="/" className={styles.navLink}>
-                            Задачи с собеседований
-                        </Link>
-                        <Link href="/" className={styles.navLink}>
-                            Вопросы от кадидата
-                        </Link>
-                        <Link href="/" className={styles.navLink}>
-                            Служба поддержки
-                        </Link>
+
                         <PolicyButton />
                         <LoginAndLogOutButton />
                     </div>
-                    <ButtonHideMenu />
+                    <button className={styles.buttonHide} onClick={() => setIsNavigationActive(prev => !prev)}>
+                        Скрыть
+                    </button>
                 </nav>
             </aside>
-            <div id="shadow" className={styles.shadowBlock}></div>
+            <div className={`${isNavigationActive && styles.shadowBlock}`}></div>
         </>
     );
 };

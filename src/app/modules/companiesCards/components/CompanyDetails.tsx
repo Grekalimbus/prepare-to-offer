@@ -7,7 +7,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import LoadingSkeleton from "../../questionsCards/components/LoadingSkeleton";
+
+import LoadingSkeleton from "@/app/components/loading/LoadingSkeleton";
 import styles from "../CompaniesCards.module.css";
 interface Props {
     status: string;
