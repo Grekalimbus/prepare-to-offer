@@ -1,30 +1,21 @@
 "use client";
 import AdminControls from "@/app/components/button/AdminControls";
+import LoadingSkeleton from "@/app/components/loading/LoadingSkeleton";
 import useGetPendingQuestions from "@/app/hooks/useGetPendingQuestions";
 import useGetSomeQuestions from "@/app/hooks/useGetSomeQuestions";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import styles from "../QuestionsCards.module.css";
-
-import LoadingSkeleton from "@/app/components/loading/LoadingSkeleton";
 import QuestionContent from "./QuestionContent";
-
-type Params = {
-    currentTechonoly: string;
-};
 
 interface Props {
     status: string;
 }
 
 const QuestionList = ({ status }: Props) => {
-    const { currentTechonoly } = useParams<Params>();
-
     const path = usePathname();
-    const questionsPath = path.includes("questionsPage/questions");
+    const questionsPath = path.includes("/questionsPage");
 
-    const questionsHook = currentTechonoly
-        ? useGetSomeQuestions(currentTechonoly.toLowerCase())
-        : { questions: undefined, isLoading: false };
+    const questionsHook = questionsPath ? useGetSomeQuestions("react") : { questions: undefined, isLoading: false };
     const { questions, isLoading } = questionsHook;
 
     const pendingQuestionsHook = !questionsPath

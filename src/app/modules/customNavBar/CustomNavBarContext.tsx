@@ -4,29 +4,29 @@ interface Section {
     section: string;
     value: string;
 }
-interface SelectSectionContextProps {
+interface CustomNavBarContextProps {
     activeSection: Section;
     setActiveSection: Dispatch<SetStateAction<Section>>;
 }
 
 // Создание контекста с начальными значениями по умолчанию
-export const SelectSectionContext = createContext<SelectSectionContextProps>({
+export const CustomNavBarContext = createContext<CustomNavBarContextProps>({
     activeSection: { section: "", value: "" },
     setActiveSection: () => {},
 });
 
 // Определяем интерфейс для свойств провайдера
-interface SelectSectionProviderProps {
+interface CustomNavBarProviderProps {
     children: ReactNode;
 }
 
 // Провайдер контекста
-export const SelectSectionProvider: FC<SelectSectionProviderProps> = ({ children }) => {
+export const CustomNavBarProvider: FC<CustomNavBarProviderProps> = ({ children }) => {
     const [activeSection, setActiveSection] = useState<Section>({ section: "", value: "" });
 
     return (
-        <SelectSectionContext.Provider value={{ activeSection, setActiveSection }}>
+        <CustomNavBarContext.Provider value={{ activeSection, setActiveSection }}>
             {children}
-        </SelectSectionContext.Provider>
+        </CustomNavBarContext.Provider>
     );
 };

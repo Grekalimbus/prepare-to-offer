@@ -3,17 +3,25 @@ import CompanyCreate from "@/app/modules/companyForm/companyCreate/CompanyCreate
 import QuestionCreate from "@/app/modules/questionForm/questionCreate/QuestionCreate";
 import QuestionsCards from "@/app/modules/questionsCards/QuestionsCards";
 import SelectCategoryButtons from "@/app/modules/selectSectionButtons/SelectSectionButtons";
+import CustomNavBar from "../modules/customNavBar/CustomNavBar";
 import styles from "./Admin.module.css";
-import CategoryActionNav from "./components/CategoryActionNav";
 interface Params {
     params: { section: string; navAction: string };
 }
-
+interface NavButton {
+    text: string;
+    value: string;
+}
 interface Section {
     text: string;
     section: string;
 }
-
+const actions: NavButton[] = [
+    { text: "Добавить", value: "add" },
+    { text: "Изменить", value: "change" },
+    { text: "Удалить", value: "delete" },
+    { text: "Входящие заявки", value: "incoming" },
+];
 const sections: Section[] = [
     { text: "Компании", section: "companies" },
     { text: "Технические вопросы", section: "techQuestions" },
@@ -39,7 +47,7 @@ const page = ({ params }: Params) => {
                 sections={sections}
             />
             <div className={styles.wrapper}>
-                <CategoryActionNav params={params} />
+                <CustomNavBar arrayButtons={actions} currentSection={{ section: "navActions", value: "add" }} />
                 <DynamicComponent params={params} />
             </div>
         </>

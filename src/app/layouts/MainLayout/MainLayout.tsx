@@ -2,6 +2,7 @@ import ModalAuth from "@/app/components/modalWindow/ModalAuth/ModalAuth";
 import { ModalAuthProvider } from "@/app/components/modalWindow/ModalAuth/ModalAuthContext";
 import ModalPolicy from "@/app/components/modalWindow/modalPolicy/ModalPolicy";
 import { ModalPolicyProvider } from "@/app/components/modalWindow/modalPolicy/ModalPolicyContext";
+import { CustomNavBarProvider } from "@/app/modules/customNavBar/CustomNavBarContext";
 import NavBar from "@/app/modules/navBar/NavBar";
 import { NavigationProvider } from "@/app/modules/navBar/NavigationContext";
 import { SelectSectionProvider } from "@/app/modules/selectSectionButtons/SelectSectionContext";
@@ -22,12 +23,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     <ModalAuthProvider>
                         <ModalPolicyProvider>
                             <SelectSectionProvider>
-                                <MainHeader />
-                                {children}
-                                <MainFooter />
-                                <NavBar />
-                                <ModalAuth />
-                                <ModalPolicy />
+                                <CustomNavBarProvider>
+                                    <MainHeader />
+                                    {children}
+                                    <MainFooter />
+                                    <NavBar />
+                                    <ModalAuth />
+                                    <ModalPolicy />
+                                </CustomNavBarProvider>
                             </SelectSectionProvider>
                         </ModalPolicyProvider>
                     </ModalAuthProvider>
