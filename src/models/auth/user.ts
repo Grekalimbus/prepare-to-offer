@@ -15,15 +15,7 @@ interface IUser extends Document {
     ];
     companies: Company[] | [];
     questions: {
-        html: Question[] | [];
-        css: Question[] | [];
-        javascript: Question[] | [];
-        typescript: Question[] | [];
-        react: Question[] | [];
-        nextJS: Question[] | [];
-        redux: Question[] | [];
-        architecture: Question[] | [];
-        common: Question[] | [];
+        [key: string]: Question[] | [];
     };
     favoriteQuestions: Question[] | [];
     createdAt: Date;

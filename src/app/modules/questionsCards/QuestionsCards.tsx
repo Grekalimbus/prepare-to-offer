@@ -3,7 +3,7 @@ import FilterForm from "./components/FilterForm";
 import QuestionList from "./components/QuestionList";
 import styles from "./QuestionsCards.module.css";
 interface Props {
-    status: string;
+    status?: string;
 }
 
 const QuestionsCards = ({ status }: Props) => {

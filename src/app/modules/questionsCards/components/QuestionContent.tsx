@@ -9,7 +9,7 @@ import QuestionHeader from "./QuestionHeader";
 interface QuestionContentProps {
     question: Question;
     index: number;
-    status: string;
+    status?: string;
 }
 
 const QuestionContent = ({ question, index, status }: QuestionContentProps) => {
@@ -38,7 +38,7 @@ const QuestionContent = ({ question, index, status }: QuestionContentProps) => {
                     )}
                 </section>
             )}
-            {isActive && question.links.length > 0 && (
+            {isActive && question?.links?.length > 0 && (
                 <section className={styles.sectionLinks}>
                     <p className={styles.point}>Полезные ссылки: </p>
                     {question.links.map((link, index) => (

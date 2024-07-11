@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import CustomNavBar from "../customNavBar/CustomNavBar";
-import SelectCategoryButtons from "../selectSectionButtons/SelectSectionButtons";
+import CustomNavBar from "../../modules/customNavBar/CustomNavBar";
+import SelectCategoryButtons from "../../modules/selectSectionButtons/SelectSectionButtons";
 import styles from "./ReusedLayout.module.css";
 
 interface Section {

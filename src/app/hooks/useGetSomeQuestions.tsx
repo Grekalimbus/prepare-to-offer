@@ -21,7 +21,6 @@ const useGetSomeQuestions = () => {
             const questions = data[currentTechonoly];
             return questions;
         }
-        return null;
     };
     const {
         data: questions,

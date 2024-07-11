@@ -8,7 +8,7 @@ import styles from "../QuestionsCards.module.css";
 interface QuestionHeaderProps {
     question: Question;
     index: number;
-    status: string;
+    status?: string;
     setIsActive: (value: boolean) => void;
     isActive: boolean;
 }

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import ReusedLayout from "../modules/reusedLayout/ReusedLayout";
+import ReusedLayout from "../layouts/reusedLayout/ReusedLayout";
 
 type Props = {
     children: ReactNode; // Протипизируем children как ReactNode

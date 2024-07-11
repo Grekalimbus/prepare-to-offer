@@ -1,5 +1,7 @@
+import QuestionCreate from "@/app/modules/questionForm/questionCreate/QuestionCreate";
+
 const page = () => {
-    return <></>;
+    return <QuestionCreate />;
 };
 
 export default page;

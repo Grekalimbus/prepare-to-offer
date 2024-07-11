@@ -1,5 +1,7 @@
+import QuestionsCards from "@/app/modules/questionsCards/QuestionsCards";
+
 const page = () => {
-    return <div>page</div>;
+    return <QuestionsCards />;
 };
 
 export default page;

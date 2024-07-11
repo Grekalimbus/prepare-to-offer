@@ -15,7 +15,7 @@ const SelectCategoryButtons = ({ sections }: Props) => {
     const router = useRouter();
     const path = usePathname().split("/");
     const currentSection = path[path.length - 1];
-    console.log("path", path);
+
     return (
         <section className={styles.selectCategoryButtons}>
             {sections.map((section: Section) => {
