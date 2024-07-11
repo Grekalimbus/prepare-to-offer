@@ -8,7 +8,7 @@ interface Props {
 
 const QuestionsCards = ({ status }: Props) => {
     return (
-        <div className={styles.flexContainer}>
+        <>
             <FilterForm />
             <section className={styles.commonWrapper}>
                 <div className={styles.wrapperQuestion}>
@@ -16,7 +16,7 @@ const QuestionsCards = ({ status }: Props) => {
                 </div>
                 {status === "PENDING" && <AcceptAll />}
             </section>
-        </div>
+        </>
     );
 };
 export default QuestionsCards;

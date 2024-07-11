@@ -1,6 +1,6 @@
 "use client";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./SelectSectionButtons.module.css";
-import useSelectCategoryHook from "./useSelectCategoryHook";
 
 interface Section {
     text: string;
@@ -9,22 +9,21 @@ interface Section {
 
 interface Props {
     sections: Section[];
-    currentSection: { section: string; value: string };
 }
 
-const SelectCategoryButtons = ({ sections, currentSection }: Props) => {
-    const { activeSection, handleChangeSection } = useSelectCategoryHook({ currentSection });
-
+const SelectCategoryButtons = ({ sections }: Props) => {
+    const router = useRouter();
+    const path = usePathname().split("/");
+    const currentSection = path[path.length - 1];
+    console.log("path", path);
     return (
         <section className={styles.selectCategoryButtons}>
             {sections.map((section: Section) => {
                 return (
                     <button
-                        onClick={() => handleChangeSection(section)}
+                        onClick={() => router.push(`${section.section}`)}
                         key={section.section}
-                        className={`${styles.categoryButton} ${
-                            activeSection.value === section.section && styles.active
-                        }`}
+                        className={`${styles.categoryButton} ${currentSection === section.section && styles.active}`}
                     >
                         {section.text}
                     </button>

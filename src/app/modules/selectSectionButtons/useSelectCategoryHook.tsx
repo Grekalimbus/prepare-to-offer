@@ -1,5 +1,6 @@
 import { ModalAuthContext } from "@/app/components/modalWindow/ModalAuth/ModalAuthContext";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { SelectSectionContext } from "./SelectSectionContext";
 
@@ -14,6 +15,7 @@ interface Props {
 
 const useSelectCategoryHook = ({ currentSection }: Props) => {
     const session = useSession();
+    const router = useRouter();
     const { setIsModalActive } = useContext(ModalAuthContext);
     const { activeSection, setActiveSection } = useContext(SelectSectionContext);
 
@@ -42,6 +44,7 @@ const useSelectCategoryHook = ({ currentSection }: Props) => {
             if (session.data) {
                 localStorage.setItem(currentSection.section, section.section);
                 setActiveSection({ section: currentSection.section, value: section.section });
+                router.push(`questionsPage/${section.section}`);
             }
         }
         if (currentSection.section === "adminSection") {
