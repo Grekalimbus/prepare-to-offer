@@ -25,7 +25,6 @@ const CompanyDetails = ({ status }: Props) => {
     const path = usePathname();
     const isIncoming = path.includes(currentURL);
     const companies = useGetCompanyPending();
-    console.log("companies", companies);
     const incomingCompanies = isIncoming ? useGetCompanyPending() : { companies: undefined, isLoading: false };
     const { companies: companiesPending, isLoading: isPendingCompanyLoad } = incomingCompanies;
 

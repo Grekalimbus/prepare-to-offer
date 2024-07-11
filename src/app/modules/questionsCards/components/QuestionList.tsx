@@ -14,8 +14,10 @@ interface Props {
 const QuestionList = ({ status }: Props) => {
     const path = usePathname();
     const questionsPath = path.includes("/questionsPage");
+    const currentTech = localStorage.getItem("navQuestions");
 
-    const questionsHook = questionsPath ? useGetSomeQuestions("react") : { questions: undefined, isLoading: false };
+    const questionsHook =
+        questionsPath && currentTech ? useGetSomeQuestions(currentTech) : { questions: undefined, isLoading: false };
     const { questions, isLoading } = questionsHook;
 
     const pendingQuestionsHook = !questionsPath

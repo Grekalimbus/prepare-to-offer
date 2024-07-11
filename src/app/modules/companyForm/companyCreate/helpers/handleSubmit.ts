@@ -42,7 +42,6 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
         }, 3000);
     }
     if (difficulty && liveCoding && typeOfInterview) {
-        console.log("completeData", completeData);
         let isAdmin: boolean = false;
         const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
         user.roles.forEach(role => {

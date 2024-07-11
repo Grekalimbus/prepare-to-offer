@@ -1,6 +1,5 @@
 import useFavoriteQuestions from "@/app/hooks/useFavoriteQuestions";
 import { Question } from "@/types/question/question";
-import { useSession } from "next-auth/react";
 import { BiSolidBookmarkPlus } from "react-icons/bi";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
@@ -15,16 +14,7 @@ interface QuestionHeaderProps {
 }
 
 const QuestionHeader = ({ question, index, status, setIsActive, isActive }: QuestionHeaderProps) => {
-    const session = useSession();
-    const email = session.data?.user?.email;
-    const useFavorirteHook = email
-        ? useFavoriteQuestions(question)
-        : { favoriteQuestions: undefined, createFavoriteQuestion: undefined };
-    const { favoriteQuestions, createFavoriteQuestion } = useFavorirteHook;
-
-    const isFavoriteQuestion = favoriteQuestions?.some(
-        favoriteQuestion => JSON.stringify(favoriteQuestion?.answer) === JSON.stringify(question.answer),
-    );
+    const { isFavoriteQuestion, createFavoriteQuestion, email } = useFavoriteQuestions(question);
     return (
         <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>
             <div className={styles.questionButtonFlex}>

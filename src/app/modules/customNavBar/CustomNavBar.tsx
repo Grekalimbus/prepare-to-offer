@@ -16,7 +16,6 @@ interface Props {
 
 const CustomNavBar = ({ currentSection, arrayButtons }: Props) => {
     const { activeSection, handleChangeSection } = useCustomNavBarHook({ currentSection });
-    console.log("activeSection", activeSection);
 
     return (
         <>

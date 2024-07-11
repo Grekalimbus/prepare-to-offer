@@ -19,7 +19,6 @@ const useCustomNavBarHook = ({ currentSection }: Props) => {
         if (!savedSection) {
             localStorage.setItem(currentSection.section, currentSection.value);
             setActiveSection({ section: currentSection.section, value: currentSection.value });
-            console.log("not localSTORAGE");
         }
         if (savedSection) {
             setActiveSection({ section: currentSection.section, value: savedSection });
@@ -27,7 +26,6 @@ const useCustomNavBarHook = ({ currentSection }: Props) => {
     }, []);
 
     const handleChangeSection = (navButton: NavButton) => {
-        console.log("navButton", navButton);
         localStorage.setItem(currentSection.section, navButton.value);
         setActiveSection({ section: currentSection.section, value: navButton.value });
     };
