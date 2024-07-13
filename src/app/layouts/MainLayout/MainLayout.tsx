@@ -1,4 +1,6 @@
 "use client";
+import Loader from "@/app/components/loader/Loader";
+import { LoaderProvider } from "@/app/components/loader/LoaderContext";
 import ModalAuth from "@/app/components/modalWindow/ModalAuth/ModalAuth";
 import { ModalAuthProvider } from "@/app/components/modalWindow/ModalAuth/ModalAuthContext";
 import ModalPolicy from "@/app/components/modalWindow/modalPolicy/ModalPolicy";
@@ -24,16 +26,19 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <Provider>
                 <NavigationProvider>
                     <ModalAuthProvider>
-                        <ModalPolicyProvider>
-                            <CustomNavBarProvider>
-                                <MainHeader />
-                                {children}
-                                <MainFooter />
-                                <NavBar />
-                                <ModalAuth />
-                                <ModalPolicy />
-                            </CustomNavBarProvider>
-                        </ModalPolicyProvider>
+                        <LoaderProvider>
+                            <Loader />
+                            <ModalPolicyProvider>
+                                <CustomNavBarProvider>
+                                    <MainHeader />
+                                    {children}
+                                    <MainFooter />
+                                    <NavBar />
+                                    <ModalAuth />
+                                    <ModalPolicy />
+                                </CustomNavBarProvider>
+                            </ModalPolicyProvider>
+                        </LoaderProvider>
                     </ModalAuthProvider>
                 </NavigationProvider>
             </Provider>

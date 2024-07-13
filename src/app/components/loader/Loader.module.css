@@ -1,3 +1,11 @@
+.wrapperLoader {
+    background: #0000005e;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    backdrop-filter: blur(2px);
+}
 .loader {
     position: fixed;
     top: 50%;

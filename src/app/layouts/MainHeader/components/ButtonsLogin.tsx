@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import styles from "../MainHeader.module.css";
 
@@ -16,7 +16,7 @@ const ButtonsLogin = () => {
             </Link>
         </>
     ) : (
-        <Link className={styles.link} href={"/"}>
+        <Link className={styles.link} href={"/"} onClick={() => signOut({ callbackUrl: "/" })}>
             Выйти
         </Link>
     );
