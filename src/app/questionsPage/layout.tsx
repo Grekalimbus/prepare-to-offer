@@ -19,11 +19,10 @@ const technologies: NavButton[] = [
     { value: "typescript", text: "TypeScript" },
     { value: "html", text: "HTML" },
     { value: "css", text: "CSS" },
-    { value: "nextjs", text: "Next.js" },
-    { value: "architecture", text: "Архитектура" },
-    { value: "redux", text: "Redux" },
-    { value: "common", text: "Общие вопросы" },
-    { value: "fromCandidate", text: "Вопросы от кандидата" },
+    // { value: "architecture", text: "Архитектура" },
+    // { value: "redux", text: "Redux" },
+    // { value: "common", text: "Общие вопросы" },
+    // { value: "fromCandidate", text: "Вопросы от кандидата" },
 ];
 const sections: Section[] = [
     { text: "Добавить новый вопрос", section: "addQuestion" },

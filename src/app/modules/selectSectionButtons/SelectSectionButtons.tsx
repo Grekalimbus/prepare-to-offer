@@ -1,5 +1,6 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./SelectSectionButtons.module.css";
 
 interface Section {
@@ -12,7 +13,6 @@ interface Props {
 }
 
 const SelectCategoryButtons = ({ sections }: Props) => {
-    const router = useRouter();
     const path = usePathname().split("/");
     const currentSection = path[path.length - 1];
 
@@ -20,13 +20,13 @@ const SelectCategoryButtons = ({ sections }: Props) => {
         <section className={styles.selectCategoryButtons}>
             {sections.map((section: Section) => {
                 return (
-                    <button
-                        onClick={() => router.push(`${section.section}`)}
+                    <Link
+                        href={section.section}
                         key={section.section}
                         className={`${styles.categoryButton} ${currentSection === section.section && styles.active}`}
                     >
                         {section.text}
-                    </button>
+                    </Link>
                 );
             })}
         </section>

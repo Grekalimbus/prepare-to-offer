@@ -48,7 +48,13 @@ const QuestionList = ({ status }: Props) => {
     }
     return (
         <>
-            {questions?.length === 0 && <div>Пусто</div>}
+            {questions?.length === 0 && (
+                <div className={styles.dummy}>
+                    В этой секции пусто
+                    <br />
+                    Выберите другую технологию из списка
+                </div>
+            )}
             {questions?.map((question, index) => {
                 return (
                     <div key={question._id} className={styles.questionCard}>

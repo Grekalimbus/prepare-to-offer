@@ -1,18 +1,24 @@
 "use client";
-import Button from "@/app/ui/Buttons/Button";
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import styles from "../MainHeader.module.css";
 
 const ButtonsLogin = () => {
     const session = useSession();
-    const router = useRouter();
+
     return !session.data ? (
         <>
-            <Button text={"Вход"} onClick={() => router.push("/login")} />
-            <Button text={"Регистрация"} onClick={() => router.push("/signIn")} />
+            <Link className={styles.link} href={"/login"}>
+                Вход
+            </Link>
+            <Link className={styles.link} href={"/signIn"}>
+                Регистрация
+            </Link>
         </>
     ) : (
-        <Button text={"Выйти"} onClick={() => signOut({ callbackUrl: "/" })} />
+        <Link className={styles.link} href={"/"}>
+            Выйти
+        </Link>
     );
 };
 

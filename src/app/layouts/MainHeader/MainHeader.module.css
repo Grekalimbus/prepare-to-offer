@@ -23,14 +23,37 @@
     background: none;
     transition: color 0.4s;
 }
+.link {
+    padding: 0px 24px;
+    height: 40px;
+    margin: 0px 4px;
+    border-radius: 3px;
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    color: var(--white);
+    border: 1px solid var(--flamingo);
+    background: var(--shadow-white);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background-color 0.4s;
+}
 @media (hover: hover) {
     .iconHomePage:hover {
         color: var(--flamingo);
+    }
+    .link:hover {
+        background: var(--flamingo);
     }
 }
 @media (hover: none) {
     .iconHomePage:active {
         color: var(--flamingo);
+    }
+    .link:hover {
+        background: var(--flamingo);
     }
 }
 .wrapperButtonsLogin {

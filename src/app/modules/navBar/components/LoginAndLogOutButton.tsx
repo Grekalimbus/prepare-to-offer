@@ -6,9 +6,9 @@ import styles from "../NavBar.module.css";
 const LoginAndLogOutButton = () => {
     const session = useSession();
     return session?.data ? (
-        <button onClick={() => signOut({ callbackUrl: "/" })} className={styles.navLink}>
+        <link onClick={() => signOut({ callbackUrl: "/" })} className={styles.navLink}>
             Выход
-        </button>
+        </link>
     ) : (
         <Link href="/signIn" className={styles.navLink}>
             Вход / Регистрация

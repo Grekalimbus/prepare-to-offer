@@ -22,7 +22,7 @@ const NavBar = () => {
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton />
-                        <Link href="/questionsPage" className={styles.navLink}>
+                        <Link href="/questionsPage/allQuestions" className={styles.navLink}>
                             Технические вопросы
                         </Link>
                         <CompaniesButton />
