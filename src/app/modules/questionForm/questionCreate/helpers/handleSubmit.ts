@@ -1,12 +1,13 @@
 import { BASE_URL } from "@/configs/baseURL";
 import axios from "axios";
-import { FormEvent } from "react";
+import { FormEvent, RefObject } from "react";
 
 interface Props {
     event: FormEvent<HTMLFormElement>;
     setErrorMessage: (value: string) => void;
     setIsError: (value: boolean) => void;
     email: string;
+    formRef: RefObject<HTMLFormElement>;
 }
 
 interface User {
@@ -14,7 +15,7 @@ interface User {
     roles: string[];
 }
 
-const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props) => {
+const handleSubmit = async ({ event, setErrorMessage, setIsError, email, formRef }: Props) => {
     const formData = new FormData(event.currentTarget);
     const question = formData.get("question");
     const answer = formData.get("answer");
@@ -32,6 +33,7 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
     }
     if (technology && !checkbox) {
         await axios.patch(`${BASE_URL}/userQuestion`, { email, question: completeData });
+        formRef.current?.reset();
     }
     if (technology && checkbox) {
         let isAdmin: boolean = false;
@@ -47,6 +49,7 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
                 ...completeData,
                 status: "ACCEPT",
             });
+            formRef.current?.reset();
         }
         if (!isAdmin) {
             await axios.post(`${BASE_URL}/pendingQuestion`, completeData);
@@ -54,6 +57,7 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
                 ...completeData,
                 status: "PENDING",
             });
+            formRef.current?.reset();
         }
     }
 };

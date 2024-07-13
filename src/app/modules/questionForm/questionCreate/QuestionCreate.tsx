@@ -36,11 +36,8 @@ const QuestionCreate = () => {
         event.preventDefault();
         if (session.data?.user?.email) {
             setIsLoading(prev => !prev);
-            // console.log();
-
             const email = session.data.user?.email;
-            await handleSubmit({ event, setErrorMessage, setIsError, email });
-            formRef.current?.reset();
+            await handleSubmit({ event, setErrorMessage, setIsError, email, formRef });
             setIsLoading(prev => !prev);
         }
     };
