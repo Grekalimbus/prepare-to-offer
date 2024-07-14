@@ -3,8 +3,8 @@ import useUser from "@/hooks/useUser";
 import styles from "./Button.module.css";
 
 const AdminControls = () => {
-    const user = useUser();
-    const isAdmin = user.user?.roles.includes("ADMIN");
+    const { dataUser } = useUser();
+    const isAdmin = dataUser.data?.roles.includes("ADMIN");
     return (
         isAdmin && (
             <div className={styles.flexButtonContainer}>

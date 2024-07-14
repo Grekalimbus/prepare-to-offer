@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import ReusedLayout from "../../layouts/reusedLayout/ReusedLayout";
 
 type Props = {
-    children: ReactNode; // Протипизируем children как ReactNode
+    children: ReactNode;
 };
 
 interface Section {
@@ -26,9 +26,10 @@ const technologies: NavButton[] = [
     // { value: "fromCandidate", text: "Вопросы от кандидата" },
 ];
 const sections: Section[] = [
-    { value: "Добавить новый вопрос", section: "addQuestion" },
     { value: "Вопросы для всех", section: "allQuestions" },
     { value: "Мои вопросы", section: "myQuestions" },
+    { value: "Избранные", section: "favoriteQuestions" },
+    { value: "Добавить новый вопрос", section: "addQuestion" },
 ];
 
 const MainLayout: React.FC<Props> = ({ children }) => {

@@ -68,3 +68,16 @@ export const useActionNav = create<ActionNav>(set => ({
     action: "add",
     setAction: (value: string) => set({ action: value }),
 }));
+
+// ==========
+interface FilterQuestions {
+    filterValue: string;
+    setFilterValue: (value: string) => void;
+}
+
+const useFilterQuestions = create<FilterQuestions>(set => ({
+    filterValue: "",
+    setFilterValue: (value: string) => set({ filterValue: value }),
+}));
+
+export default useFilterQuestions;

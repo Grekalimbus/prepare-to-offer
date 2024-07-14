@@ -7,7 +7,7 @@ interface OjbectCompanies {
     companies: Company[];
 }
 
-const useGetCompanyPending = () => {
+const useCompanyPending = () => {
     const fetchData = async () => {
         const { data } = await axios.get<OjbectCompanies>(`${BASE_URL}/company?status=PENDING`);
         return data.companies;
@@ -24,4 +24,4 @@ const useGetCompanyPending = () => {
     return { companies, isLoading, error };
 };
 
-export default useGetCompanyPending;
+export default useCompanyPending;

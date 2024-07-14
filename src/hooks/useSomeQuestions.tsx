@@ -9,7 +9,7 @@ interface OjbectQuestions {
     [key: string]: Question[];
 }
 
-const useGetSomeQuestions = () => {
+const useSomeQuestions = () => {
     const { technology } = useTechnologyNav();
     const fetchData = async (currentTechonoly: string) => {
         if (technology) {
@@ -20,11 +20,7 @@ const useGetSomeQuestions = () => {
             return questions;
         }
     };
-    const {
-        data: questions,
-        isLoading,
-        error,
-    } = useQuery({
+    const dataSomeQuestions = useQuery({
         queryKey: [`${technology}Question`],
         queryFn: () => fetchData(technology),
     });
@@ -32,7 +28,7 @@ const useGetSomeQuestions = () => {
         if (technology) fetchData(technology);
     }, [technology]);
 
-    return { questions, isLoading, error };
+    return { dataSomeQuestions };
 };
 
-export default useGetSomeQuestions;
+export default useSomeQuestions;
