@@ -20,10 +20,6 @@ const technologies: NavButton[] = [
     { value: "typescript", text: "TypeScript" },
     { value: "html", text: "HTML" },
     { value: "css", text: "CSS" },
-    // { value: "architecture", text: "Архитектура" },
-    // { value: "redux", text: "Redux" },
-    // { value: "common", text: "Общие вопросы" },
-    // { value: "fromCandidate", text: "Вопросы от кандидата" },
 ];
 const sections: Section[] = [
     { value: "Вопросы для всех", section: "allQuestions" },
