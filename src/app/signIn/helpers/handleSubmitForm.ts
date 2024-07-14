@@ -34,7 +34,7 @@ export const handleSubmit = async ({ event, setIsFormStatus, router }: Props) =>
         email,
         password,
     });
-    const user = await axios.get(`${BASE_URL}/getUser111?email=${email}`);
+    const user = await axios.get(`${BASE_URL}/getUser?email=${email}`);
     if (!user) return;
 
     const res = await signIn("credentials", {
