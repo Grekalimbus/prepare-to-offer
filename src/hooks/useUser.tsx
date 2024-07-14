@@ -12,23 +12,19 @@ const useUser = () => {
     const email = session.data?.user?.email;
     const { technology } = useTechnologyNav();
 
-    const fetchData = async (email: string | null | undefined) => {
+    const fetchData = async () => {
         if (email) {
             const { data } = await axios.get<IUser>(`${BASE_URL}/getUser?email=${email}`);
             return data;
         }
-        return null;
     };
     const fetchMyQuestions = async () => {
         if (email) {
             const { data } = await axios.get<Question[]>(
                 `${BASE_URL}/getUser/queastions?email=${email}&question=${technology}`,
             );
-            console.log("data", data);
-
             return data;
         }
-        return;
     };
     const {
         data: user,
@@ -36,11 +32,13 @@ const useUser = () => {
         error,
     } = useQuery({
         queryKey: [`getUser${email}`],
-        queryFn: () => fetchData(email),
+        queryFn: fetchData,
+        enabled: !!email,
     });
     const { data: myQuestions, isLoading: isLoadingMyQuestions } = useQuery({
-        queryKey: [`questions${email}${technology}`],
+        queryKey: [`questions${technology}`],
         queryFn: fetchMyQuestions,
+        enabled: !!email,
     });
     useEffect(() => {
         fetchMyQuestions();

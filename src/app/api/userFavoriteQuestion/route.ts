@@ -1,18 +1,7 @@
 import connetctAuthMongoDB from "@/libs/mongodbAuth";
 import User from "@/models/auth/user";
+import { Question } from "@/types/question/question";
 import { NextResponse, type NextRequest } from "next/server";
-
-type Question = {
-    question: string;
-    answer: string;
-    sliceOfCode: string;
-    technology: string;
-    links: string[] | [];
-};
-type User = {
-    email: string;
-    question: Question;
-};
 
 export async function GET(req: NextRequest) {
     await connetctAuthMongoDB();
@@ -28,23 +17,22 @@ export async function GET(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
     await connetctAuthMongoDB();
     const email = req.nextUrl.searchParams.get("email");
-    const { question }: User = await req.json();
-
+    const body: { question: Question } = await req.json();
+    const question = body.question;
     const candidate = await User.findOne({ email });
     if (candidate) {
         const findFavorite = candidate.favoriteQuestions.filter(favorite => {
-            return JSON.stringify(favorite?.answer) === JSON.stringify(question.answer);
+            return favorite?._id === question._id;
         });
-        console.log("findFavorite", findFavorite);
         if (findFavorite.length < 1) {
-            await User.updateOne({ email }, { favoriteQuestions: [...candidate.favoriteQuestions, question] });
+            await User.updateOne({ favoriteQuestions: [...candidate.favoriteQuestions, question] });
             return NextResponse.json({ message: "User Favorite Questions UPDATED" }, { status: 201 });
         }
         if (findFavorite.length > 0) {
             const withRemoveFavorite = candidate.favoriteQuestions.filter(favorite => {
-                return JSON.stringify(favorite.answer) !== JSON.stringify(question.answer);
+                return favorite._id !== question._id;
             });
-            await User.updateOne({ email }, { favoriteQuestions: [...withRemoveFavorite] });
+            await User.updateOne({ favoriteQuestions: [...withRemoveFavorite] });
             return NextResponse.json({ message: "User Favorite Questions UPDATED" }, { status: 201 });
         }
     } else {

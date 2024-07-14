@@ -11,10 +11,7 @@ const useFavoriteQuestions = (question: Question) => {
     const fetchData = async () => {
         if (email) {
             const { data } = await axios.get<Question[]>(`${BASE_URL}/userFavoriteQuestion?email=${email}`);
-            const isFavoriteQuestion = data?.some(
-                favoriteQuestion => JSON.stringify(favoriteQuestion?.answer) === JSON.stringify(question.answer),
-            );
-            return isFavoriteQuestion;
+            return data;
         }
         return null;
     };
@@ -26,7 +23,7 @@ const useFavoriteQuestions = (question: Question) => {
         });
         return data;
     };
-    const { data: isFavoriteQuestion } = useQuery({
+    const { data: isFavoriteQuestions } = useQuery({
         queryKey: ["favoriteQuestion"],
         queryFn: fetchData,
     });
@@ -37,7 +34,7 @@ const useFavoriteQuestions = (question: Question) => {
     const createFavoriteQuestion = () => {
         mutationCreate.mutate(question);
     };
-    return { createFavoriteQuestion, isFavoriteQuestion, email };
+    return { createFavoriteQuestion, isFavoriteQuestions, email };
 };
 
 export default useFavoriteQuestions;

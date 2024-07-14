@@ -14,13 +14,14 @@ interface QuestionHeaderProps {
 }
 
 const QuestionHeader = ({ question, index, status, setIsActive, isActive }: QuestionHeaderProps) => {
-    const { isFavoriteQuestion, createFavoriteQuestion, email } = useFavoriteQuestions(question);
+    const { isFavoriteQuestions, createFavoriteQuestion, email } = useFavoriteQuestions(question);
+    const isFavoriteTrue = isFavoriteQuestions?.some(item => item._id === question._id);
     return (
         <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>
             <div className={styles.questionButtonFlex}>
                 {status !== "PENDING" && email && (
                     <BiSolidBookmarkPlus
-                        className={`${styles.favoriteIcon} ${isFavoriteQuestion ? styles.active : ""}`}
+                        className={`${styles.favoriteIcon} ${isFavoriteTrue ? styles.active : ""}`}
                         onClick={createFavoriteQuestion}
                     />
                 )}
