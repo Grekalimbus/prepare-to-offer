@@ -1,5 +1,4 @@
 import connetctMongoAuthDB from "@/libs/mongodbAuth";
-import Role from "@/models/auth/role";
 import UserModel from "@/models/auth/user";
 import bcrypt from "bcryptjs";
 import type { AuthOptions, User } from "next-auth";
@@ -44,7 +43,6 @@ export const authConfig: AuthOptions = {
             await connetctMongoAuthDB();
 
             const existingUser = await UserModel.findOne({ email });
-            const userRole = await Role.findOne({ value: "USER" });
             const questions = {
                 html: [],
                 css: [],
@@ -62,7 +60,7 @@ export const authConfig: AuthOptions = {
                     email,
                     name,
                     image,
-                    roles: [userRole],
+                    roles: ["USER"],
                     companies: [],
                     questions,
                     favoriteQuestions: [],
