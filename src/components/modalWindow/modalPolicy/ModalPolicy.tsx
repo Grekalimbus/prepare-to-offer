@@ -2,11 +2,11 @@
 import { usePolicyModal } from "@/app/store";
 import styles from "./ModalPolicy.module.css";
 const ModalPolicy = () => {
-    const { policyModal, setPolicyModal } = usePolicyModal();
+    const { isPolicy, setIsPolicy } = usePolicyModal();
     return (
-        <div className={`${styles.wrapper} ${!policyModal ? styles.hidden : ""}`}>
+        <div className={`${styles.wrapper} ${!isPolicy ? styles.hidden : ""}`}>
             <div className={styles.contentPolicy}>
-                <button className={styles.buttonClose} onClick={setPolicyModal}>
+                <button className={styles.buttonClose} onClick={setIsPolicy}>
                     Скрыть
                 </button>
                 Политика в отношении обработки персональных данных 1. Общие положения Настоящая политика обработки

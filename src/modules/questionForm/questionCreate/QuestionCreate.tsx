@@ -1,13 +1,13 @@
 "use client";
+import { useLoader } from "@/app/store";
 import ErrorMessage from "@/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
-import { LoaderContext } from "@/components/loader/LoaderContext";
 import RadioSelect from "@/components/radioSelect/RadioSelect";
 import TextareaAndLabel from "@/components/textareaAndLabel/TextareaAndLabel";
 import Button from "@/ui/Buttons/Button";
 import Input from "@/ui/Input/Input";
 import { useSession } from "next-auth/react";
-import { FormEvent, useContext, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";
 import CustomCheckbox from "./components/CustomCheckbox";
@@ -29,16 +29,16 @@ const arrayTechnologies = [
 const QuestionCreate = () => {
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const { setIsLoading } = useContext(LoaderContext);
+    const { setIsLoader } = useLoader();
     const formRef = useRef<HTMLFormElement>(null);
     const session = useSession();
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (session.data?.user?.email) {
-            setIsLoading(prev => !prev);
+            setIsLoader();
             const email = session.data.user?.email;
             await handleSubmit({ event, setErrorMessage, setIsError, email, formRef });
-            setIsLoading(prev => !prev);
+            setIsLoader();
         }
     };
 

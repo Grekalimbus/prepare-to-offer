@@ -42,7 +42,6 @@ const QuestionList = ({ status }: Props) => {
 
     const { questions, isLoading } = getQuestions({ questionsPath, myQuestionsPath, pendingQuestionsPath });
 
-    console.log("questions", questions);
     if (isLoading) {
         return <LoadingSkeleton />;
     }

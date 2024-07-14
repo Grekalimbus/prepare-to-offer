@@ -6,19 +6,19 @@ import { IoCloseCircle } from "react-icons/io5";
 import styles from "./ModalAuth.module.css";
 
 const ModalAuth = () => {
-    const { authModal, setAuthModal } = useAuthModal();
+    const { isAuthModal, setIsAuthModal } = useAuthModal();
     const router = useRouter();
     const routeToSignIn = (): void => {
-        setAuthModal();
+        setIsAuthModal();
         router.push("/api/auth/signin?callbackUrl=%2FcompaniesPage");
     };
     return (
-        <div className={`${styles.modalWrapper} ${authModal ? styles.active : ""}`}>
+        <div className={`${styles.modalWrapper} ${isAuthModal ? styles.active : ""}`}>
             <div className={styles.modalAuth}>
                 <p className={styles.message}>
                     Войдите в акаунт чтобы <br /> продолжить
                 </p>
-                <IoCloseCircle onClick={setAuthModal} className={styles.buttonClose} />
+                <IoCloseCircle onClick={setIsAuthModal} className={styles.buttonClose} />
                 <Button text="Войти" onClick={() => routeToSignIn()} />
             </div>
         </div>

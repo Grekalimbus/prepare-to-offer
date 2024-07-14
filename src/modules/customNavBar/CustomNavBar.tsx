@@ -1,24 +1,32 @@
 "use client";
+import { useTechnologyNav } from "@/app/store";
 import ButtonHide from "@/ui/Buttons/ButtonHide";
 import { usePathname } from "next/navigation";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
-import useCustomNavBarHook from "./useCustomNavBarHook";
 
 interface NavButton {
     text: string;
     value: string;
 }
-
+interface FuncParams {
+    value: string;
+    action: (value: string) => void;
+}
 interface Props {
     arrayButtons: NavButton[];
-    currentSection: { section: string; value: string };
 }
-
-const CustomNavBar = ({ currentSection, arrayButtons }: Props) => {
-    const { activeSection, handleChangeSection } = useCustomNavBarHook({ currentSection });
+const getValueAndAction = (path: string): FuncParams => {
+    if (path.includes("/questionsPage")) {
+        const { technology, setTechnology } = useTechnologyNav();
+        return { value: technology, action: setTechnology };
+    }
+    const { technology, setTechnology } = useTechnologyNav();
+    return { value: technology, action: setTechnology };
+};
+const CustomNavBar = ({ arrayButtons }: Props) => {
     const path = usePathname();
-    console.log("path", path);
+    const { value, action } = getValueAndAction(path);
 
     return (
         path !== "/questionsPage/addQuestion" && (
@@ -29,10 +37,8 @@ const CustomNavBar = ({ currentSection, arrayButtons }: Props) => {
                             {arrayButtons.map(technology => (
                                 <button
                                     key={technology.value}
-                                    onClick={() => handleChangeSection(technology)}
-                                    className={`${styles.button} ${
-                                        activeSection.value === technology.value && styles.active
-                                    }`}
+                                    onClick={() => action(technology.value)}
+                                    className={`${styles.button} ${value === technology.value && styles.active}`}
                                 >
                                     {technology.text}
                                 </button>

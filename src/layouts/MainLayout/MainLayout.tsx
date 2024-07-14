@@ -1,9 +1,7 @@
 "use client";
 import Loader from "@/components/loader/Loader";
-import { LoaderProvider } from "@/components/loader/LoaderContext";
 import ModalAuth from "@/components/modalWindow/ModalAuth/ModalAuth";
 import ModalPolicy from "@/components/modalWindow/modalPolicy/ModalPolicy";
-import { CustomNavBarProvider } from "@/modules/customNavBar/CustomNavBarContext";
 import NavBar from "@/modules/navBar/NavBar";
 import Provider from "@/Providers/Provider";
 import NextTopLoader from "nextjs-toploader";
@@ -21,17 +19,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <main className={styles.layout}>
             <NextTopLoader />
             <Provider>
-                <LoaderProvider>
-                    <Loader />
-                    <CustomNavBarProvider>
-                        <MainHeader />
-                        {children}
-                        <MainFooter />
-                        <NavBar />
-                        <ModalAuth />
-                        <ModalPolicy />
-                    </CustomNavBarProvider>
-                </LoaderProvider>
+                <Loader />
+                <MainHeader />
+                {children}
+                <MainFooter />
+                <NavBar />
+                <ModalAuth />
+                <ModalPolicy />
             </Provider>
         </main>
     );

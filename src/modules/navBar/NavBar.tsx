@@ -11,14 +11,14 @@ import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
     const path = usePathname();
-    const { navBarState, setNavBarState } = useNavBar();
+    const { isNavBar, setIsNavBar } = useNavBar();
 
     useEffect(() => {
-        setNavBarState(false);
+        setIsNavBar(false);
     }, [path]);
     return (
         <>
-            <aside className={`${styles.wrapperNavBar} ${!navBarState ? styles.hidden : styles.show}`}>
+            <aside className={`${styles.wrapperNavBar} ${!isNavBar ? styles.hidden : styles.show}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton />
@@ -30,12 +30,12 @@ const NavBar = () => {
                         <PolicyButton />
                         <LoginAndLogOutButton />
                     </div>
-                    <button className={styles.buttonHide} onClick={() => setNavBarState()}>
+                    <button className={styles.buttonHide} onClick={() => setIsNavBar()}>
                         Скрыть
                     </button>
                 </nav>
             </aside>
-            <div className={`${navBarState && styles.shadowBlock}`}></div>
+            <div className={`${isNavBar && styles.shadowBlock}`}></div>
         </>
     );
 };

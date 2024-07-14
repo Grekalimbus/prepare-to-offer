@@ -1,16 +1,16 @@
+import { useTechnologyNav } from "@/app/store";
 import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
 import { IUser } from "@/types/user/user";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useContext, useEffect } from "react";
-import { CustomNavBarContext } from "../modules/customNavBar/CustomNavBarContext";
+import { useEffect } from "react";
 
 const useUser = () => {
     const session = useSession();
     const email = session.data?.user?.email;
-    const { activeSection } = useContext(CustomNavBarContext);
+    const { technology } = useTechnologyNav();
 
     const fetchData = async (email: string | null | undefined) => {
         if (email) {
@@ -19,8 +19,8 @@ const useUser = () => {
         }
         return null;
     };
-    const fetchMyQuestions = async (technology: string) => {
-        if (email && activeSection.section) {
+    const fetchMyQuestions = async () => {
+        if (email) {
             const { data } = await axios.get<Question[]>(
                 `${BASE_URL}/getUser/queastions?email=${email}&question=${technology}`,
             );
@@ -39,15 +39,12 @@ const useUser = () => {
         queryFn: () => fetchData(email),
     });
     const { data: myQuestions, isLoading: isLoadingMyQuestions } = useQuery({
-        queryKey: [`questions${email}${activeSection.value}`],
-        queryFn: () => fetchMyQuestions(activeSection.value),
+        queryKey: [`questions${email}${technology}`],
+        queryFn: fetchMyQuestions,
     });
     useEffect(() => {
-        if (activeSection.section) {
-            fetchMyQuestions(activeSection.value);
-            console.log("myQuestions", myQuestions);
-        }
-    }, [activeSection]);
+        fetchMyQuestions();
+    }, [technology]);
     return { user, isLoading, error, myQuestions, isLoadingMyQuestions };
 };
 

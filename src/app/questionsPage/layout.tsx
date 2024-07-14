@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode } from "react";
 import ReusedLayout from "../../layouts/reusedLayout/ReusedLayout";
 
@@ -32,11 +33,7 @@ const sections: Section[] = [
 
 const MainLayout: React.FC<Props> = ({ children }) => {
     return (
-        <ReusedLayout
-            sections={sections}
-            arrayButtons={technologies}
-            currentSection={{ section: "navQuestions", value: "react" }}
-        >
+        <ReusedLayout sections={sections} arrayButtons={technologies}>
             {children}
         </ReusedLayout>
     );

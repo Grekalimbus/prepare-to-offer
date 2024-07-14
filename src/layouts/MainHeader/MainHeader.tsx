@@ -6,11 +6,11 @@ import styles from "./MainHeader.module.css";
 import ButtonsLogin from "./components/ButtonsLogin";
 
 const MainHeader = () => {
-    const { setNavBarState } = useNavBar();
+    const { setIsNavBar } = useNavBar();
     return (
         <header className={styles.header}>
             <div className={styles.menuWrapper}>
-                <Button onClick={setNavBarState} text={"Меню"} />;
+                <Button onClick={setIsNavBar} text={"Меню"} />;
             </div>
             <Link href="/" className={styles.iconWrapper}>
                 <IoHome className={styles.iconHomePage} />

@@ -1,12 +1,11 @@
 "use client";
-import { useContext } from "react";
+import { useLoader } from "@/app/store";
 import style from "./Loader.module.css";
-import { LoaderContext } from "./LoaderContext";
 
 const Loader = () => {
-    const { isLoading } = useContext(LoaderContext);
+    const { isLoader } = useLoader();
     return (
-        isLoading && (
+        isLoader && (
             <div className={style.wrapperLoader}>
                 <div className={style.loader}>
                     <svg

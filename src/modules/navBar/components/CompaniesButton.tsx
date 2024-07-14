@@ -9,12 +9,12 @@ const CompaniesButton = () => {
     const { data: session } = useSession();
     const router = useRouter();
     const path = usePathname();
-    const { setAuthModal } = useAuthModal();
+    const { setIsAuthModal } = useAuthModal();
 
     const actionCompaniesPageLink = (e: MouseEvent<HTMLAnchorElement>) => {
         if (!session) {
             e.preventDefault();
-            setAuthModal();
+            setIsAuthModal();
         } else {
             router.push("/companiesPage");
         }

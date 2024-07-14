@@ -2,10 +2,10 @@
 import { usePolicyModal } from "@/app/store";
 import styles from "../NavBar.module.css";
 const PolicyButton = () => {
-    const { setPolicyModal } = usePolicyModal();
+    const { setIsPolicy } = usePolicyModal();
 
     return (
-        <button className={styles.navLink} onClick={() => setPolicyModal()}>
+        <button className={styles.navLink} onClick={setIsPolicy}>
             Политика конфиденциальности
         </button>
     );

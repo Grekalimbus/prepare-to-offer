@@ -3,12 +3,12 @@ import { signIn } from "next-auth/react";
 import styles from "../SignIn.module.css";
 
 const LowerSectionForm = () => {
-    const { setAuthModal } = useAuthModal();
+    const { setIsAuthModal } = useAuthModal();
     return (
         <>
             <p className={styles.titleWarning}>
                 Вы соглашаетесь с нашими Условиями использования и подтверждаете, что прочитали и поняли нашу
-                <span onClick={setAuthModal} className={styles.span}>
+                <span onClick={setIsAuthModal} className={styles.span}>
                     Политику конфиденциальности
                 </span>
                 . Ваши данные будут использоваться в соответствии с этой политикой для обеспечения безопасности и

@@ -1,20 +1,18 @@
+import { useTechnologyNav } from "@/app/store";
 import { BASE_URL } from "@/configs/baseURL";
 import { Question } from "@/types/question/question";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
-import useCustomNavBarHook from "../modules/customNavBar/useCustomNavBarHook";
 
 interface OjbectQuestions {
     [key: string]: Question[];
 }
 
 const useGetSomeQuestions = () => {
-    const { activeSection } = useCustomNavBarHook({
-        currentSection: { section: "navQuestions", value: "" },
-    });
+    const { technology } = useTechnologyNav();
     const fetchData = async (currentTechonoly: string) => {
-        if (activeSection.value) {
+        if (technology) {
             const { data } = await axios.get<OjbectQuestions>(
                 `${BASE_URL}/questions/${currentTechonoly}Question?status=ACCEPT`,
             );
@@ -27,12 +25,12 @@ const useGetSomeQuestions = () => {
         isLoading,
         error,
     } = useQuery({
-        queryKey: [`${activeSection.value}Question`],
-        queryFn: () => fetchData(activeSection.value),
+        queryKey: [`${technology}Question`],
+        queryFn: () => fetchData(technology),
     });
     useEffect(() => {
-        if (activeSection.value) fetchData(activeSection.value);
-    }, [activeSection]);
+        if (technology) fetchData(technology);
+    }, [technology]);
 
     return { questions, isLoading, error };
 };
