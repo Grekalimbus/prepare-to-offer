@@ -14,8 +14,8 @@ interface QuestionHeaderProps {
 }
 
 const QuestionHeader = ({ question, index, status, setIsActive, isActive }: QuestionHeaderProps) => {
-    const { isFavoriteQuestions, createFavoriteQuestion, email } = useFavoriteQuestions(question);
-    const isFavoriteTrue = isFavoriteQuestions?.some(item => item._id === question._id);
+    const { dataFavoriteQuestions, email, createFavoriteQuestion } = useFavoriteQuestions(question);
+    const isFavoriteTrue = dataFavoriteQuestions.data?.some(item => item._id === question._id);
     return (
         <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>
             <div className={styles.questionButtonFlex}>

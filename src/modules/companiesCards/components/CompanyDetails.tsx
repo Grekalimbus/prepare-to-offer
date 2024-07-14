@@ -1,6 +1,6 @@
 "use client";
 import AdminControls from "@/components/button/AdminControls";
-import useGetCompanyPending from "@/hooks/useGetCompanyPending";
+
 import { Company } from "@/types/company/company";
 import { format, toZonedTime } from "date-fns-tz";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlig
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
+import useCompanyPending from "@/hooks/useCompanyPending";
 import styles from "../CompaniesCards.module.css";
 interface Props {
     status: string;
@@ -24,8 +25,7 @@ const currentURL = "/adminPage/section/companies/navAction/incoming";
 const CompanyDetails = ({ status }: Props) => {
     const path = usePathname();
     const isIncoming = path.includes(currentURL);
-    const companies = useGetCompanyPending();
-    const incomingCompanies = isIncoming ? useGetCompanyPending() : { companies: undefined, isLoading: false };
+    const incomingCompanies = isIncoming ? useCompanyPending() : { companies: undefined, isLoading: false };
     const { companies: companiesPending, isLoading: isPendingCompanyLoad } = incomingCompanies;
 
     const companiesToMap = incomingCompanies ? companiesPending : companiesPending;

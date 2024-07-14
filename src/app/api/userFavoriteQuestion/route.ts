@@ -24,6 +24,7 @@ export async function PATCH(req: NextRequest) {
         const findFavorite = candidate.favoriteQuestions.filter(favorite => {
             return favorite?._id === question._id;
         });
+        console.log("findFavorite.length", findFavorite.length);
         if (findFavorite.length < 1) {
             await candidate.updateOne({ favoriteQuestions: [...candidate.favoriteQuestions, question] });
             return NextResponse.json({ message: "User Favorite Questions UPDATED" }, { status: 201 });
