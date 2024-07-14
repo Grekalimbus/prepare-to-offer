@@ -7,21 +7,17 @@ interface OjbectQuestions {
     pendingQuestions: Question[];
 }
 
-const useGetPendingQuestions = () => {
+const usePendingQuestions = () => {
     const fetchData = async () => {
         const { data } = await axios.get<OjbectQuestions>(`${BASE_URL}/questions/pendingQuestion`);
         return data.pendingQuestions;
     };
-    const {
-        data: questions,
-        isLoading,
-        error,
-    } = useQuery({
+    const dataPendingQuestion = useQuery({
         queryKey: ["pendingQuestions"],
         queryFn: fetchData,
     });
 
-    return { questions, isLoading, error };
+    return { dataPendingQuestion };
 };
 
-export default useGetPendingQuestions;
+export default usePendingQuestions;

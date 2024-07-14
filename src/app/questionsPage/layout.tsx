@@ -22,9 +22,10 @@ const technologies: NavButton[] = [
     { value: "css", text: "CSS" },
 ];
 const sections: Section[] = [
-    { value: "Добавить новый вопрос", section: "addQuestion" },
     { value: "Вопросы для всех", section: "allQuestions" },
     { value: "Мои вопросы", section: "myQuestions" },
+    { value: "Избранные", section: "favoriteQuestions" },
+    { value: "Добавить новый вопрос", section: "addQuestion" },
 ];
 
 const MainLayout: React.FC<Props> = ({ children }) => {
