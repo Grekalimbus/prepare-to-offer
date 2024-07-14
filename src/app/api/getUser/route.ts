@@ -5,8 +5,6 @@ import { NextResponse, type NextRequest } from "next/server";
 export async function GET(request: NextRequest) {
     await connectAuthMongoDB();
     const email = request.nextUrl.searchParams.get("email");
-    const question = request.nextUrl.searchParams.get("question");
-    console.log("question", question);
     const candidate = await User.findOne({ email: email }).select("-password");
     if (candidate) {
         return NextResponse.json(candidate, { status: 201 });

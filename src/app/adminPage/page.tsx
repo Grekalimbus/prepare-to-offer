@@ -42,12 +42,9 @@ const DynamicComponent = ({ params }: Params) => {
 const page = ({ params }: Params) => {
     return (
         <>
-            <SelectCategoryButtons
-                // currentSection={{ section: "adminSection", value: "techQuestions" }}
-                sections={sections}
-            />
+            <SelectCategoryButtons sections={sections} />
             <div className={styles.wrapper}>
-                <CustomNavBar arrayButtons={actions} currentSection={{ section: "navActions", value: "add" }} />
+                <CustomNavBar arrayButtons={actions} />
                 <DynamicComponent params={params} />
             </div>
         </>

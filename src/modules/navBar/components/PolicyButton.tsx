@@ -1,4 +1,3 @@
-"use client";
 import { usePolicyModal } from "@/app/store";
 import styles from "../NavBar.module.css";
 const PolicyButton = () => {
