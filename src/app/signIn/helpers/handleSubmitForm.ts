@@ -43,7 +43,7 @@ export const handleSubmit = async ({ event, setIsFormStatus, router }: Props) =>
         redirect: false,
     });
     if (res && !res.error) {
-        router.push("/");
+        router.push("/questionsPage/allQuestions");
     } else {
         console.log("res", res);
     }

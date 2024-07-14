@@ -62,7 +62,7 @@ export const authConfig: AuthOptions = {
                     email,
                     name,
                     image,
-                    roles: [userRole.value],
+                    roles: [userRole],
                     companies: [],
                     questions,
                     favoriteQuestions: [],

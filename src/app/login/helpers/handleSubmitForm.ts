@@ -23,7 +23,7 @@ export const handleSubmitForm = async ({ event, setIsFormStatus, router }: Props
         redirect: false,
     });
     if (res && !res.error) {
-        router.push("/");
+        router.push("/questionsPage/allQuestions");
     } else {
         setIsFormStatus({ email: false });
     }

@@ -14,6 +14,7 @@ const Login = () => {
     const [isFormStatus, setIsFormStatus] = useState<FormDataStatus>({
         email: null,
     });
+
     const router = useRouter();
     const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

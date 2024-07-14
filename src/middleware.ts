@@ -21,10 +21,25 @@ export async function middleware(req: NextRequest) {
         if (isAdmin) return NextResponse.next();
         if (!isAdmin) return NextResponse.redirect(new URL("/", req.url));
     }
+    if (
+        !token &&
+        (req.nextUrl.pathname === "/questionsPage/addQuestion" || req.nextUrl.pathname === "/questionsPage/myQuestions")
+    ) {
+        const loginUrl = new URL("/login", req.url);
+        loginUrl.searchParams.set("redirect", req.nextUrl.pathname);
+        return NextResponse.redirect(loginUrl);
+    }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ["/companiesPage", "/adminPage", "/login", "/signIn"],
+    matcher: [
+        "/companiesPage",
+        "/adminPage",
+        "/login",
+        "/signIn",
+        "/questionsPage/addQuestion",
+        "/questionsPage/myQuestions",
+    ],
 };

@@ -1,5 +1,6 @@
 "use client";
 import ButtonHide from "@/app/ui/Buttons/ButtonHide";
+import { usePathname } from "next/navigation";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
 import useCustomNavBarHook from "./useCustomNavBarHook";
@@ -16,29 +17,33 @@ interface Props {
 
 const CustomNavBar = ({ currentSection, arrayButtons }: Props) => {
     const { activeSection, handleChangeSection } = useCustomNavBarHook({ currentSection });
+    const path = usePathname();
+    console.log("path", path);
 
     return (
-        <>
-            <aside className={styles.wrapperNavBar}>
-                <div className={styles.navBar}>
-                    <section className={styles.containerButtons}>
-                        {arrayButtons.map(technology => (
-                            <button
-                                key={technology.value}
-                                onClick={() => handleChangeSection(technology)}
-                                className={`${styles.button} ${
-                                    activeSection.value === technology.value && styles.active
-                                }`}
-                            >
-                                {technology.text}
-                            </button>
-                        ))}
-                    </section>
-                    <ButtonHide text="Скрыть" />
-                </div>
-            </aside>
-            <PiSlideshowFill className={styles.slideshowButton} />
-        </>
+        path !== "/questionsPage/addQuestion" && (
+            <>
+                <aside className={styles.wrapperNavBar}>
+                    <div className={styles.navBar}>
+                        <section className={styles.containerButtons}>
+                            {arrayButtons.map(technology => (
+                                <button
+                                    key={technology.value}
+                                    onClick={() => handleChangeSection(technology)}
+                                    className={`${styles.button} ${
+                                        activeSection.value === technology.value && styles.active
+                                    }`}
+                                >
+                                    {technology.text}
+                                </button>
+                            ))}
+                        </section>
+                        <ButtonHide text="Скрыть" />
+                    </div>
+                </aside>
+                <PiSlideshowFill className={styles.slideshowButton} />
+            </>
+        )
     );
 };
 

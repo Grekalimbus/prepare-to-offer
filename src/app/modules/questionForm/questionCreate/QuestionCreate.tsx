@@ -20,10 +20,10 @@ const arrayTechnologies = [
     { text: "Javascript", value: "javascript" },
     { text: "Typescript", value: "typescript" },
     { text: "React", value: "react" },
-    { text: "Redux", value: "redux" },
-    { text: "Архитектура", value: "architecture" },
-    { text: "Next.js", value: "nextJS" },
-    { text: "Общие", value: "common" },
+    // { text: "Redux", value: "redux" },
+    // { text: "Архитектура", value: "architecture" },
+    // { text: "Next.js", value: "nextJS" },
+    // { text: "Общие", value: "common" },
 ];
 
 const QuestionCreate = () => {

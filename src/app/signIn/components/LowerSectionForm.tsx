@@ -21,7 +21,10 @@ const LowerSectionForm = () => {
                 <span className={styles.separatorText}>OR</span>
                 <span className={styles.separatorElem}></span>
             </div>
-            <button className={styles.buttonGoogle} onClick={() => signIn("google", { callbackUrl: "/" })}>
+            <button
+                className={styles.buttonGoogle}
+                onClick={() => signIn("google", { callbackUrl: "/questionsPage/allQuestions" })}
+            >
                 Продолжить с Google
             </button>
         </>
