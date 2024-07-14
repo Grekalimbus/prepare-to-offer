@@ -1,18 +1,18 @@
 import { Question } from "@/types/question/question";
 import { useState } from "react";
 
-const useFilteredQuestions = (questions: Question[]) => {
-    const [filter, setFilter] = useState<string>("");
+const useFilteredQuestions = (questions?: Question[] | undefined) => {
+    const [filterValue, setFilterValue] = useState<string>("");
 
-    const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFilter(e.target.value);
+    const handleFilterChange = (value: string) => {
+        setFilterValue(prev => (prev = value));
     };
 
     const filteredQuestions = questions?.filter(question =>
-        question.question.toLowerCase().includes(filter.toLowerCase()),
+        question.question.toLowerCase().includes(filterValue.toLowerCase()),
     );
-
-    return { filter, handleFilterChange, filteredQuestions };
+    console.log("question", questions);
+    return { filterValue, handleFilterChange, filteredQuestions };
 };
 
 export default useFilteredQuestions;

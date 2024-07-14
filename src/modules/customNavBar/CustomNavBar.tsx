@@ -26,10 +26,11 @@ const getValueAndAction = (path: string): FuncParams => {
 };
 const CustomNavBar = ({ arrayButtons }: Props) => {
     const path = usePathname();
+    const isVisible = path !== "/questionsPage/addQuestion" && path !== "/questionsPage/favoriteQuestions";
     const { value, action } = getValueAndAction(path);
 
     return (
-        path !== "/questionsPage/addQuestion" && (
+        isVisible && (
             <>
                 <aside className={styles.wrapperNavBar}>
                     <div className={styles.navBar}>

@@ -37,6 +37,7 @@
     border-radius: 5px;
     color: var(--white);
     cursor: pointer;
+    transition: background 0.4s;
 }
 .commonWrapper {
     z-index: 1;
@@ -156,6 +157,9 @@
     .buttonQuestion:hover .eyeIcon {
         color: var(--flamingo);
     }
+    .buttonFind:hover {
+        background: var(--flamingo);
+    }
 }
 @media (hover: none) {
     .favoriteIcon:hover {
@@ -169,5 +173,8 @@
     }
     .buttonQuestion:hover .eyeIcon {
         color: var(--flamingo);
+    }
+    .buttonFind:hover {
+        background: var(--flamingo);
     }
 }

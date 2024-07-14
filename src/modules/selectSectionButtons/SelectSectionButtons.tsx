@@ -15,12 +15,13 @@ interface Props {
 const SelectCategoryButtons = ({ sections }: Props) => {
     const path = usePathname().split("/");
     const currentSection = path[path.length - 1];
-
+    const width = 100 / sections.length - 0.1;
     return (
         <section className={styles.selectCategoryButtons}>
             {sections.map((section: Section) => {
                 return (
                     <Link
+                        style={{ width: `${width}%` }}
                         href={section.section}
                         key={section.section}
                         className={`${styles.categoryButton} ${currentSection === section.section && styles.active}`}
