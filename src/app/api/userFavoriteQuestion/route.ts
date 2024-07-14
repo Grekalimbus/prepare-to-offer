@@ -24,15 +24,16 @@ export async function PATCH(req: NextRequest) {
         const findFavorite = candidate.favoriteQuestions.filter(favorite => {
             return favorite?._id === question._id;
         });
+        console.log("findFavorite.length", findFavorite.length);
         if (findFavorite.length < 1) {
-            await User.updateOne({ favoriteQuestions: [...candidate.favoriteQuestions, question] });
+            await candidate.updateOne({ favoriteQuestions: [...candidate.favoriteQuestions, question] });
             return NextResponse.json({ message: "User Favorite Questions UPDATED" }, { status: 201 });
         }
         if (findFavorite.length > 0) {
             const withRemoveFavorite = candidate.favoriteQuestions.filter(favorite => {
                 return favorite._id !== question._id;
             });
-            await User.updateOne({ favoriteQuestions: [...withRemoveFavorite] });
+            await candidate.updateOne({ favoriteQuestions: [...withRemoveFavorite] });
             return NextResponse.json({ message: "User Favorite Questions UPDATED" }, { status: 201 });
         }
     } else {

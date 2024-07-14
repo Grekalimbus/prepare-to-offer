@@ -47,7 +47,7 @@ const page = ({ params }: Params) => {
                 sections={sections}
             />
             <div className={styles.wrapper}>
-                <CustomNavBar arrayButtons={actions} currentSection={{ section: "navActions", value: "add" }} />
+                <CustomNavBar arrayButtons={actions} />
                 <DynamicComponent params={params} />
             </div>
         </>
