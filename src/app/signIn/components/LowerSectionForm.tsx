@@ -1,15 +1,14 @@
-import { ModalPolicyContext } from "@/app/components/modalWindow/modalPolicy/ModalPolicyContext";
+import { useAuthModal } from "@/app/store";
 import { signIn } from "next-auth/react";
-import { useContext } from "react";
 import styles from "../SignIn.module.css";
 
 const LowerSectionForm = () => {
-    const { setIsModalActive } = useContext(ModalPolicyContext);
+    const { setAuthModal } = useAuthModal();
     return (
         <>
             <p className={styles.titleWarning}>
                 Вы соглашаетесь с нашими Условиями использования и подтверждаете, что прочитали и поняли нашу
-                <span onClick={() => setIsModalActive(prev => !prev)} className={styles.span}>
+                <span onClick={setAuthModal} className={styles.span}>
                     Политику конфиденциальности
                 </span>
                 . Ваши данные будут использоваться в соответствии с этой политикой для обеспечения безопасности и

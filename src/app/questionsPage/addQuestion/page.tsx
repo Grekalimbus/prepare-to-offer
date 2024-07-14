@@ -1,4 +1,4 @@
-import QuestionCreate from "@/app/modules/questionForm/questionCreate/QuestionCreate";
+import QuestionCreate from "@/modules/questionForm/questionCreate/QuestionCreate";
 
 const page = () => {
     return <QuestionCreate />;
