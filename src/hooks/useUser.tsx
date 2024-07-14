@@ -26,16 +26,12 @@ const useUser = () => {
             return data;
         }
     };
-    const {
-        data: user,
-        isLoading,
-        error,
-    } = useQuery({
+    const dataUser = useQuery({
         queryKey: [`getUser${email}`],
         queryFn: fetchData,
         enabled: !!email,
     });
-    const { data: myQuestions, isLoading: isLoadingMyQuestions } = useQuery({
+    const dataMyQuestions = useQuery({
         queryKey: [`questions${technology}`],
         queryFn: fetchMyQuestions,
         enabled: !!email,
@@ -43,7 +39,7 @@ const useUser = () => {
     useEffect(() => {
         fetchMyQuestions();
     }, [technology]);
-    return { user, isLoading, error, myQuestions, isLoadingMyQuestions };
+    return { dataUser, dataMyQuestions };
 };
 
 export default useUser;

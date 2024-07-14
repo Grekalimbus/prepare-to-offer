@@ -9,11 +9,10 @@
     align-items: center;
     font-weight: 500;
     color: var(--white);
-    border: 1px solid var(--flamingo);
-    background: var(--shadow-white);
     cursor: pointer;
-    backdrop-filter: blur(10px);
     transition: background-color 0.4s;
+    background: var(--dark);
+    border: 1px solid var(--flamingo);
 }
 .buttonHide {
     height: 60px;
