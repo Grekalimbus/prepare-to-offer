@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "../NavBar.module.css";
 
 const AdminButton = () => {
-    const user = useUser();
-    const isAdmin = user.user?.roles.includes("ADMIN");
+    const { dataUser } = useUser();
+    const isAdmin = dataUser.data?.roles.includes("ADMIN");
 
     return (
         <>
