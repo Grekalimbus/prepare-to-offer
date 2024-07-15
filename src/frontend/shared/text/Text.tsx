@@ -1,7 +1,18 @@
+import { ReactNode } from "react";
 import styles from "./Text.module.css";
 
-const Text = ({ text }: { text: string }) => {
-    return <p className={styles.text}>{text}</p>;
+interface Props {
+    text: string;
+    children?: ReactNode;
+}
+
+const Text = ({ text, children }: Props) => {
+    return (
+        <p className={styles.text}>
+            {text}
+            {children}
+        </p>
+    );
 };
 
 export default Text;

@@ -1,7 +1,7 @@
 "use client";
-import Loader from "@/components/loader/Loader";
-import ModalAuth from "@/components/modalWindow/ModalAuth/ModalAuth";
-import ModalPolicy from "@/components/modalWindow/modalPolicy/ModalPolicy";
+import Loader from "@/frontend/components/loader/Loader";
+import ModalAuth from "@/frontend/components/modalWindow/ModalAuth/ModalAuth";
+import ModalPolicy from "@/frontend/components/modalWindow/modalPolicy/ModalPolicy";
 import NavBar from "@/frontend/modules/navBar/NavBar";
 import Provider from "@/frontend/Providers/Provider";
 import NextTopLoader from "nextjs-toploader";

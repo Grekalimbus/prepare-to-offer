@@ -1,16 +1,9 @@
 import CustomNavBar from "@/frontend/modules/customNavBar/CustomNavBar";
-import SelectCategoryButtons from "@/frontend/modules/selectSectionButtons/SelectSectionButtons";
+import SelectCategoryButtons from "@/frontend/shared/selectSectionButtons/SelectSectionButtons";
+import { NavButton } from "@/frontend/types/navButton/navButton";
+import { Section } from "@/frontend/types/section/section";
 import { ReactNode } from "react";
 import styles from "./ReusedLayout.module.css";
-
-interface Section {
-    value: string;
-    section: string;
-}
-interface NavButton {
-    text: string;
-    value: string;
-}
 
 interface Props {
     children: ReactNode;

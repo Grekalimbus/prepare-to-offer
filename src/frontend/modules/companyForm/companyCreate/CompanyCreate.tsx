@@ -1,7 +1,7 @@
 "use client";
-import ErrorMessage from "@/components/errorMessage/ErrorMessage";
-import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
-import RadioSelect from "@/components/radioSelect/RadioSelect";
+import ErrorMessage from "@/frontend/components/errorMessage/ErrorMessage";
+import FieldForCodeSlice from "@/frontend/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/frontend/components/radioSelect/RadioSelect";
 import useCompany from "@/frontend/domains/company/useCompany";
 import useUser from "@/frontend/domains/user/useUser";
 import Button from "@/frontend/ui/Buttons/Button";

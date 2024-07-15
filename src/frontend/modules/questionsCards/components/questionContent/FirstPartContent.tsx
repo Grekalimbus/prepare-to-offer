@@ -1,6 +1,5 @@
+import SnipedCode from "@/frontend/shared/sliceOfCode/SnipetCode";
 import React from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ContentProps } from "../../types/types";
 import styles from "./QuestionContent.module.css";
 
@@ -16,15 +15,7 @@ const FirstPartContent = ({ isActive, question }: ContentProps) => {
                         </React.Fragment>
                     ))}
                 </p>
-                {question.sliceOfCode && (
-                    <SyntaxHighlighter
-                        customStyle={{ width: "100%", borderRadius: "6px" }}
-                        language="jsx"
-                        style={atomOneDark}
-                    >
-                        {question.sliceOfCode}
-                    </SyntaxHighlighter>
-                )}
+                {question.sliceOfCode && <SnipedCode code={question.sliceOfCode} />}
             </section>
         )
     );

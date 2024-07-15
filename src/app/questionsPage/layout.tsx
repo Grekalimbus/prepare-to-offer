@@ -1,4 +1,6 @@
 "use client";
+import { NavButton } from "@/frontend/types/navButton/navButton";
+import { Section } from "@/frontend/types/section/section";
 import { ReactNode } from "react";
 import ReusedLayout from "../../frontend/layouts/reusedLayout/ReusedLayout";
 
@@ -6,14 +8,6 @@ type Props = {
     children: ReactNode;
 };
 
-interface Section {
-    value: string;
-    section: string;
-}
-interface NavButton {
-    text: string;
-    value: string;
-}
 const technologies: NavButton[] = [
     { value: "react", text: "React" },
     { value: "javascript", text: "JavaScript" },

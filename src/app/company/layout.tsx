@@ -1,15 +1,10 @@
 import ReusedLayout from "@/frontend/layouts/reusedLayout/ReusedLayout";
+import { Section } from "@/frontend/types/section/section";
 import { ReactNode } from "react";
 
 type Props = {
     children: ReactNode;
 };
-
-interface Section {
-    value: string;
-    section: string;
-}
-
 const sections: Section[] = [
     { value: "Мои список", section: "myCompany" },
     { value: "Общий список", section: "allCompany" },

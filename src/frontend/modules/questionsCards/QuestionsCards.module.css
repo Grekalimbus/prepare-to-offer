@@ -5,26 +5,6 @@
     margin-top: 7px;
     margin-bottom: 7px;
 }
-.inputFind {
-    width: 75%;
-    margin-right: 12px;
-    height: 50px;
-    background: var(--shadow-black);
-    border: 2px solid var(--dark);
-    border-radius: 5px;
-    padding-left: 15px;
-    color: var(--white);
-}
-.buttonFind {
-    width: 150px;
-    height: 50px;
-    border: 1px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 5px;
-    color: var(--white);
-    cursor: pointer;
-    transition: background 0.4s;
-}
 .questionCard {
     width: 100%;
     margin-bottom: 30px;
@@ -35,17 +15,4 @@
     display: flex;
     flex-direction: column;
     box-shadow: 6px 6px 28px 0px #000000de;
-}
-.hideSectionLinks {
-    display: none;
-}
-@media (hover: hover) {
-    .buttonFind:hover {
-        background: var(--flamingo);
-    }
-}
-@media (hover: none) {
-    .buttonFind:hover {
-        background: var(--flamingo);
-    }
 }

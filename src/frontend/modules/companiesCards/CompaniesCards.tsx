@@ -1,4 +1,4 @@
-import AcceptAll from "@/components/button/AcceptAll";
+import WrapperCardContent from "@/frontend/shared/wrapperCardContent/WrapperCardContent";
 import styles from "./CompaniesCards.module.css";
 import CompanyDetails from "./components/CompanyDetails";
 interface Props {
@@ -7,12 +7,9 @@ interface Props {
 const CompaniesCards = ({ status }: Props) => {
     return (
         <div className={styles.flexContainer}>
-            <section className={styles.commonWrapper}>
-                <div className={styles.wrapperCompany}>
-                    <CompanyDetails status={status} />
-                </div>
-                {status === "PENDING" && <AcceptAll />}
-            </section>
+            <WrapperCardContent status={status}>
+                <CompanyDetails status={status} />
+            </WrapperCardContent>
         </div>
     );
 };

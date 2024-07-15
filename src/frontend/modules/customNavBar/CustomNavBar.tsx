@@ -1,14 +1,11 @@
 "use client";
 import { useTechnologyNav } from "@/app/store";
+import { NavButton } from "@/frontend/types/navButton/navButton";
 import ButtonHide from "@/frontend/ui/Buttons/ButtonHide";
 import { usePathname } from "next/navigation";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
 
-interface NavButton {
-    text: string;
-    value: string;
-}
 interface FuncParams {
     value: string;
     action: (value: string) => void;

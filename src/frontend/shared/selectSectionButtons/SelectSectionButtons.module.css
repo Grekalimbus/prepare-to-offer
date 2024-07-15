@@ -7,8 +7,16 @@
     border-top: 1px solid var(--flamingo);
     backdrop-filter: blur(4px);
 }
+.selectCategoryButtons > :first-child {
+    border-right: none;
+    border-left: none;
+}
+.selectCategoryButtons > :last-child {
+    border-right: none;
+    border-left: none;
+}
 .categoryButton {
-    width: 33.28%;
+    flex: 1;
     min-height: 60px;
     background: none;
     display: flex;
@@ -20,11 +28,13 @@
     cursor: pointer;
     background: var(--shadow-black);
     transition: background 0.4s;
+    border-right: 1px solid var(--flamingo);
+    border-left: 1px solid var(--flamingo);
 }
 .categoryButton.active {
     border-bottom: 1px solid var(--flamingo);
-    border-top: none;
     background: var(--dark);
+    box-shadow: 7px 14px 22px -21px var(--flamingo);
 }
 @media (hover: hover) {
     .categoryButton:hover {

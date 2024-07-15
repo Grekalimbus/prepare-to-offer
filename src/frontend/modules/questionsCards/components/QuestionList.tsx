@@ -1,7 +1,7 @@
 "use client";
 import useFilterQuestions from "@/app/store";
-import AdminControls from "@/components/button/AdminControls";
-import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
+import AdminControls from "@/frontend/components/button/AdminControls";
+import LoadingSkeleton from "@/frontend/components/loading/LoadingSkeleton";
 import useQuestion from "@/frontend/domains/question/useQuestion";
 import Text from "@/frontend/shared/text/Text";
 import WrapperMessage from "@/frontend/shared/wrapperMessage/WrapperMessage";

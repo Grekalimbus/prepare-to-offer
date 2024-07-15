@@ -1,9 +1,9 @@
 "use client";
 import { useLoader } from "@/app/store";
-import ErrorMessage from "@/components/errorMessage/ErrorMessage";
-import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
-import RadioSelect from "@/components/radioSelect/RadioSelect";
-import TextareaAndLabel from "@/components/textareaAndLabel/TextareaAndLabel";
+import ErrorMessage from "@/frontend/components/errorMessage/ErrorMessage";
+import FieldForCodeSlice from "@/frontend/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/frontend/components/radioSelect/RadioSelect";
+import TextareaAndLabel from "@/frontend/components/textareaAndLabel/TextareaAndLabel";
 import useQuestion from "@/frontend/domains/question/useQuestion";
 import useUser from "@/frontend/domains/user/useUser";
 import Button from "@/frontend/ui/Buttons/Button";
