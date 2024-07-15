@@ -2,7 +2,7 @@ import AcceptAll from "@/components/button/AcceptAll";
 import styles from "./CompaniesCards.module.css";
 import CompanyDetails from "./components/CompanyDetails";
 interface Props {
-    status: string;
+    status?: string;
 }
 const CompaniesCards = ({ status }: Props) => {
     return (

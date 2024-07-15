@@ -11,26 +11,38 @@ import Questions from "./Questions";
 import SliceOfCode from "./SliceOfCode";
 import TopSection from "./TopSection";
 interface Props {
-    status: string;
+    status?: string;
 }
 
 const CompanyDetails = ({ status }: Props) => {
-    const { company, isLoading } = useGetCompany();
+    const { companies, isLoading } = useGetCompany();
 
     if (isLoading) {
         return <LoadingSkeleton />;
     }
-    return company?.map((company: Company) => {
-        return (
-            <div className={styles.companyCard} key={company._id}>
-                <TopSection company={company} />
-                <Questions company={company} />
-                {company.sliceOfCode && <SliceOfCode company={company} />}
-                <DateInfo company={company} />
-                {status === "PENDING" && <AdminControls />}
-            </div>
-        );
-    });
+
+    return (
+        <>
+            {companies?.length === 0 && (
+                <div className={styles.dummy}>
+                    В этой секции пусто
+                    <br />
+                    Вероятно, вы еще не создавали карточки с инфомрацией
+                </div>
+            )}
+            {companies?.map((company: Company) => {
+                return (
+                    <div className={styles.companyCard} key={company._id}>
+                        <TopSection company={company} />
+                        <Questions company={company} />
+                        {company.sliceOfCode && <SliceOfCode company={company} />}
+                        <DateInfo company={company} />
+                        {status === "PENDING" && <AdminControls />}
+                    </div>
+                );
+            })}
+        </>
+    );
 };
 
 export default CompanyDetails;

@@ -49,7 +49,7 @@ const handleSubmit = async ({ event, setErrorMessage, setIsError, email }: Props
                 isAdmin = true;
             }
         });
-        await axios.patch(`${BASE_URL}/userCompany`, { email, company: completeData });
+        await axios.patch(`${BASE_URL}/userCompany`, { email, companies: completeData });
         if (isAdmin) {
             await axios.post(`${BASE_URL}/company`, {
                 ...completeData,

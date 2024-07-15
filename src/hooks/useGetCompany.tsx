@@ -1,22 +1,30 @@
 import { Company } from "@/types/company/company";
 import { usePathname } from "next/navigation";
 import useCompany from "./useCompany";
+import useUser from "./useUser";
 
 interface CompanyHookReturn {
-    company: Company[] | undefined;
+    companies: Company[] | undefined;
     isLoading: boolean;
 }
 
 const useGetCompany = (): CompanyHookReturn => {
     const path = usePathname();
-    const questionsPath = path.includes("/company/allCompany");
-    if (questionsPath) {
+    const allCompany = path.includes("/company/allCompany");
+    const myCompany = path.includes("/company/myCompany");
+    if (allCompany) {
         const { dataCompanyAccept } = useCompany();
-        const company = dataCompanyAccept.data;
+        const companies = dataCompanyAccept.data;
         const isLoading = dataCompanyAccept.isLoading;
-        return { company, isLoading };
+        return { companies, isLoading };
     }
-    return { company: undefined, isLoading: false };
+    if (myCompany) {
+        const { dataUser } = useUser();
+        const companies = dataUser.data?.companies;
+        const isLoading = dataUser.isLoading;
+        return { companies, isLoading };
+    }
+    return { companies: undefined, isLoading: false };
 };
 
 export default useGetCompany;

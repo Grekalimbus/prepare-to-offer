@@ -14,8 +14,8 @@ const TopSection = ({ company }: { company: Company }) => {
             <div className={styles.point}>Название компании: {company.companyName}</div>
             {company.linkVacancy && (
                 <div className={styles.point}>
-                    Ссылка на вакансию:{" "}
-                    <Link className={styles.linkVacancy} href={company.linkVacancy}>
+                    Ссылка на вакансию:
+                    <Link target="_blank" className={styles.linkVacancy} href={company.linkVacancy}>
                         {company.linkVacancy}
                     </Link>
                 </div>

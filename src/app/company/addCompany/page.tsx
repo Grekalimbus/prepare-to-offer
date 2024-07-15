@@ -1,5 +1,7 @@
+import CompanyCreate from "@/modules/companyForm/companyCreate/CompanyCreate";
+
 const page = () => {
-    return <div>page</div>;
+    return <CompanyCreate />;
 };
 
 export default page;

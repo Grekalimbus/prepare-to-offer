@@ -1,5 +1,7 @@
+import CompaniesCards from "@/modules/companiesCards/CompaniesCards";
+
 const page = () => {
-    return <div>page</div>;
+    return <CompaniesCards />;
 };
 
 export default page;
