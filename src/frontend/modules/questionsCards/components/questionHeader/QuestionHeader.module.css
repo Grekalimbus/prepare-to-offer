@@ -1,0 +1,64 @@
+.toggleQuestion {
+    border: 2px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 4px;
+    color: var(--white);
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.eyeIcon {
+    min-width: 30px;
+    min-height: 30px;
+    cursor: pointer;
+    transition: color 0.4s;
+}
+.questionButtonFlex {
+    width: 95%;
+    display: flex;
+    align-items: center;
+}
+.favoriteIcon {
+    min-width: 30px;
+    min-height: 30px;
+    cursor: pointer;
+    transition: color 0.4s;
+}
+.favoriteIcon.active {
+    color: var(--flamingo);
+}
+.point {
+    padding: 10px;
+    font-weight: 600;
+    color: var(--white);
+    user-select: text;
+    line-height: 18px;
+    width: 100%;
+    word-wrap: break-word;
+}
+@media (hover: hover) {
+    .toggleQuestion:hover {
+        background: var(--dark);
+    }
+    .toggleQuestion:hover .eyeIcon {
+        color: var(--flamingo);
+    }
+    .eyeIcon:hover {
+        color: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .toggleQuestion:hover {
+        background: var(--dark);
+    }
+    .toggleQuestion:hover .eyeIcon {
+        color: var(--flamingo);
+    }
+    .eyeIcon:hover {
+        color: var(--flamingo);
+    }
+}

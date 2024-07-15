@@ -1,0 +1,9 @@
+.text {
+    padding: 10px;
+    font-weight: 600;
+    color: var(--white);
+    user-select: text;
+    line-height: 18px;
+    width: 100%;
+    word-wrap: break-word;
+}

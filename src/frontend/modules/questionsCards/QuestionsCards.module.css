@@ -1,17 +1,3 @@
-.dummy {
-    width: 100%;
-    height: 70px;
-    border: 2px solid var(--flamingo);
-    background: var(--shadow-black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--white);
-    border-radius: 4px;
-    text-align: center;
-    line-height: 22px;
-}
 .filterQuestions {
     display: flex;
     width: 700px;
@@ -39,39 +25,6 @@
     cursor: pointer;
     transition: background 0.4s;
 }
-.commonWrapper {
-    z-index: 1;
-    height: 100%;
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: auto;
-    padding: 0 15px 15px 0;
-}
-.wrapperQuestion {
-    border: 2px solid var(--dark);
-    border-radius: 4px;
-    background: var(--shadow-black);
-    padding: 30px;
-    padding-bottom: 0px;
-    overflow: auto;
-    height: 600px;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    box-shadow: 8px 12px 10px -2px #000000a4;
-}
-.wrapperQuestion::-webkit-scrollbar {
-    width: 10px;
-    background: var(--shadow-white);
-    border-radius: 5px;
-}
-.wrapperQuestion::-webkit-scrollbar-thumb {
-    width: 10px;
-    background: var(--shadow-black);
-    border-radius: 5px;
-}
 .questionCard {
     width: 100%;
     margin-bottom: 30px;
@@ -83,95 +36,15 @@
     flex-direction: column;
     box-shadow: 6px 6px 28px 0px #000000de;
 }
-.wpapperQuestion {
-    border: 2px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 4px;
-    color: var(--white);
-    width: 100%;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.questionButtonFlex {
-    width: 95%;
-    display: flex;
-    align-items: center;
-}
-.favoriteIcon {
-    min-width: 30px;
-    min-height: 30px;
-    cursor: pointer;
-    transition: color 0.4s;
-}
-.favoriteIcon.active {
-    color: var(--flamingo);
-}
-.eyeIcon {
-    min-width: 30px;
-    min-height: 30px;
-    cursor: pointer;
-    transition: color 0.4s;
-}
-.sectionAnswer {
-    border: 2px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 4px;
-    color: var(--white);
-    width: 100%;
-    padding: 5px 10px;
-    margin-top: 5px;
-}
-.point {
-    padding: 10px;
-    font-weight: 600;
-    color: var(--white);
-    user-select: text;
-    line-height: 18px;
-    width: 100%;
-    word-wrap: break-word;
-}
-.sectionLinks {
-    border: 2px solid var(--dark);
-    background: var(--shadow-black);
-    border-radius: 4px;
-    color: var(--white);
-    width: 100%;
-    padding: 5px 10px;
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-}
 .hideSectionLinks {
     display: none;
 }
 @media (hover: hover) {
-    .eyeIcon:hover {
-        color: var(--flamingo);
-    }
-    .wpapperQuestion:hover {
-        background: var(--dark);
-    }
-    .wpapperQuestion:hover .eyeIcon {
-        color: var(--flamingo);
-    }
     .buttonFind:hover {
         background: var(--flamingo);
     }
 }
 @media (hover: none) {
-    .eyeIcon:hover {
-        color: var(--flamingo);
-    }
-    .wpapperQuestion:active {
-        background: var(--dark);
-    }
-    .wpapperQuestion:hover .eyeIcon {
-        color: var(--flamingo);
-    }
     .buttonFind:hover {
         background: var(--flamingo);
     }

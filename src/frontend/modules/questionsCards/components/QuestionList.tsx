@@ -3,10 +3,12 @@ import useFilterQuestions from "@/app/store";
 import AdminControls from "@/components/button/AdminControls";
 import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
 import useQuestion from "@/frontend/domains/question/useQuestion";
+import Text from "@/frontend/shared/text/Text";
+import WrapperMessage from "@/frontend/shared/wrapperMessage/WrapperMessage";
 import { useEffect } from "react";
 import { handleFilterQuestions } from "../helpers/filterQuestions";
 import styles from "../QuestionsCards.module.css";
-import QuestionContent from "./QuestionContent";
+import QuestionContent from "./questionContent/QuestionContent";
 
 const QuestionList = ({ status }: { status?: string }) => {
     const { questions, isLoading } = useQuestion();
@@ -23,16 +25,12 @@ const QuestionList = ({ status }: { status?: string }) => {
     return (
         <>
             {filterQuestions?.length === 0 && (
-                <div className={styles.dummy}>
-                    В этой секции пусто
-                    <br />
-                    Выберите другую технологию из списка
-                </div>
+                <WrapperMessage message="В этой секции пусто / Выберите другую технологию из списка" />
             )}
             {filterQuestions?.map((question, index) => {
                 return (
                     <div key={question._id} className={styles.questionCard}>
-                        {question.technology && <p className={styles.point}>Категория: {question.technology}</p>}
+                        {question.technology && <Text text={`Категория: ${question.technology}`} />}
                         <QuestionContent question={question} index={index} status={status} />
                         {status === "PENDING" && <AdminControls />}
                     </div>
