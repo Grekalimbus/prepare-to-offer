@@ -83,7 +83,7 @@
     flex-direction: column;
     box-shadow: 6px 6px 28px 0px #000000de;
 }
-.buttonQuestion {
+.wpapperQuestion {
     border: 2px solid var(--dark);
     background: var(--shadow-black);
     border-radius: 4px;
@@ -152,10 +152,10 @@
     .eyeIcon:hover {
         color: var(--flamingo);
     }
-    .buttonQuestion:hover {
+    .wpapperQuestion:hover {
         background: var(--dark);
     }
-    .buttonQuestion:hover .eyeIcon {
+    .wpapperQuestion:hover .eyeIcon {
         color: var(--flamingo);
     }
     .buttonFind:hover {
@@ -166,10 +166,10 @@
     .eyeIcon:hover {
         color: var(--flamingo);
     }
-    .buttonQuestion:active {
+    .wpapperQuestion:active {
         background: var(--dark);
     }
-    .buttonQuestion:hover .eyeIcon {
+    .wpapperQuestion:hover .eyeIcon {
         color: var(--flamingo);
     }
     .buttonFind:hover {

@@ -15,7 +15,7 @@ interface NavButton {
 interface Props {
     children: ReactNode;
     sections: Section[];
-    arrayButtons: NavButton[];
+    arrayButtons?: NavButton[];
 }
 
 const ReusedLayout = ({ children, sections, arrayButtons }: Props) => {
@@ -26,7 +26,7 @@ const ReusedLayout = ({ children, sections, arrayButtons }: Props) => {
             <div className={styles.wrapper}>
                 <div className={styles.questionsContainer}>
                     <div className={styles.flexContainer}>{children}</div>
-                    <CustomNavBar arrayButtons={arrayButtons} />
+                    {arrayButtons && <CustomNavBar arrayButtons={arrayButtons} />}
                 </div>
             </div>
         </>

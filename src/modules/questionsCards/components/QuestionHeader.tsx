@@ -17,7 +17,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
     const { dataFavoriteQuestions, email, createFavoriteQuestion } = useFavoriteQuestions(question);
     const isFavoriteTrue = dataFavoriteQuestions.data?.some(item => item._id === question._id);
     return (
-        <section className={styles.buttonQuestion}>
+        <section className={styles.wpapperQuestion}>
             <div className={styles.questionButtonFlex}>
                 {status !== "PENDING" && email && (
                     <BiSolidBookmarkPlus
