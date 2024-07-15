@@ -10,5 +10,5 @@ export interface Company {
     questions: string[] | [];
     task: string;
     status?: string;
-    createdAt?: string;
+    createdAt: string;
 }

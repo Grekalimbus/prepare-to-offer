@@ -20,22 +20,22 @@ const useGetQuestions = (): QuestionsHookReturn => {
         const { dataSomeQuestions } = useSomeQuestions();
         const questions = dataSomeQuestions.data;
         const isLoading = dataSomeQuestions.isLoading;
-        return { questions, isLoading: isLoading };
+        return { questions, isLoading };
     } else if (myQuestionsPath) {
         const { dataMyQuestions } = useUser();
         const questions = dataMyQuestions.data;
         const isLoading = dataMyQuestions.isLoading;
-        return { questions, isLoading: isLoading };
+        return { questions, isLoading };
     } else if (pendingQuestionsPath) {
         const { dataPendingQuestion } = usePendingQuestions();
         const questions = dataPendingQuestion.data;
         const isLoading = dataPendingQuestion.isLoading;
-        return { questions, isLoading: isLoading };
+        return { questions, isLoading };
     } else if (favoriteQuestions) {
         const { dataFavoriteQuestions } = useFavoriteQuestions();
         const questions = dataFavoriteQuestions.data;
         const isLoading = dataFavoriteQuestions.isLoading;
-        return { questions, isLoading: isLoading };
+        return { questions, isLoading };
     }
     return { questions: undefined, isLoading: false };
 };

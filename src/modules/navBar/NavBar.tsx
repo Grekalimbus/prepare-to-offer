@@ -21,6 +21,9 @@ const NavBar = () => {
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
                         <AdminButton />
+                        <Link href="/company/allCompany" className={styles.navLink}>
+                            Компании
+                        </Link>
                         <Link href="/questionsPage/allQuestions" className={styles.navLink}>
                             Технические вопросы
                         </Link>
