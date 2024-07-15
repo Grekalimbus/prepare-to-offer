@@ -1,29 +1,22 @@
-import { BASE_URL } from "@/frontend/configs/baseURL";
 import { Company } from "@/frontend/types/company/company";
-import axios from "axios";
 import { FormEvent } from "react";
 
 interface Props {
+    isAdmin: boolean;
     event: FormEvent<HTMLFormElement>;
     setErrorMessage: (value: string) => void;
     setIsError: (value: boolean) => void;
-    email: string;
     handleUpdateUserCompany: (company: Company) => void;
     handleCreateCompany: ({ company, status }: { company: Company; status: string }) => void;
 }
 
-interface User {
-    email: string;
-    roles: string[];
-}
-
 const handleSubmit = async ({
+    isAdmin,
     event,
-    setErrorMessage,
-    setIsError,
-    email,
     handleUpdateUserCompany,
     handleCreateCompany,
+    setErrorMessage,
+    setIsError,
 }: Props) => {
     const formData = new FormData(event.currentTarget);
     const companyName = formData.get("companyName") as string;
@@ -52,14 +45,6 @@ const handleSubmit = async ({
         }, 3000);
     }
     if (difficulty && liveCoding && typeOfInterview) {
-        let isAdmin: boolean = false;
-        const { data: user } = await axios.get<User>(`${BASE_URL}/getUser?email=${email}`);
-        user.roles.forEach(role => {
-            if (role === "ADMIN") {
-                isAdmin = true;
-            }
-        });
-
         handleUpdateUserCompany(company);
 
         if (isAdmin) {

@@ -21,7 +21,7 @@ const useUser = () => {
     const fetchMyQuestions = async () => {
         if (email) {
             const { data } = await axios.get<Question[]>(
-                `${BASE_URL}/getUser/queastions?email=${email}&question=${technology}`,
+                `${BASE_URL}/getUser/questions?email=${email}&question=${technology}`,
             );
             return data;
         }
@@ -31,6 +31,7 @@ const useUser = () => {
         queryFn: fetchData,
         enabled: !!email,
     });
+    const isAdmin = dataUser.data?.roles[0] === "ADMIN" ? true : false;
     const dataMyQuestions = useQuery({
         queryKey: [`questions${technology}`],
         queryFn: fetchMyQuestions,
@@ -39,7 +40,7 @@ const useUser = () => {
     useEffect(() => {
         fetchMyQuestions();
     }, [technology]);
-    return { dataUser, dataMyQuestions };
+    return { dataUser, dataMyQuestions, isAdmin };
 };
 
 export default useUser;

@@ -1,10 +1,8 @@
 "use client";
 import AdminControls from "@/components/button/AdminControls";
-
-import { Company } from "@/frontend/types/company/company";
-
 import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
-import useGetCompany from "@/frontend/hooks/useGetCompany";
+import useCompany from "@/frontend/domains/company/useCompany";
+import { Company } from "@/frontend/types/company/company";
 import styles from "../CompaniesCards.module.css";
 import DateInfo from "./DateInfo";
 import Questions from "./Questions";
@@ -15,7 +13,7 @@ interface Props {
 }
 
 const CompanyDetails = ({ status }: Props) => {
-    const { companies, isLoading } = useGetCompany();
+    const { companies, isLoading } = useCompany();
 
     if (isLoading) {
         return <LoadingSkeleton />;

@@ -3,9 +3,9 @@ import ErrorMessage from "@/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/components/radioSelect/RadioSelect";
 import useCompany from "@/frontend/domains/company/useCompany";
+import useUser from "@/frontend/hooks/useUser";
 import Button from "@/frontend/ui/Buttons/Button";
 import Input from "@/frontend/ui/Input/Input";
-import { useSession } from "next-auth/react";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
@@ -31,22 +31,19 @@ const CompanyCreate = () => {
     const { handleUpdateUserCompany, handleCreateCompany } = useCompany();
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const session = useSession();
+    const { isAdmin } = useUser();
     const formRef = useRef<HTMLFormElement>(null);
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (session.data?.user?.email) {
-            const email = session.data.user?.email;
-            await handleSubmit({
-                event,
-                setErrorMessage,
-                setIsError,
-                email,
-                handleUpdateUserCompany,
-                handleCreateCompany,
-            });
-            formRef.current?.reset();
-        }
+        await handleSubmit({
+            event,
+            isAdmin,
+            setErrorMessage,
+            setIsError,
+            handleUpdateUserCompany,
+            handleCreateCompany,
+        });
+        formRef.current?.reset();
     };
 
     return (
