@@ -1,6 +1,6 @@
-import connectAuthMongoDB from "@/libs/mongodbAuth";
-import Role from "@/models/auth/role";
-import User from "@/models/auth/user";
+import connectAuthMongoDB from "@/backend/libs/mongodbAuth";
+import Role from "@/backend/models/auth/role";
+import User from "@/backend/models/auth/user";
 import bcrypt from "bcryptjs";
 import { NextResponse, type NextRequest } from "next/server";
 

@@ -1,21 +1,17 @@
-import CompaniesCards from "@/modules/companiesCards/CompaniesCards";
-import CompanyCreate from "@/modules/companyForm/companyCreate/CompanyCreate";
-import CustomNavBar from "@/modules/customNavBar/CustomNavBar";
-import QuestionCreate from "@/modules/questionForm/questionCreate/QuestionCreate";
-import QuestionsCards from "@/modules/questionsCards/QuestionsCards";
-import SelectCategoryButtons from "@/modules/selectSectionButtons/SelectSectionButtons";
+import CompaniesCards from "@/frontend/modules/companiesCards/CompaniesCards";
+import CompanyCreate from "@/frontend/modules/companyForm/companyCreate/CompanyCreate";
+import CustomNavBar from "@/frontend/modules/customNavBar/CustomNavBar";
+import QuestionCreate from "@/frontend/modules/questionForm/questionCreate/QuestionCreate";
+import QuestionsCards from "@/frontend/modules/questionsCards/QuestionsCards";
+import SelectCategoryButtons from "@/frontend/shared/selectSectionButtons/SelectSectionButtons";
+import { NavButton } from "@/frontend/types/navButton/navButton";
+import { Section } from "@/frontend/types/section/section";
 import styles from "./Admin.module.css";
+
 interface Params {
     params: { section: string; navAction: string };
 }
-interface NavButton {
-    text: string;
-    value: string;
-}
-interface Section {
-    value: string;
-    section: string;
-}
+
 const actions: NavButton[] = [
     { text: "Добавить", value: "add" },
     { text: "Изменить", value: "change" },

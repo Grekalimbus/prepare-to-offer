@@ -1,15 +1,20 @@
-import connetctAuthMongoDB from "@/libs/mongodbAuth";
-import User from "@/models/auth/user";
-import { IUser } from "@/types/user/user";
+import connetctAuthMongoDB from "@/backend/libs/mongodbAuth";
+import User from "@/backend/models/auth/user";
+import { Company } from "@/frontend/types/company/company";
 import { NextResponse, type NextRequest } from "next/server";
-
+interface Data {
+    email: string;
+    company: Company;
+}
 export async function PATCH(req: NextRequest) {
     await connetctAuthMongoDB();
+    const data: Data = await req.json();
+    const email = data.email;
+    const company = data.company;
 
-    const { email, companies }: IUser = await req.json();
     const candidate = await User.findOne({ email });
     if (candidate) {
-        const updatedCompanies = [...candidate.companies, companies];
+        const updatedCompanies = [...candidate.companies, company];
         await User.updateOne({ email }, { $set: { companies: updatedCompanies } });
         return NextResponse.json({ message: "User UPDATED" }, { status: 201 });
     } else {
