@@ -129,6 +129,7 @@
     font-weight: 600;
     color: var(--white);
     user-select: text;
+    line-height: 18px;
 }
 .sectionLinks {
     border: 2px solid var(--dark);

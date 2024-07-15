@@ -1,6 +1,6 @@
 import { Question } from "@/types/question/question";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import styles from "../QuestionsCards.module.css";
@@ -26,7 +26,14 @@ const QuestionContent = ({ question, index, status }: QuestionContentProps) => {
             />
             {isActive && (
                 <section className={styles.sectionAnswer}>
-                    <p className={styles.point}>{question.answer}</p>
+                    <p className={styles.point}>
+                        {question.answer.split("\n").map((line, idx) => (
+                            <React.Fragment key={idx}>
+                                {line}
+                                {idx !== question.answer.split("\n").length - 1 && <br />}
+                            </React.Fragment>
+                        ))}
+                    </p>
                     {question.sliceOfCode && (
                         <SyntaxHighlighter
                             customStyle={{ width: "100%", borderRadius: "6px" }}
