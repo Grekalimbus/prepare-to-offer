@@ -1,10 +1,7 @@
-.dummy {
+.flexContainer {
     width: 100%;
-    height: 70px;
-    border: 2px solid var(--flamingo);
-    background: var(--shadow-black);
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
     font-weight: bold;
     color: var(--white);
