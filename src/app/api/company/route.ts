@@ -1,6 +1,6 @@
-import { default as connectAuthMongoDB, default as connetctAuthMongoDB } from "@/libs/mongodbAuth";
-import CompanyModel from "@/models/auth/company";
-import { Company } from "@/types/company/company";
+import { default as connectAuthMongoDB, default as connetctAuthMongoDB } from "@/backend/libs/mongodbAuth";
+import CompanyModel from "@/backend/models/auth/company";
+import { Company } from "@/frontend/types/company/company";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -12,7 +12,6 @@ export async function POST(request: NextRequest) {
         difficulty,
         liveCoding,
         questions,
-        task,
         status,
         sliceOfCode,
         typeOfInterview,
@@ -25,7 +24,6 @@ export async function POST(request: NextRequest) {
         difficulty,
         liveCoding,
         questions,
-        task,
         sliceOfCode,
         typeOfInterview,
         status: status || "PENDING",

@@ -1,5 +1,5 @@
-import connectAuthMongoDB from "@/libs/mongodbAuth";
-import User from "@/models/auth/user";
+import connectAuthMongoDB from "@/backend/libs/mongodbAuth";
+import User from "@/backend/models/auth/user";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {

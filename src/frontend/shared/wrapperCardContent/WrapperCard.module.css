@@ -1,0 +1,33 @@
+.commonWrapper {
+    z-index: 1;
+    height: 100%;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding: 0 15px 15px 0;
+}
+.mainContent {
+    border: 2px solid var(--dark);
+    border-radius: 4px;
+    background: var(--shadow-black);
+    padding: 30px;
+    padding-bottom: 0px;
+    overflow: auto;
+    height: 600px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 8px 12px 10px -2px #000000a4;
+}
+.mainContent::-webkit-scrollbar {
+    width: 10px;
+    background: var(--shadow-white);
+    border-radius: 5px;
+}
+.mainContent::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: var(--shadow-black);
+    border-radius: 5px;
+}

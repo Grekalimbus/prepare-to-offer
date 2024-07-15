@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/configs/baseURL";
+import { BASE_URL } from "@/frontend/configs/baseURL";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";

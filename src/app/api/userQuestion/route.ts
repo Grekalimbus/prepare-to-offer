@@ -1,5 +1,5 @@
-import connetctAuthMongoDB from "@/libs/mongodbAuth";
-import User from "@/models/auth/user";
+import connetctAuthMongoDB from "@/backend/libs/mongodbAuth";
+import User from "@/backend/models/auth/user";
 import { NextResponse, type NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 

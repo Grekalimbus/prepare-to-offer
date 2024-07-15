@@ -1,6 +1,6 @@
-import connectAuthMongoDB from "@/libs/mongodbAuth";
-import HtmlQuestionModel from "@/models/questions/htmlQuestion";
-import { Question } from "@/types/question/question";
+import connectAuthMongoDB from "@/backend/libs/mongodbAuth";
+import HtmlQuestionModel from "@/backend/models/questions/htmlQuestion";
+import { Question } from "@/frontend/types/question/question";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

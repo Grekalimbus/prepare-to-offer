@@ -1,0 +1,20 @@
+.button {
+    width: 150px;
+    height: 50px;
+    border: 1px solid var(--dark);
+    background: var(--shadow-black);
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.4s;
+}
+@media (hover: hover) {
+    .button:hover {
+        background: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .button:hover {
+        background: var(--flamingo);
+    }
+}
