@@ -131,7 +131,8 @@
     color: var(--white);
     user-select: text;
     line-height: 18px;
-    width: 100%;
+    width: 95%;
+    word-wrap: break-word;
 }
 .sectionLinks {
     border: 2px solid var(--dark);

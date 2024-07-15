@@ -26,8 +26,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                     />
                 )}
                 <p onClick={() => setIsActive(!isActive)} className={styles.point}>
-                    {index + 1}. &nbsp;
-                    {question.question}
+                    {index + 1}. &nbsp; {question.question}
                 </p>
             </div>
             {!isActive ? (
