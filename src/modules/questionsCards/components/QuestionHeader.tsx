@@ -25,7 +25,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                         onClick={createFavoriteQuestion}
                     />
                 )}
-                <p onClick={() => setIsActive(!isActive)} className={styles.point}>
+                <p onClick={() => setIsActive(!isActive)} className={styles.point} style={{ width: "92%" }}>
                     {index + 1}. &nbsp; {question.question}
                 </p>
             </div>
