@@ -97,6 +97,7 @@
     transition: background 0.3s;
 }
 .questionButtonFlex {
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -130,6 +131,7 @@
     color: var(--white);
     user-select: text;
     line-height: 18px;
+    width: 100%;
 }
 .sectionLinks {
     border: 2px solid var(--dark);
@@ -146,9 +148,6 @@
     display: none;
 }
 @media (hover: hover) {
-    .favoriteIcon:hover {
-        color: var(--flamingo);
-    }
     .eyeIcon:hover {
         color: var(--flamingo);
     }
@@ -163,9 +162,6 @@
     }
 }
 @media (hover: none) {
-    .favoriteIcon:hover {
-        color: var(--flamingo);
-    }
     .eyeIcon:hover {
         color: var(--flamingo);
     }

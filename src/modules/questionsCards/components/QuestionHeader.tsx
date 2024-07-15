@@ -17,7 +17,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
     const { dataFavoriteQuestions, email, createFavoriteQuestion } = useFavoriteQuestions(question);
     const isFavoriteTrue = dataFavoriteQuestions.data?.some(item => item._id === question._id);
     return (
-        <section onClick={() => setIsActive(!isActive)} className={styles.buttonQuestion}>
+        <section className={styles.buttonQuestion}>
             <div className={styles.questionButtonFlex}>
                 {status !== "PENDING" && email && (
                     <BiSolidBookmarkPlus
@@ -25,12 +25,16 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                         onClick={createFavoriteQuestion}
                     />
                 )}
-                <p className={styles.point}>
+                <p onClick={() => setIsActive(!isActive)} className={styles.point}>
                     {index + 1}. &nbsp;
                     {question.question}
                 </p>
             </div>
-            {!isActive ? <FaRegEyeSlash className={styles.eyeIcon} /> : <LuEye className={styles.eyeIcon} />}
+            {!isActive ? (
+                <FaRegEyeSlash onClick={() => setIsActive(!isActive)} className={styles.eyeIcon} />
+            ) : (
+                <LuEye onClick={() => setIsActive(!isActive)} className={styles.eyeIcon} />
+            )}
         </section>
     );
 };
