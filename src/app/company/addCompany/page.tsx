@@ -1,4 +1,4 @@
-import CompanyCreate from "@/modules/companyForm/companyCreate/CompanyCreate";
+import CompanyCreate from "@/frontend/modules/companyForm/companyCreate/CompanyCreate";
 
 const page = () => {
     return <CompanyCreate />;

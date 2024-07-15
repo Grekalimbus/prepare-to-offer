@@ -1,6 +1,6 @@
-import connetctAuthMongoDB from "@/libs/mongodbAuth";
-import User from "@/models/auth/user";
-import { Question } from "@/types/question/question";
+import connetctAuthMongoDB from "@/backend/libs/mongodbAuth";
+import User from "@/backend/models/auth/user";
+import { Question } from "@/frontend/types/question/question";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {

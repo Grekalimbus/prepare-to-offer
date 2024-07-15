@@ -2,8 +2,8 @@ export { default } from "next-auth/middleware";
 import axios from "axios";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-import { BASE_URL } from "./configs/baseURL";
-import { IUser } from "./types/user/user";
+import { BASE_URL } from "./frontend/configs/baseURL";
+import { IUser } from "./frontend/types/user/user";
 
 export async function middleware(req: NextRequest) {
     const token = await getToken({ req });

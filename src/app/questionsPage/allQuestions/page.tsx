@@ -1,4 +1,4 @@
-import QuestionsCards from "@/modules/questionsCards/QuestionsCards";
+import QuestionsCards from "@/frontend/modules/questionsCards/QuestionsCards";
 
 const page = () => {
     return <QuestionsCards status="ACCEPT" />;

@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode } from "react";
-import ReusedLayout from "../../layouts/reusedLayout/ReusedLayout";
+import ReusedLayout from "../../frontend/layouts/reusedLayout/ReusedLayout";
 
 type Props = {
     children: ReactNode;

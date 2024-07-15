@@ -1,6 +1,6 @@
 "use client";
 import { useAuthModal } from "@/app/store";
-import Button from "@/ui/Buttons/Button";
+import Button from "@/frontend/ui/Buttons/Button";
 import { useRouter } from "next/navigation";
 import { IoCloseCircle } from "react-icons/io5";
 import styles from "./ModalAuth.module.css";

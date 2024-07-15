@@ -1,5 +1,5 @@
 "use client";
-import useUser from "@/hooks/useUser";
+import useUser from "@/frontend/hooks/useUser";
 import styles from "./Button.module.css";
 
 const AdminControls = () => {

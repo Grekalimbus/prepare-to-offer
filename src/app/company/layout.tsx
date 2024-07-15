@@ -1,4 +1,4 @@
-import ReusedLayout from "@/layouts/reusedLayout/ReusedLayout";
+import ReusedLayout from "@/frontend/layouts/reusedLayout/ReusedLayout";
 import { ReactNode } from "react";
 
 type Props = {
