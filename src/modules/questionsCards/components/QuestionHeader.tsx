@@ -1,6 +1,5 @@
 import useFavoriteQuestions from "@/hooks/useFavoriteQuestions";
 import { Question } from "@/types/question/question";
-import React from "react";
 import { BiSolidBookmarkPlus } from "react-icons/bi";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
@@ -28,12 +27,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                 )}
                 <p className={styles.point}>
                     {index + 1}. &nbsp;
-                    {question.question.split("\n").map((line, idx) => (
-                        <React.Fragment key={idx}>
-                            {line}
-                            {idx !== question.question.split("\n").length - 1 && <br />}
-                        </React.Fragment>
-                    ))}
+                    {question.question}
                 </p>
             </div>
             {!isActive ? <FaRegEyeSlash className={styles.eyeIcon} /> : <LuEye className={styles.eyeIcon} />}
