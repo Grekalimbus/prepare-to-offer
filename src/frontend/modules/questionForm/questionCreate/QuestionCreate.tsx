@@ -4,9 +4,10 @@ import ErrorMessage from "@/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/components/radioSelect/RadioSelect";
 import TextareaAndLabel from "@/components/textareaAndLabel/TextareaAndLabel";
+import useQuestion from "@/frontend/domains/question/useQuestion";
+import useUser from "@/frontend/domains/user/useUser";
 import Button from "@/frontend/ui/Buttons/Button";
 import Input from "@/frontend/ui/Input/Input";
-import { useSession } from "next-auth/react";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";
@@ -20,10 +21,6 @@ const arrayTechnologies = [
     { text: "Javascript", value: "javascript" },
     { text: "Typescript", value: "typescript" },
     { text: "React", value: "react" },
-    // { text: "Redux", value: "redux" },
-    // { text: "Архитектура", value: "architecture" },
-    // { text: "Next.js", value: "nextJS" },
-    // { text: "Общие", value: "common" },
 ];
 
 const QuestionCreate = () => {
@@ -31,15 +28,22 @@ const QuestionCreate = () => {
     const [errorMessage, setErrorMessage] = useState<string>("");
     const { setIsLoader } = useLoader();
     const formRef = useRef<HTMLFormElement>(null);
-    const session = useSession();
+    const { handleCreateUserQuestion, handleCreateQuestion, handleCreatePendingQuestion } = useQuestion();
+    const { isAdmin } = useUser();
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (session.data?.user?.email) {
-            setIsLoader();
-            const email = session.data.user?.email;
-            await handleSubmit({ event, setErrorMessage, setIsError, email, formRef });
-            setIsLoader();
-        }
+        setIsLoader();
+        await handleSubmit({
+            event,
+            isAdmin,
+            setErrorMessage,
+            setIsError,
+            formRef,
+            handleCreateUserQuestion,
+            handleCreateQuestion,
+            handleCreatePendingQuestion,
+        });
+        setIsLoader();
     };
 
     return (

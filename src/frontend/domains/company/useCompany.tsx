@@ -5,15 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-
-interface NewCompany {
-    status: string;
-    company: Company;
-}
-
-interface OjbectCompanies {
-    companies: Company[];
-}
+import { NewCompany, OjbectCompanies } from "./types";
 
 const useCompany = () => {
     const session = useSession();

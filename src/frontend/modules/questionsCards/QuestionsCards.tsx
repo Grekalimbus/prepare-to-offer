@@ -2,11 +2,8 @@ import AcceptAll from "@/components/button/AcceptAll";
 import FilterForm from "./components/FilterForm";
 import QuestionList from "./components/QuestionList";
 import styles from "./QuestionsCards.module.css";
-interface Props {
-    status?: string;
-}
 
-const QuestionsCards = ({ status }: Props) => {
+const QuestionsCards = ({ status }: { status?: string }) => {
     return (
         <>
             <FilterForm />

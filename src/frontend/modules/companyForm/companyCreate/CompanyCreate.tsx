@@ -3,7 +3,7 @@ import ErrorMessage from "@/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/components/radioSelect/RadioSelect";
 import useCompany from "@/frontend/domains/company/useCompany";
-import useUser from "@/frontend/hooks/useUser";
+import useUser from "@/frontend/domains/user/useUser";
 import Button from "@/frontend/ui/Buttons/Button";
 import Input from "@/frontend/ui/Input/Input";
 import { FormEvent, useRef, useState } from "react";

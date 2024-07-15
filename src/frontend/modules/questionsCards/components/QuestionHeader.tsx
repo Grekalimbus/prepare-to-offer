@@ -1,4 +1,4 @@
-import useFavoriteQuestions from "@/frontend/hooks/useFavoriteQuestions";
+import useQuestion from "@/frontend/domains/question/useQuestion";
 import { Question } from "@/frontend/types/question/question";
 import { BiSolidBookmarkPlus } from "react-icons/bi";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -14,7 +14,7 @@ interface QuestionHeaderProps {
 }
 
 const QuestionHeader = ({ question, index, status, setIsActive, isActive }: QuestionHeaderProps) => {
-    const { dataFavoriteQuestions, email, createFavoriteQuestion } = useFavoriteQuestions(question);
+    const { dataFavoriteQuestions, email, createFavoriteQuestion } = useQuestion();
     const isFavoriteTrue = dataFavoriteQuestions.data?.some(item => item._id === question._id);
     return (
         <section className={styles.wpapperQuestion}>
@@ -22,7 +22,7 @@ const QuestionHeader = ({ question, index, status, setIsActive, isActive }: Ques
                 {status !== "PENDING" && email && (
                     <BiSolidBookmarkPlus
                         className={`${styles.favoriteIcon} ${isFavoriteTrue ? styles.active : ""}`}
-                        onClick={createFavoriteQuestion}
+                        onClick={() => createFavoriteQuestion(question)}
                     />
                 )}
                 <p onClick={() => setIsActive(!isActive)} className={styles.point} style={{ width: "92%" }}>

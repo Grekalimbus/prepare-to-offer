@@ -1,24 +1,17 @@
 "use client";
+import useFilterQuestions from "@/app/store";
 import AdminControls from "@/components/button/AdminControls";
 import LoadingSkeleton from "@/components/loading/LoadingSkeleton";
-
-import useFilterQuestions from "@/app/store";
-import useGetQuestions from "@/frontend/hooks/useGetQuestions";
+import useQuestion from "@/frontend/domains/question/useQuestion";
 import { useEffect } from "react";
+import { handleFilterQuestions } from "../helpers/filterQuestions";
 import styles from "../QuestionsCards.module.css";
 import QuestionContent from "./QuestionContent";
 
-interface Props {
-    status?: string;
-}
-const QuestionList = ({ status }: Props) => {
-    const { questions, isLoading } = useGetQuestions();
+const QuestionList = ({ status }: { status?: string }) => {
+    const { questions, isLoading } = useQuestion();
     const { filterValue, setFilterValue } = useFilterQuestions();
-    const filterQuestions = questions?.filter(
-        question =>
-            question.question.toLowerCase().includes(filterValue.toLowerCase()) ||
-            question.answer.toLowerCase().includes(filterValue.toLowerCase()),
-    );
+    const filterQuestions = handleFilterQuestions(questions, filterValue);
 
     // useEffect - Для очистки фильтрации при смене роута
     useEffect(() => {

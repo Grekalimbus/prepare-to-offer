@@ -1,10 +1,9 @@
-import useUser from "@/frontend/hooks/useUser";
+import useUser from "@/frontend/domains/user/useUser";
 import Link from "next/link";
 import styles from "../NavBar.module.css";
 
 const AdminButton = () => {
-    const { dataUser } = useUser();
-    const isAdmin = dataUser.data?.roles.includes("ADMIN");
+    const { isAdmin } = useUser();
 
     return (
         <>

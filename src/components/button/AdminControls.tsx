@@ -1,10 +1,10 @@
 "use client";
-import useUser from "@/frontend/hooks/useUser";
+
+import useUser from "@/frontend/domains/user/useUser";
 import styles from "./Button.module.css";
 
 const AdminControls = () => {
-    const { dataUser } = useUser();
-    const isAdmin = dataUser.data?.roles.includes("ADMIN");
+    const { isAdmin } = useUser();
     return (
         isAdmin && (
             <div className={styles.flexButtonContainer}>
