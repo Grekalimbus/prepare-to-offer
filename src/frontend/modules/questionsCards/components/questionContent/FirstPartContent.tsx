@@ -1,4 +1,4 @@
-import SnipedCode from "@/frontend/shared/sliceOfCode/SnipetCode";
+import SnipedCode from "@/frontend/shared/snipetCode/SnipetCode";
 import React from "react";
 import { ContentProps } from "../../types/types";
 import styles from "./QuestionContent.module.css";

@@ -79,6 +79,7 @@
     padding: 10px;
     font-weight: 600;
     color: var(--white);
+    text-align: start;
 }
 .linkVacancy {
     color: #0373f3;
@@ -95,6 +96,7 @@
     background: var(--shadow-black);
     border: 1px solid var(--dark);
     user-select: text;
+    text-align: start;
 }
 .buttonAcceptAll {
     margin-top: 20px;

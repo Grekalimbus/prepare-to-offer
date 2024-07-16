@@ -45,14 +45,13 @@ const handleSubmit = async ({
         }, 3000);
     }
     if (difficulty && liveCoding && typeOfInterview) {
-        handleUpdateUserCompany(company);
-
         if (isAdmin) {
             handleCreateCompany({ company, status: "ACCEPT" });
         }
         if (!isAdmin) {
             handleCreateCompany({ company, status: "PENDING" });
         }
+        handleUpdateUserCompany(company);
     }
 };
 

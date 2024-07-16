@@ -13,6 +13,8 @@ export async function PATCH(req: NextRequest) {
     const company = data.company;
 
     const candidate = await User.findOne({ email });
+    console.log("company", company);
+
     if (candidate) {
         const updatedCompanies = [...candidate.companies, company];
         await User.updateOne({ email }, { $set: { companies: updatedCompanies } });
