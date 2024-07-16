@@ -35,6 +35,7 @@ const userSchema = new Schema<IUser>({
             difficulty: String,
             liveCoding: String,
             typeOfInterview: String,
+            sliceOfCode: String,
             questions: [String] || [],
             task: String,
             status: String,
