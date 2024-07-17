@@ -1,8 +1,8 @@
-import ButtonAddField from "@/frontend/shared/components/button/ButtonAddField";
-import InputWithRemoveButton from "@/frontend/shared/components/input/InputWithRemoveButton";
+import InputWithRemoveButton from "@/frontend/shared/components/inputRemoveButton/InputWithRemoveButton";
+import Text from "@/frontend/shared/components/text/Text";
+import AddInput from "@/frontend/ui/Buttons/addInput/AddInput";
 import { useState } from "react";
 import { BsPatchQuestionFill } from "react-icons/bs";
-import styles from "../CompanyCreate.module.css";
 const Questions = () => {
     const [questions, setQuestions] = useState<string[]>(["0"]);
     const handleIncrement = () => {
@@ -19,7 +19,7 @@ const Questions = () => {
     };
     return (
         <>
-            <p className={styles.textForSection}>Вопросы с собеседования</p>
+            <Text text="Вопросы с собеседования" />
             {questions.map(item => {
                 return (
                     <InputWithRemoveButton
@@ -33,11 +33,7 @@ const Questions = () => {
                     />
                 );
             })}
-            <ButtonAddField
-                icon={<BsPatchQuestionFill />}
-                handleIncrement={handleIncrement}
-                text="Добавить еще вопросы"
-            />
+            <AddInput icon={<BsPatchQuestionFill />} onClick={handleIncrement} text="Добавить еще вопросы" />
         </>
     );
 };

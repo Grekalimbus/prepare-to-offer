@@ -4,8 +4,9 @@ import useUser from "@/frontend/domains/user/useUser";
 import ErrorMessage from "@/frontend/shared/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
-import Button from "@/frontend/ui/Buttons/Button";
-import Input from "@/frontend/ui/Input/Input";
+import Text from "@/frontend/shared/components/text/Text";
+import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
+import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
@@ -49,20 +50,20 @@ const CompanyCreate = () => {
     return (
         <section className={styles.wrapper}>
             <form className={styles.formBlock} onSubmit={onSubmit} ref={formRef}>
-                <p className={styles.textForSection}>
-                    Информация добавится персонально, после чего проверится администратором и попадет в общий список для
-                    всех пользователей
-                </p>
-                <Input name="companyName" inputType="text" placeholder="Название компании" required={true} />
-                <Input
+                <Text
+                    text="Информация добавится персонально, после чего проверится администратором и попадет в общий список для
+                    всех пользователей"
+                />
+                <InputLight name="companyName" type="text" placeholder="Название компании" required={true} />
+                <InputLight
                     name="linkVacancy"
-                    inputType="text"
+                    type="text"
                     placeholder="Ссылка на вакансию (если есть)"
                     required={false}
                 />
-                <Input
+                <InputLight
                     name="description"
-                    inputType="text"
+                    type="text"
                     placeholder="Описание (Интервью легкое, собеседующий душнил. Длительность собеса)"
                     required={false}
                 />
@@ -71,7 +72,7 @@ const CompanyCreate = () => {
                 <RadioSelect array={liveCodingArray} name="liveCoding" textForSelect={`LiveCoding (Был/Нет)`} />
                 <Questions />
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />
-                <Button text="Создать" />
+                <DefaultButton text="Создать" />
             </form>
             <ErrorMessage errorMessage={errorMessage} isError={isError} />
         </section>

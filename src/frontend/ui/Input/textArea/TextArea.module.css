@@ -1,0 +1,27 @@
+.field {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    min-height: 200px;
+    max-height: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.field:focus {
+    border: 2px solid var(--flamingo);
+}
+.field::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 3px;
+    background: var(--dark);
+}
+.field::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--flamingo);
+}
+.field::placeholder {
+    font-size: 14px;
+}

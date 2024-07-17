@@ -1,7 +1,6 @@
 "use client";
 import NavBar from "@/frontend/modules/navBar/NavBar";
 import Provider from "@/frontend/Providers/Provider";
-import Loader from "@/frontend/shared/components/loader/Loader";
 import NextTopLoader from "nextjs-toploader";
 import React, { ReactNode } from "react";
 import MainFooter from "../MainFooter/MainFooter";
@@ -18,7 +17,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <main className={styles.layout}>
                 <NextTopLoader />
                 <Provider>
-                    <Loader />
                     <MainHeader />
                     {children}
                     <MainFooter />

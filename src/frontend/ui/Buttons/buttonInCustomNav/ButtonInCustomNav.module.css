@@ -1,0 +1,30 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background: none;
+    font-weight: 600px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--shadow-white);
+    color: var(--white);
+    font-weight: 600;
+    transition: background-color 0.4s, color 0.4s;
+    cursor: pointer;
+}
+.button.active {
+    background-color: var(--shadow-black);
+    color: var(--flamingo);
+}
+@media (hover: hover) {
+    .button:hover {
+        background-color: var(--shadow-black);
+        color: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .button:active {
+        background-color: var(--shadow-black);
+        color: var(--flamingo);
+    }
+}

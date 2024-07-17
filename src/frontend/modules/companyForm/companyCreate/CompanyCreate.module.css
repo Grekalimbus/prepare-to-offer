@@ -27,8 +27,3 @@
     background: var(--shadow-black);
     border-radius: 5px;
 }
-.textForSection {
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 6px;
-}

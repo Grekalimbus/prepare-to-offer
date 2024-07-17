@@ -1,5 +1,5 @@
 import { useNavBar } from "@/app/store";
-import Button from "@/frontend/ui/Buttons/Button";
+import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
 import Link from "next/link";
 import { IoHome } from "react-icons/io5";
 import styles from "./MainHeader.module.css";
@@ -10,7 +10,7 @@ const MainHeader = () => {
     return (
         <header className={styles.header}>
             <div className={styles.menuWrapper}>
-                <Button onClick={setIsNavBar} text={"Меню"} />;
+                <DefaultButton onClick={setIsNavBar} text={"Меню"} />;
             </div>
             <Link href="/" className={styles.iconWrapper}>
                 <IoHome className={styles.iconHomePage} />

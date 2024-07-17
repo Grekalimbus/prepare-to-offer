@@ -1,21 +1,14 @@
+import LoginGoogle from "@/frontend/ui/Buttons/loginGoogle/LoginGoogle";
+import LongPainted from "@/frontend/ui/Buttons/longPainted/LongPainted";
+import Separator from "@/frontend/ui/separator/Separator";
 import { signIn } from "next-auth/react";
-import styles from "../Login.module.css";
 
 const LowerSectionForm = () => {
     return (
         <>
-            <button className={styles.buttonSubmit}>Войти</button>
-            <div className={styles.separator}>
-                <span className={styles.separatorElem}></span>
-                <span className={styles.separatorText}>OR</span>
-                <span className={styles.separatorElem}></span>
-            </div>
-            <button
-                className={styles.buttonGoogle}
-                onClick={() => signIn("google", { callbackUrl: "/questionsPage/allQuestions" })}
-            >
-                Продолжить с Google
-            </button>
+            <LongPainted text="Войти" />
+            <Separator />
+            <LoginGoogle onClick={() => signIn("google", { callbackUrl: "/questionsPage/allQuestions" })} />
         </>
     );
 };

@@ -1,5 +1,5 @@
+import TextArea from "@/frontend/ui/Input/textArea/TextArea";
 import React, { ReactElement, useState } from "react";
-import TextareaAndLabel from "../textareaAndLabel/TextareaAndLabel";
 import styles from "./FieldForCodeSlice.module.css";
 
 interface Props {
@@ -13,7 +13,7 @@ const FieldForCodeSlice = ({ icon, text }: Props) => {
         <>
             {isValid && (
                 <>
-                    <TextareaAndLabel name="sliceOfCode" placeholder="Введите сниппет кода" />
+                    <TextArea required={false} name="sliceOfCode" placeholder="Введите сниппет кода" />
                     <button onClick={() => setIsValid(false)} className={styles.buttonAdd}>
                         Удалить сниппет
                     </button>

@@ -1,0 +1,15 @@
+.inputLight {
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    height: 50px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.inputLight:focus {
+    border: 2px solid var(--flamingo);
+}
+.inputLight::placeholder {
+    font-size: 14px;
+}

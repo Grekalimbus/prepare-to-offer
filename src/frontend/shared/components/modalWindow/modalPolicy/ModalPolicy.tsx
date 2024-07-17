@@ -1,12 +1,10 @@
 "use client";
 import Modal from "../Modal";
+import { PolicyProps } from "../types/modal";
+
 import styles from "./ModalPolicy.module.css";
 
-interface Props {
-    isOpen: boolean;
-    setIsOpen: (value: boolean) => void;
-}
-const ModalPolicy = ({ isOpen, setIsOpen }: Props) => {
+const ModalPolicy = ({ isOpen, setIsOpen }: PolicyProps) => {
     if (!isOpen) {
         return null;
     }

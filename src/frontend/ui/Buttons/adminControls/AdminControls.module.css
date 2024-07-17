@@ -1,0 +1,26 @@
+.flexButtonContainer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.buttonInFlex {
+    width: 48%;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid var(--flamingo);
+    background: var(--shadow-black);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+@media (hover: hover) {
+    .buttonInFlex:hover {
+        background: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .buttonInFlex:hover {
+        background: var(--flamingo);
+    }
+}

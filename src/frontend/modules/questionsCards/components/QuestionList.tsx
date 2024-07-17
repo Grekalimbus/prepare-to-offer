@@ -1,16 +1,18 @@
 "use client";
 import useFilterQuestions from "@/app/store";
 import useQuestion from "@/frontend/domains/question/useQuestion";
-import AdminControls from "@/frontend/shared/components/button/AdminControls";
-import LoadingSkeleton from "@/frontend/shared/components/loading/LoadingSkeleton";
+import useUser from "@/frontend/domains/user/useUser";
+import LoadingSkeleton from "@/frontend/shared/components/loadingSkeleton/LoadingSkeleton";
 import Text from "@/frontend/shared/components/text/Text";
 import WrapperMessage from "@/frontend/shared/components/wrapperMessage/WrapperMessage";
+import AdminControls from "@/frontend/ui/Buttons/adminControls/AdminControls";
 import { useEffect } from "react";
 import { handleFilterQuestions } from "../helpers/filterQuestions";
 import styles from "../QuestionsCards.module.css";
 import QuestionContent from "./questionContent/QuestionContent";
 
 const QuestionList = ({ status }: { status?: string }) => {
+    const { isAdmin } = useUser();
     const { questions, isLoading } = useQuestion();
     const { filterValue, setFilterValue } = useFilterQuestions();
     const filterQuestions = handleFilterQuestions(questions, filterValue);
@@ -32,7 +34,7 @@ const QuestionList = ({ status }: { status?: string }) => {
                     <div key={question._id} className={styles.questionCard}>
                         {question.technology && <Text text={`Категория: ${question.technology}`} />}
                         <QuestionContent question={question} index={index} status={status} />
-                        {status === "PENDING" && <AdminControls />}
+                        {status === "PENDING" && isAdmin && <AdminControls />}
                     </div>
                 );
             })}

@@ -1,3 +1,4 @@
+"use client";
 import { BASE_URL } from "@/frontend/configs/baseURL";
 import { IUser } from "@/frontend/types/user/user";
 import { useQuery } from "@tanstack/react-query";

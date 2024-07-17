@@ -14,9 +14,9 @@ const RussianTime = (dateString: string | undefined) => {
 
 const DateInfo = ({ company }: { company: Company }) => {
     return (
-        <div className={styles.wrapperSection}>
+        <section className={styles.wrapperSection}>
             <Text text={`Дата создания: ${RussianTime(company.createdAt)}`} />
-        </div>
+        </section>
     );
 };
 

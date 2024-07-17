@@ -1,4 +1,6 @@
-import AcceptAll from "@/frontend/shared/components/button/AcceptAll";
+"use client";
+import useUser from "@/frontend/domains/user/useUser";
+import AcceptAll from "@/frontend/ui/Buttons/acceptAll/AcceptAll";
 import { ReactNode } from "react";
 import styles from "./WrapperCard.module.css";
 
@@ -7,10 +9,11 @@ interface Props {
     children: ReactNode;
 }
 const WrapperCardContent = ({ status, children }: Props) => {
+    const { isAdmin } = useUser();
     return (
         <section className={styles.commonWrapper}>
             <div className={styles.mainContent}>{children}</div>
-            {status === "PENDING" && <AcceptAll />}
+            {status === "PENDING" && isAdmin && <AcceptAll />}
         </section>
     );
 };

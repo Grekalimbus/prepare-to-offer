@@ -1,7 +1,8 @@
 "use client";
 import { useTechnologyNav } from "@/app/store";
 import { NavButton } from "@/frontend/types/navButton/navButton";
-import ButtonHide from "@/frontend/ui/Buttons/ButtonHide";
+import ButtonInCustomNav from "@/frontend/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
+import Hide from "@/frontend/ui/Buttons/hide/Hide";
 import { usePathname } from "next/navigation";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
@@ -33,16 +34,16 @@ const CustomNavBar = ({ arrayButtons }: Props) => {
                     <div className={styles.navBar}>
                         <section className={styles.containerButtons}>
                             {arrayButtons.map(technology => (
-                                <button
+                                <ButtonInCustomNav
                                     key={technology.value}
                                     onClick={() => action(technology.value)}
-                                    className={`${styles.button} ${value === technology.value && styles.active}`}
-                                >
-                                    {technology.text}
-                                </button>
+                                    technologyValue={technology.value}
+                                    text={technology.text}
+                                    value={value}
+                                />
                             ))}
                         </section>
-                        <ButtonHide text="Скрыть" />
+                        <Hide text="Скрыть" />
                     </div>
                 </aside>
                 <PiSlideshowFill className={styles.slideshowButton} />
