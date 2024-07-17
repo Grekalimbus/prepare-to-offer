@@ -1,9 +1,9 @@
 "use client";
-import ErrorMessage from "@/frontend/components/errorMessage/ErrorMessage";
-import FieldForCodeSlice from "@/frontend/components/fieldForCodeSlice/FieldForCodeSlice";
-import RadioSelect from "@/frontend/components/radioSelect/RadioSelect";
 import useCompany from "@/frontend/domains/company/useCompany";
 import useUser from "@/frontend/domains/user/useUser";
+import ErrorMessage from "@/frontend/shared/components/errorMessage/ErrorMessage";
+import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
 import Button from "@/frontend/ui/Buttons/Button";
 import Input from "@/frontend/ui/Input/Input";
 import { FormEvent, useRef, useState } from "react";

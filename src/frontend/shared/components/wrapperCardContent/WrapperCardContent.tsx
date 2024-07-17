@@ -1,4 +1,4 @@
-import AcceptAll from "@/frontend/components/button/AcceptAll";
+import AcceptAll from "@/frontend/shared/components/button/AcceptAll";
 import { ReactNode } from "react";
 import styles from "./WrapperCard.module.css";
 

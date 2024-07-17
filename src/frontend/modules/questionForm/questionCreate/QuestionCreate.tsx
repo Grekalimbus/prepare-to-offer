@@ -1,11 +1,11 @@
 "use client";
 import { useLoader } from "@/app/store";
-import ErrorMessage from "@/frontend/components/errorMessage/ErrorMessage";
-import FieldForCodeSlice from "@/frontend/components/fieldForCodeSlice/FieldForCodeSlice";
-import RadioSelect from "@/frontend/components/radioSelect/RadioSelect";
-import TextareaAndLabel from "@/frontend/components/textareaAndLabel/TextareaAndLabel";
 import useQuestion from "@/frontend/domains/question/useQuestion";
 import useUser from "@/frontend/domains/user/useUser";
+import ErrorMessage from "@/frontend/shared/components/errorMessage/ErrorMessage";
+import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
+import TextareaAndLabel from "@/frontend/shared/components/textareaAndLabel/TextareaAndLabel";
 import Button from "@/frontend/ui/Buttons/Button";
 import Input from "@/frontend/ui/Input/Input";
 import { FormEvent, useRef, useState } from "react";

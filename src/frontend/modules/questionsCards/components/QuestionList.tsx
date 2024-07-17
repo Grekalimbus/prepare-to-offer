@@ -1,10 +1,10 @@
 "use client";
 import useFilterQuestions from "@/app/store";
-import AdminControls from "@/frontend/components/button/AdminControls";
-import LoadingSkeleton from "@/frontend/components/loading/LoadingSkeleton";
 import useQuestion from "@/frontend/domains/question/useQuestion";
-import Text from "@/frontend/shared/text/Text";
-import WrapperMessage from "@/frontend/shared/wrapperMessage/WrapperMessage";
+import AdminControls from "@/frontend/shared/components/button/AdminControls";
+import LoadingSkeleton from "@/frontend/shared/components/loading/LoadingSkeleton";
+import Text from "@/frontend/shared/components/text/Text";
+import WrapperMessage from "@/frontend/shared/components/wrapperMessage/WrapperMessage";
 import { useEffect } from "react";
 import { handleFilterQuestions } from "../helpers/filterQuestions";
 import styles from "../QuestionsCards.module.css";

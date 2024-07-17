@@ -1,16 +1,17 @@
 "use client";
 import { useNavBar } from "@/app/store";
+import ModalPolicy from "@/frontend/shared/components/modalWindow/modalPolicy/ModalPolicy";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./NavBar.module.css";
 import AdminButton from "./components/AdminButton";
 import LoginAndLogOutButton from "./components/LoginAndLogOutButton";
-import PolicyButton from "./components/PolicyButton";
 
 const NavBar = () => {
     const path = usePathname();
     const { isNavBar, setIsNavBar } = useNavBar();
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         setIsNavBar(false);
@@ -27,7 +28,9 @@ const NavBar = () => {
                         <Link href="/questionsPage/allQuestions" className={styles.navLink}>
                             Технические вопросы
                         </Link>
-                        <PolicyButton />
+                        <button className={styles.navLink} onClick={() => setIsOpen(true)}>
+                            Политика конфиденциальности
+                        </button>
                         <LoginAndLogOutButton />
                     </div>
                     <button className={styles.buttonHide} onClick={() => setIsNavBar()}>
@@ -36,6 +39,7 @@ const NavBar = () => {
                 </nav>
             </aside>
             <div className={`${isNavBar && styles.shadowBlock}`}></div>
+            <ModalPolicy isOpen={isOpen} setIsOpen={setIsOpen} />
         </>
     );
 };

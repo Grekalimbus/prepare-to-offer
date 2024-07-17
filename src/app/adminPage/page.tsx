@@ -3,7 +3,7 @@ import CompanyCreate from "@/frontend/modules/companyForm/companyCreate/CompanyC
 import CustomNavBar from "@/frontend/modules/customNavBar/CustomNavBar";
 import QuestionCreate from "@/frontend/modules/questionForm/questionCreate/QuestionCreate";
 import QuestionsCards from "@/frontend/modules/questionsCards/QuestionsCards";
-import SelectCategoryButtons from "@/frontend/shared/selectSectionButtons/SelectSectionButtons";
+import SelectCategoryButtons from "@/frontend/shared/components/selectSectionButtons/SelectSectionButtons";
 import { NavButton } from "@/frontend/types/navButton/navButton";
 import { Section } from "@/frontend/types/section/section";
 import styles from "./Admin.module.css";

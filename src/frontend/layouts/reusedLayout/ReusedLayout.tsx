@@ -1,5 +1,5 @@
 import CustomNavBar from "@/frontend/modules/customNavBar/CustomNavBar";
-import SelectCategoryButtons from "@/frontend/shared/selectSectionButtons/SelectSectionButtons";
+import SelectCategoryButtons from "@/frontend/shared/components/selectSectionButtons/SelectSectionButtons";
 import { NavButton } from "@/frontend/types/navButton/navButton";
 import { Section } from "@/frontend/types/section/section";
 import { ReactNode } from "react";

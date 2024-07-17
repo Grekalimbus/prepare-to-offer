@@ -1,4 +1,4 @@
-import SnipedCode from "@/frontend/shared/snipetCode/SnipetCode";
+import SnipedCode from "@/frontend/shared/components/snipetCode/SnipetCode";
 import { Company } from "@/frontend/types/company/company";
 import styles from "../CompaniesCards.module.css";
 

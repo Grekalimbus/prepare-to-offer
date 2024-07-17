@@ -1,4 +1,4 @@
-import Text from "@/frontend/shared/text/Text";
+import Text from "@/frontend/shared/components/text/Text";
 import { Company } from "@/frontend/types/company/company";
 import { format, toZonedTime } from "date-fns-tz";
 import styles from "../CompaniesCards.module.css";

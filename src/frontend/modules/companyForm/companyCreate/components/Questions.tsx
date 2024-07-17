@@ -1,5 +1,5 @@
-import ButtonAddField from "@/frontend/components/button/ButtonAddField";
-import InputWithRemoveButton from "@/frontend/components/input/InputWithRemoveButton";
+import ButtonAddField from "@/frontend/shared/components/button/ButtonAddField";
+import InputWithRemoveButton from "@/frontend/shared/components/input/InputWithRemoveButton";
 import { useState } from "react";
 import { BsPatchQuestionFill } from "react-icons/bs";
 import styles from "../CompanyCreate.module.css";

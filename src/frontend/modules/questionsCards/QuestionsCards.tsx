@@ -1,4 +1,4 @@
-import WrapperCardContent from "@/frontend/shared/wrapperCardContent/WrapperCardContent";
+import WrapperCardContent from "@/frontend/shared/components/wrapperCardContent/WrapperCardContent";
 import FilterForm from "./components/FilterForm";
 import QuestionList from "./components/QuestionList";
 

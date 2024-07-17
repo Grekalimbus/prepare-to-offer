@@ -1,8 +1,8 @@
 "use client";
-import AdminControls from "@/frontend/components/button/AdminControls";
-import LoadingSkeleton from "@/frontend/components/loading/LoadingSkeleton";
 import useCompany from "@/frontend/domains/company/useCompany";
-import WrapperMessage from "@/frontend/shared/wrapperMessage/WrapperMessage";
+import AdminControls from "@/frontend/shared/components/button/AdminControls";
+import LoadingSkeleton from "@/frontend/shared/components/loading/LoadingSkeleton";
+import WrapperMessage from "@/frontend/shared/components/wrapperMessage/WrapperMessage";
 import { Company } from "@/frontend/types/company/company";
 import styles from "../CompaniesCards.module.css";
 import DateInfo from "./DateInfo";

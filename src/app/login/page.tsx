@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import InputAndLabel from "../../frontend/components/input/InputAndLabel";
+import InputAndLabel from "../../frontend/shared/components/input/InputAndLabel";
 import styles from "./Login.module.css";
 import LowerSectionForm from "./components/LowerSectionForm";
 import { handleSubmitForm } from "./helpers/handleSubmitForm";
