@@ -4,6 +4,7 @@ import useUser from "@/frontend/domains/user/useUser";
 import ErrorMessage from "@/frontend/shared/components/errorMessage/ErrorMessage";
 import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/FieldForCodeSlice";
 import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
+import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
 import Text from "@/frontend/shared/components/text/Text";
 import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
 import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
@@ -31,6 +32,7 @@ const typeOfInterview = [
 const CompanyCreate = () => {
     const { handleUpdateUserCompany, handleCreateCompany } = useCompany();
     const [isError, setIsError] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const { isAdmin } = useUser();
     const formRef = useRef<HTMLFormElement>(null);
@@ -43,8 +45,9 @@ const CompanyCreate = () => {
             setIsError,
             handleUpdateUserCompany,
             handleCreateCompany,
+            setIsSuccess,
+            formRef,
         });
-        formRef.current?.reset();
     };
 
     return (
@@ -74,7 +77,8 @@ const CompanyCreate = () => {
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />
                 <DefaultButton text="Создать" />
             </form>
-            <ErrorMessage errorMessage={errorMessage} isError={isError} />
+            <ErrorMessage errorMessage={errorMessage} isError={isError} setIsError={setIsError} />
+            <SuccessMessage isSuccess={isSuccess} />
         </section>
     );
 };

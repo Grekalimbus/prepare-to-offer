@@ -6,6 +6,7 @@ import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/Fi
 import Loader from "@/frontend/shared/components/modalWindow/modalLoader/ModalLoader";
 import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
 
+import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
 import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
 import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
 import TextArea from "@/frontend/ui/Input/textArea/TextArea";
@@ -28,6 +29,7 @@ const QuestionCreate = () => {
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [isLoader, setIsLoader] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
     const { handleCreateUserQuestion, handleCreateQuestion, handleCreatePendingQuestion } = useQuestion();
     const { isAdmin } = useUser();
@@ -43,6 +45,7 @@ const QuestionCreate = () => {
             handleCreateUserQuestion,
             handleCreateQuestion,
             handleCreatePendingQuestion,
+            setIsSuccess,
         });
         setIsLoader(false);
     };
@@ -59,7 +62,8 @@ const QuestionCreate = () => {
                 <span className={styles.line}></span>
                 <DefaultButton text="Создать" />
             </form>
-            <ErrorMessage errorMessage={errorMessage} isError={isError} />
+            <ErrorMessage errorMessage={errorMessage} isError={isError} setIsError={setIsError} />
+            <SuccessMessage isSuccess={isSuccess} />
             <Loader isLoader={isLoader} />
         </section>
     );

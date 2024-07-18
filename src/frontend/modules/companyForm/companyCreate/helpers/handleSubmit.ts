@@ -1,11 +1,13 @@
 import { Company } from "@/frontend/types/company/company";
-import { FormEvent } from "react";
+import { FormEvent, RefObject } from "react";
 
 interface Props {
     isAdmin: boolean;
+    formRef: RefObject<HTMLFormElement>;
     event: FormEvent<HTMLFormElement>;
     setErrorMessage: (value: string) => void;
     setIsError: (value: boolean) => void;
+    setIsSuccess: (value: boolean) => void;
     handleUpdateUserCompany: (company: Company) => void;
     handleCreateCompany: ({ company, status }: { company: Company; status: string }) => void;
 }
@@ -17,6 +19,8 @@ const handleSubmit = async ({
     handleCreateCompany,
     setErrorMessage,
     setIsError,
+    setIsSuccess,
+    formRef,
 }: Props) => {
     const formData = new FormData(event.currentTarget);
     const companyName = formData.get("companyName") as string;
@@ -40,9 +44,6 @@ const handleSubmit = async ({
     if (!liveCoding || !typeOfInterview || !difficulty) {
         setErrorMessage("Выберите все обязательные опции (Сложность/Формат/LiveCoding)");
         setIsError(true);
-        setTimeout(() => {
-            setIsError(false);
-        }, 3000);
     }
     if (difficulty && liveCoding && typeOfInterview) {
         if (isAdmin) {
@@ -52,6 +53,12 @@ const handleSubmit = async ({
             handleCreateCompany({ company, status: "PENDING" });
         }
         handleUpdateUserCompany(company);
+        setIsError(false);
+        setIsSuccess(true);
+        formRef.current?.reset();
+        setTimeout(() => {
+            setIsSuccess(false);
+        }, 1500);
     }
 };
 
