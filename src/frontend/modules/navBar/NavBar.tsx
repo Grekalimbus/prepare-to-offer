@@ -24,7 +24,7 @@ const NavBar = () => {
             <aside className={`${styles.wrapperNavBar} ${!isNavBar ? styles.hidden : styles.show}`}>
                 <nav className={styles.navBar}>
                     <div className={styles.flexContainer}>
-                        {isAdmin && <NavLink href="/adminPage" text="Админка" />}
+                        {isAdmin && <NavLink href="/adminPage/techQuestions" text="Админка" />}
                         <NavLink href="/company/allCompany" text="Компании" />
                         <NavLink href="/questionsPage/allQuestions" text="Технические вопросы" />
                         <ButtonInNav text="Политика конфиденциальности" onClick={() => setIsOpen(true)} />

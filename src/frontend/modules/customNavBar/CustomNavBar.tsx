@@ -1,5 +1,5 @@
 "use client";
-import { useTechnologyNav } from "@/app/store";
+import { useAdminActions, useTechnologyNav } from "@/app/store";
 import { NavButton } from "@/frontend/types/navButton/navButton";
 import ButtonInCustomNav from "@/frontend/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
 import Hide from "@/frontend/ui/Buttons/hide/Hide";
@@ -9,24 +9,27 @@ import styles from "./CustomNavBar.module.css";
 
 interface FuncParams {
     value: string;
-    action: (value: string) => void;
-}
-interface Props {
+    setValue: (value: string) => void;
     arrayButtons: NavButton[];
 }
+// функция для получения необходимого массива в зависимости от URL
 const getValueAndAction = (path: string): FuncParams => {
     if (path.includes("/questionsPage")) {
-        const { technology, setTechnology } = useTechnologyNav();
-        return { value: technology, action: setTechnology };
+        const { value, arrayButtons, setValue } = useTechnologyNav();
+        return { value, setValue, arrayButtons };
     }
-    const { technology, setTechnology } = useTechnologyNav();
-    return { value: technology, action: setTechnology };
+    const { value, arrayButtons, setValue } = useAdminActions();
+    return { value, setValue, arrayButtons };
 };
-const CustomNavBar = ({ arrayButtons }: Props) => {
+const CustomNavBar = () => {
     const path = usePathname();
-    const isVisible = path !== "/questionsPage/addQuestion" && path !== "/questionsPage/favoriteQuestions";
-    const { value, action } = getValueAndAction(path);
-
+    const isVisible =
+        path.includes("/questionsPage") &&
+        path !== "/questionsPage/addQuestion" &&
+        path !== "/questionsPage/favoriteQuestions";
+    const { value, setValue, arrayButtons } = getValueAndAction(path);
+    console.log("value", value);
+    console.log("arrayButtons", arrayButtons);
     return (
         isVisible && (
             <>
@@ -36,7 +39,7 @@ const CustomNavBar = ({ arrayButtons }: Props) => {
                             {arrayButtons.map(technology => (
                                 <ButtonInCustomNav
                                     key={technology.value}
-                                    onClick={() => action(technology.value)}
+                                    onClick={() => setValue(technology.value)}
                                     technologyValue={technology.value}
                                     text={technology.text}
                                     value={value}

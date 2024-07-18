@@ -27,6 +27,9 @@ export async function middleware(req: NextRequest) {
         loginUrl.searchParams.set("redirect", req.nextUrl.pathname);
         return NextResponse.redirect(loginUrl);
     }
+    if (!token && req.nextUrl.pathname.startsWith("/company")) {
+        return NextResponse.redirect(new URL("/login", req.url));
+    }
 
     return NextResponse.next();
 }
@@ -39,5 +42,6 @@ export const config = {
         "/signIn",
         "/questionsPage/addQuestion",
         "/questionsPage/myQuestions",
+        "/company/:path*",
     ],
 };
