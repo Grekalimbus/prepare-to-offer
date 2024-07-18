@@ -1,5 +1,5 @@
 import CustomNavBar from "@/frontend/modules/customNavBar/CustomNavBar";
-import SelectCategoryButtons from "@/frontend/shared/components/selectSectionButtons/SelectSectionButtons";
+import SelectCategoryButtons from "@/frontend/modules/selectSectionButtons/SelectSectionButtons";
 import { ReactNode } from "react";
 import styles from "./ReusedLayout.module.css";
 

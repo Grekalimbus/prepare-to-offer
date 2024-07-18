@@ -1,35 +1,17 @@
 "use client";
-import { useAdminActions, useTechnologyNav } from "@/app/store";
-import { NavButton } from "@/frontend/types/navButton/navButton";
 import ButtonInCustomNav from "@/frontend/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
 import Hide from "@/frontend/ui/Buttons/hide/Hide";
-import { usePathname } from "next/navigation";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
+import useGetNavValues from "./helpers/useGetNavValues";
+import useVisible from "./helpers/useVisible";
 
-interface FuncParams {
-    value: string;
-    setValue: (value: string) => void;
-    arrayButtons: NavButton[];
-}
-// функция для получения необходимого массива в зависимости от URL
-const getValueAndAction = (path: string): FuncParams => {
-    if (path.includes("/questionsPage")) {
-        const { value, arrayButtons, setValue } = useTechnologyNav();
-        return { value, setValue, arrayButtons };
-    }
-    const { value, arrayButtons, setValue } = useAdminActions();
-    return { value, setValue, arrayButtons };
-};
 const CustomNavBar = () => {
-    const path = usePathname();
-    const isVisible =
-        path.includes("/questionsPage") &&
-        path !== "/questionsPage/addQuestion" &&
-        path !== "/questionsPage/favoriteQuestions";
-    const { value, setValue, arrayButtons } = getValueAndAction(path);
-    console.log("value", value);
-    console.log("arrayButtons", arrayButtons);
+    // useGetNavValues - Получаем массив для кнопок в зависимости от URL
+    // isVisible - в зависимости от url и эндпоинтов возвращаем true/false
+    const { value, setValue, arrayButtons } = useGetNavValues();
+    const { isVisible } = useVisible();
+
     return (
         isVisible && (
             <>
