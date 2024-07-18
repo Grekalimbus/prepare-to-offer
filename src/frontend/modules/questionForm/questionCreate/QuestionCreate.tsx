@@ -6,6 +6,7 @@ import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/Fi
 import Loader from "@/frontend/shared/components/modalWindow/modalLoader/ModalLoader";
 import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
 
+import { useTechnologyNav } from "@/app/store";
 import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
 import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
 import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
@@ -17,15 +18,8 @@ import CustomCheckbox from "./components/CustomCheckbox";
 import UsefulLinks from "./components/UsefulLinks";
 import handleSubmit from "./helpers/handleSubmit";
 
-const arrayTechnologies = [
-    { text: "HTML", value: "html" },
-    { text: "CSS", value: "css" },
-    { text: "Javascript", value: "javascript" },
-    { text: "Typescript", value: "typescript" },
-    { text: "React", value: "react" },
-];
-
 const QuestionCreate = () => {
+    const { arrayButtons } = useTechnologyNav();
     const [isError, setIsError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [isLoader, setIsLoader] = useState<boolean>(false);
@@ -55,7 +49,7 @@ const QuestionCreate = () => {
             <form onSubmit={onSubmit} className={styles.formBlock} ref={formRef}>
                 <InputLight required={true} name="question" type="text" placeholder="Введите вопрос" />
                 <TextArea name="answer" placeholder="Введите ответ на вопрос" required={true} />
-                <RadioSelect array={arrayTechnologies} name="technology" textForSelect="Выберите раздел" />
+                <RadioSelect array={arrayButtons} name="technology" textForSelect="Выберите раздел" />
                 <FieldForCodeSlice text="Добавить снипет кода" icon={<FaRegFileCode />} />
                 <UsefulLinks />
                 <CustomCheckbox />

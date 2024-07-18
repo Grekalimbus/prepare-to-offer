@@ -30,6 +30,10 @@ export const useTechnologyNav = create<TechnologyNav>(set => ({
         { value: "typescript", text: "TypeScript" },
         { value: "html", text: "HTML" },
         { value: "css", text: "CSS" },
+        { value: "nextjs", text: "Next.js" },
+        { value: "architecture", text: "Архитектура" },
+        { value: "redux", text: "Redux" },
+        { value: "common", text: "Общие" },
     ],
     setValue: (value: string) => set({ value: value }),
 }));

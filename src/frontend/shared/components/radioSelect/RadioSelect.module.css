@@ -25,7 +25,7 @@
     width: 90%;
     height: 40px;
     border-radius: 4px;
-    background-color: var(--shadow-white);
+    background-color: var(--dark);
     border: 2px solid var(--flamingo);
     display: flex;
     justify-content: center;
@@ -34,6 +34,7 @@
     cursor: pointer;
     font-weight: 600;
     color: var(--white);
+    transition: background 0.3s;
 }
 
 .customCheckbox input[type="radio"]:checked + .checkmark {
@@ -53,4 +54,15 @@
     width: 100%;
     border: 1px solid var(--shadow-white);
     margin-bottom: 15px;
+}
+
+@media (hover: hover) {
+    .customCheckbox .checkmark:hover {
+        background: var(--shadow-black);
+    }
+}
+@media (hover: none) {
+    .customCheckbox .checkmark:active {
+        background: var(--shadow-black);
+    }
 }

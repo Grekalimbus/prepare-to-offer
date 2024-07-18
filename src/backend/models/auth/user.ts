@@ -48,7 +48,7 @@ const userSchema = new Schema<IUser>({
         javascript: [],
         typescript: [],
         react: [],
-        nextJS: [],
+        nextjs: [],
         redux: [],
         architecture: [],
         common: [],
