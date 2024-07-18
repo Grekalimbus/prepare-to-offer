@@ -1,9 +1,10 @@
 "use client";
-import AdminControls from "@/frontend/components/button/AdminControls";
-import LoadingSkeleton from "@/frontend/components/loading/LoadingSkeleton";
 import useCompany from "@/frontend/domains/company/useCompany";
-import WrapperMessage from "@/frontend/shared/wrapperMessage/WrapperMessage";
+import useUser from "@/frontend/domains/user/useUser";
+import LoadingSkeleton from "@/frontend/shared/components/loadingSkeleton/LoadingSkeleton";
+import WrapperMessage from "@/frontend/shared/components/wrapperMessage/WrapperMessage";
 import { Company } from "@/frontend/types/company/company";
+import AdminControls from "@/frontend/ui/Buttons/adminControls/AdminControls";
 import styles from "../CompaniesCards.module.css";
 import DateInfo from "./DateInfo";
 import Questions from "./Questions";
@@ -15,6 +16,7 @@ interface Props {
 
 const CompanyDetails = ({ status }: Props) => {
     const { companies, isLoading } = useCompany();
+    const { isAdmin } = useUser();
 
     if (isLoading) {
         return <LoadingSkeleton />;
@@ -30,7 +32,7 @@ const CompanyDetails = ({ status }: Props) => {
                         <Questions company={company} />
                         {company.sliceOfCode && <SliceOfCode company={company} />}
                         <DateInfo company={company} />
-                        {status === "PENDING" && <AdminControls />}
+                        {status === "PENDING" && isAdmin && <AdminControls />}
                     </div>
                 );
             })}

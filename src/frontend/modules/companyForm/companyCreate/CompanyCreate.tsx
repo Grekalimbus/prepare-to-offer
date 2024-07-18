@@ -1,11 +1,13 @@
 "use client";
-import ErrorMessage from "@/frontend/components/errorMessage/ErrorMessage";
-import FieldForCodeSlice from "@/frontend/components/fieldForCodeSlice/FieldForCodeSlice";
-import RadioSelect from "@/frontend/components/radioSelect/RadioSelect";
 import useCompany from "@/frontend/domains/company/useCompany";
 import useUser from "@/frontend/domains/user/useUser";
-import Button from "@/frontend/ui/Buttons/Button";
-import Input from "@/frontend/ui/Input/Input";
+import ErrorMessage from "@/frontend/shared/components/errorMessage/ErrorMessage";
+import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/FieldForCodeSlice";
+import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
+import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
+import Text from "@/frontend/shared/components/text/Text";
+import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
+import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";
@@ -30,6 +32,7 @@ const typeOfInterview = [
 const CompanyCreate = () => {
     const { handleUpdateUserCompany, handleCreateCompany } = useCompany();
     const [isError, setIsError] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const { isAdmin } = useUser();
     const formRef = useRef<HTMLFormElement>(null);
@@ -42,27 +45,28 @@ const CompanyCreate = () => {
             setIsError,
             handleUpdateUserCompany,
             handleCreateCompany,
+            setIsSuccess,
+            formRef,
         });
-        formRef.current?.reset();
     };
 
     return (
         <section className={styles.wrapper}>
             <form className={styles.formBlock} onSubmit={onSubmit} ref={formRef}>
-                <p className={styles.textForSection}>
-                    Информация добавится персонально, после чего проверится администратором и попадет в общий список для
-                    всех пользователей
-                </p>
-                <Input name="companyName" inputType="text" placeholder="Название компании" required={true} />
-                <Input
+                <Text
+                    text="Информация добавится персонально, после чего проверится администратором и попадет в общий список для
+                    всех пользователей"
+                />
+                <InputLight name="companyName" type="text" placeholder="Название компании" required={true} />
+                <InputLight
                     name="linkVacancy"
-                    inputType="text"
+                    type="text"
                     placeholder="Ссылка на вакансию (если есть)"
                     required={false}
                 />
-                <Input
+                <InputLight
                     name="description"
-                    inputType="text"
+                    type="text"
                     placeholder="Описание (Интервью легкое, собеседующий душнил. Длительность собеса)"
                     required={false}
                 />
@@ -71,9 +75,10 @@ const CompanyCreate = () => {
                 <RadioSelect array={liveCodingArray} name="liveCoding" textForSelect={`LiveCoding (Был/Нет)`} />
                 <Questions />
                 <FieldForCodeSlice text="Добавить задачи с собеседования" icon={<FaRegFileCode />} />
-                <Button text="Создать" />
+                <DefaultButton text="Создать" />
             </form>
-            <ErrorMessage errorMessage={errorMessage} isError={isError} />
+            <ErrorMessage errorMessage={errorMessage} isError={isError} setIsError={setIsError} />
+            <SuccessMessage isSuccess={isSuccess} />
         </section>
     );
 };

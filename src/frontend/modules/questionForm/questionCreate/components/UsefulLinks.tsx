@@ -1,5 +1,5 @@
-import ButtonAddField from "@/frontend/components/button/ButtonAddField";
-import InputWithRemoveButton from "@/frontend/components/input/InputWithRemoveButton";
+import InputWithRemoveButton from "@/frontend/shared/components/inputRemoveButton/InputWithRemoveButton";
+import AddInput from "@/frontend/ui/Buttons/addInput/AddInput";
 import { useState } from "react";
 import { MdLink } from "react-icons/md";
 
@@ -34,7 +34,7 @@ const UsefulLinks = () => {
                     })}
                 </>
             )}
-            <ButtonAddField icon={<MdLink />} handleIncrement={handleIncrement} text="Добавить ссылки на материалы" />
+            <AddInput icon={<MdLink />} onClick={handleIncrement} text="Добавить ссылки на материалы" />
         </>
     );
 };

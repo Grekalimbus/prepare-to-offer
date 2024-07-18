@@ -1,30 +1,16 @@
 "use client";
-import { useTechnologyNav } from "@/app/store";
-import { NavButton } from "@/frontend/types/navButton/navButton";
-import ButtonHide from "@/frontend/ui/Buttons/ButtonHide";
-import { usePathname } from "next/navigation";
+import ButtonInCustomNav from "@/frontend/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
+import Hide from "@/frontend/ui/Buttons/hide/Hide";
 import { PiSlideshowFill } from "react-icons/pi";
 import styles from "./CustomNavBar.module.css";
+import useGetNavValues from "./helpers/useGetNavValues";
+import useVisible from "./helpers/useVisible";
 
-interface FuncParams {
-    value: string;
-    action: (value: string) => void;
-}
-interface Props {
-    arrayButtons: NavButton[];
-}
-const getValueAndAction = (path: string): FuncParams => {
-    if (path.includes("/questionsPage")) {
-        const { technology, setTechnology } = useTechnologyNav();
-        return { value: technology, action: setTechnology };
-    }
-    const { technology, setTechnology } = useTechnologyNav();
-    return { value: technology, action: setTechnology };
-};
-const CustomNavBar = ({ arrayButtons }: Props) => {
-    const path = usePathname();
-    const isVisible = path !== "/questionsPage/addQuestion" && path !== "/questionsPage/favoriteQuestions";
-    const { value, action } = getValueAndAction(path);
+const CustomNavBar = () => {
+    // useGetNavValues - Получаем массив для кнопок в зависимости от URL
+    // isVisible - в зависимости от url и эндпоинтов возвращаем true/false
+    const { value, setValue, arrayButtons } = useGetNavValues();
+    const { isVisible } = useVisible();
 
     return (
         isVisible && (
@@ -33,16 +19,16 @@ const CustomNavBar = ({ arrayButtons }: Props) => {
                     <div className={styles.navBar}>
                         <section className={styles.containerButtons}>
                             {arrayButtons.map(technology => (
-                                <button
+                                <ButtonInCustomNav
                                     key={technology.value}
-                                    onClick={() => action(technology.value)}
-                                    className={`${styles.button} ${value === technology.value && styles.active}`}
-                                >
-                                    {technology.text}
-                                </button>
+                                    onClick={() => setValue(technology.value)}
+                                    technologyValue={technology.value}
+                                    text={technology.text}
+                                    value={value}
+                                />
                             ))}
                         </section>
-                        <ButtonHide text="Скрыть" />
+                        <Hide text="Скрыть" />
                     </div>
                 </aside>
                 <PiSlideshowFill className={styles.slideshowButton} />

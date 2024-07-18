@@ -7,6 +7,7 @@ export interface Props {
     isAdmin: boolean;
     setErrorMessage: (value: string) => void;
     setIsError: (value: boolean) => void;
+    setIsSuccess: (value: boolean) => void;
     handleCreateUserQuestion: (question: Question) => void;
     handleCreatePendingQuestion: (question: Question) => void;
     handleCreateQuestion: ({ question, status }: { question: Question; status: string }) => void;

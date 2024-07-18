@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { OjbectQuestions } from "./types";
 
 const useQuestion = () => {
-    const { technology } = useTechnologyNav();
+    const { value: technology } = useTechnologyNav();
     const session = useSession();
     const email = session.data?.user?.email;
     const queryClient = useQueryClient();

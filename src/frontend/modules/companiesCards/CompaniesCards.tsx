@@ -1,4 +1,4 @@
-import WrapperCardContent from "@/frontend/shared/wrapperCardContent/WrapperCardContent";
+import WrapperCardContent from "@/frontend/shared/components/wrapperCardContent/WrapperCardContent";
 import styles from "./CompaniesCards.module.css";
 import CompanyDetails from "./components/CompanyDetails";
 interface Props {

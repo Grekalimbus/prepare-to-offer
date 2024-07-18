@@ -1,0 +1,19 @@
+.buttonHide {
+    height: 60px;
+    background-color: var(--shadow-black);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    border-top: 2px solid var(--shadow-white);
+    transition: background-color 0.4s;
+}
+@media (hover: hover) {
+    .buttonHide:hover {
+        background: var(--flamingo);
+    }
+}
+@media (hover: none) {
+    .buttonHide:active {
+        background: var(--flamingo);
+    }
+}

@@ -6,6 +6,7 @@ const handleSubmit = async ({
     formRef,
     setErrorMessage,
     setIsError,
+    setIsSuccess,
     handleCreateQuestion,
     handleCreateUserQuestion,
     handleCreatePendingQuestion,
@@ -21,9 +22,6 @@ const handleSubmit = async ({
     if (!technology) {
         setErrorMessage("Чтобы отправить форму, выберите технологию из списка");
         setIsError(true);
-        setTimeout(() => {
-            setIsError(false);
-        }, 2500);
     }
     if (technology && !checkbox) {
         handleCreateUserQuestion(completeData);
@@ -40,6 +38,11 @@ const handleSubmit = async ({
             handleCreateQuestion({ question: completeData, status: "PENDING" });
             formRef.current?.reset();
         }
+        setIsError(false);
+        setIsSuccess(true);
+        setTimeout(() => {
+            setIsSuccess(false);
+        }, 1500);
     }
 };
 

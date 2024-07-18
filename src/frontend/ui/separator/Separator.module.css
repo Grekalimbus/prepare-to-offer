@@ -1,0 +1,16 @@
+.separator {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.separatorElem {
+    width: 40%;
+    border: 1px solid var(--flamingo);
+    height: 1px;
+}
+.separatorText {
+    color: var(--white);
+    font-size: 18px;
+}

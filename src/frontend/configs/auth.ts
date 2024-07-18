@@ -49,7 +49,7 @@ export const authConfig: AuthOptions = {
                 javascript: [],
                 typescript: [],
                 react: [],
-                nextJS: [],
+                nextjs: [],
                 redux: [],
                 architecture: [],
                 common: [],

@@ -1,7 +1,8 @@
 "use client";
 import useFilterQuestions from "@/app/store";
-import ButtonHandleFilter from "@/frontend/ui/buttonHandleFilter/ButtonHandleFilter";
-import InputFilter from "@/frontend/ui/inputFilter/InputFilter";
+
+import Find from "@/frontend/ui/Buttons/find/Find";
+import InputDark from "@/frontend/ui/Input/inputDark/InputDark";
 import { FormEvent } from "react";
 import styles from "../QuestionsCards.module.css";
 
@@ -15,8 +16,8 @@ const FilterForm = () => {
     };
     return (
         <form className={styles.filterQuestions} onSubmit={onSubmit}>
-            <InputFilter name="filter" placeholder="Найти по названию" />
-            <ButtonHandleFilter text="Найти" />
+            <InputDark required={false} name="filter" placeholder="Найти по названию" type="text" />
+            <Find text="Найти" />
         </form>
     );
 };

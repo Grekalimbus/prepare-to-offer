@@ -1,0 +1,35 @@
+.successWrapper {
+    width: 250px;
+    height: 55px;
+    position: fixed;
+    right: 0;
+    top: 2%;
+    z-index: 5;
+    background: var(--shadow-black);
+    border: 1px solid #17f104;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 4px 4px 12px 0px #00000091;
+    padding: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+.successWrapper.show {
+    transform: translateX(-10%);
+}
+.successWrapper.hide {
+    transform: translateX(100%);
+}
+.text {
+    color: #17f104;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.successIcon {
+    width: 35px;
+    height: 35px;
+    color: #17f104;
+}
