@@ -1,5 +1,5 @@
 "use client";
-import useFilterQuestions from "@/app/store";
+import { useFilterQuestions } from "@/app/store";
 import useQuestion from "@/frontend/domains/question/useQuestion";
 import useUser from "@/frontend/domains/user/useUser";
 import LoadingSkeleton from "@/frontend/shared/components/loadingSkeleton/LoadingSkeleton";
