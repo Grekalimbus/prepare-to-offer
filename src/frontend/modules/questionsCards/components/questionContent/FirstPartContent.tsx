@@ -1,5 +1,5 @@
 import SnipedCode from "@/frontend/shared/components/snipetCode/SnipetCode";
-import React from "react";
+import Text from "@/frontend/shared/components/text/Text";
 import { ContentProps } from "../../types/types";
 import styles from "./QuestionContent.module.css";
 
@@ -7,14 +7,11 @@ const FirstPartContent = ({ isActive, question }: ContentProps) => {
     return (
         isActive && (
             <section className={styles.sectionAnswer}>
-                <p className={styles.point}>
+                <div className={styles.flexContainer}>
                     {question.answer.split("\n").map((line, idx) => (
-                        <React.Fragment key={idx}>
-                            {line}
-                            {idx !== question.answer.split("\n").length - 1 && <br />}
-                        </React.Fragment>
+                        <Text key={idx} text={line} />
                     ))}
-                </p>
+                </div>
                 {question.sliceOfCode && <SnipedCode code={question.sliceOfCode} />}
             </section>
         )
