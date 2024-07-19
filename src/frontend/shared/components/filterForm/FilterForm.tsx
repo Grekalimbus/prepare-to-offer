@@ -1,13 +1,13 @@
 "use client";
-import useFilterQuestions from "@/app/store";
-
 import Find from "@/frontend/ui/Buttons/find/Find";
 import InputDark from "@/frontend/ui/Input/inputDark/InputDark";
 import { FormEvent } from "react";
-import styles from "../QuestionsCards.module.css";
+import styles from "./FilterForm.module.css";
 
-const FilterForm = () => {
-    const { setFilterValue } = useFilterQuestions();
+interface Props {
+    setFilterValue: (value: string) => void;
+}
+const FilterForm = ({ setFilterValue }: Props) => {
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -15,7 +15,7 @@ const FilterForm = () => {
         setFilterValue(filter);
     };
     return (
-        <form className={styles.filterQuestions} onSubmit={onSubmit}>
+        <form className={styles.form} onSubmit={onSubmit}>
             <InputDark required={false} name="filter" placeholder="Найти по названию" type="text" />
             <Find text="Найти" />
         </form>

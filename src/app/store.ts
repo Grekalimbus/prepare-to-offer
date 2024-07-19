@@ -114,9 +114,18 @@ interface FilterQuestions {
     setFilterValue: (value: string) => void;
 }
 
-const useFilterQuestions = create<FilterQuestions>(set => ({
+export const useFilterQuestions = create<FilterQuestions>(set => ({
     filterValue: "",
     setFilterValue: (value: string) => set({ filterValue: value }),
 }));
 
-export default useFilterQuestions;
+// ==========
+interface FilterCompany {
+    filterValue: string;
+    setFilterValue: (value: string) => void;
+}
+
+export const useFilterCompany = create<FilterCompany>(set => ({
+    filterValue: "",
+    setFilterValue: (value: string) => set({ filterValue: value }),
+}));
