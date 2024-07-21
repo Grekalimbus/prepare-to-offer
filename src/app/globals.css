@@ -28,8 +28,8 @@ html,
 body {
     height: 100%;
     line-height: 1;
-    font-size: 100%;
     background-image: url("/bgImage.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }

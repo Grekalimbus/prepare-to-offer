@@ -59,3 +59,8 @@
         bottom: 0;
     }
 }
+@media (max-width: 550px) {
+    .wrapperNavBar {
+        width: 100%;
+    }
+}

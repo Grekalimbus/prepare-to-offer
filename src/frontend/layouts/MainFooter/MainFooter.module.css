@@ -1,6 +1,7 @@
 .footer {
     position: relative;
     bottom: 0;
+    width: 100%;
     min-height: 60px;
     background-color: var(--shadow-black);
     display: flex;
