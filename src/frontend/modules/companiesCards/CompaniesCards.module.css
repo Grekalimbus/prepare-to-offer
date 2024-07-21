@@ -32,7 +32,7 @@
 .question {
     margin-bottom: 8px;
     font-weight: 600;
-    padding: 8px;
+    padding: 10px;
     border-radius: 6px;
     background: var(--shadow-black);
     border: 1px solid var(--dark);

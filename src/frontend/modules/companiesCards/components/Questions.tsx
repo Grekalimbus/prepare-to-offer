@@ -8,7 +8,7 @@ const Questions = ({ company }: { company: Company }) => {
             <Text text="Вопросы с собеседования: " />
             {company.questions.map((question, index) => (
                 <p key={question} className={styles.question}>
-                    {index + 1}. &nbsp; {question}
+                    {index + 1}. {question}
                 </p>
             ))}
         </section>
