@@ -39,3 +39,8 @@
     color: var(--flamingo);
     padding: 20px 100px;
 }
+@media (max-width: 500px) {
+    .formSignIn {
+        width: 95%;
+    }
+}
