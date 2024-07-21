@@ -10,14 +10,12 @@ interface Props {
 const CompaniesCards = ({ status }: Props) => {
     const { setFilterValue } = useFilterCompany();
     return (
-        <>
+        <div className={styles.flexContainer}>
             <FilterForm setFilterValue={setFilterValue} />
-            <div className={styles.flexContainer}>
-                <WrapperCardContent status={status}>
-                    <CompanyDetails status={status} />
-                </WrapperCardContent>
-            </div>
-        </>
+            <WrapperCardContent status={status}>
+                <CompanyDetails status={status} />
+            </WrapperCardContent>
+        </div>
     );
 };
 

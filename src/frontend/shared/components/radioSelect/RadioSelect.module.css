@@ -66,3 +66,23 @@
         background: var(--shadow-black);
     }
 }
+
+@media (max-width: 680px) {
+    .customCheckbox {
+        width: 150px;
+    }
+}
+@media (max-width: 525px) {
+    .customCheckbox {
+        width: 130px;
+    }
+    .customCheckbox .checkmark {
+        font-size: 14px;
+        font-weight: normal;
+    }
+}
+@media (max-width: 465px) {
+    .customCheckbox {
+        width: 33%;
+    }
+}

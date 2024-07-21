@@ -112,3 +112,12 @@
     border: 1px solid var(--shadow-white);
     margin-bottom: 10px;
 }
+@media (max-width: 750px) {
+    .formBlock {
+        width: 95%;
+    }
+    .textForCheckbox {
+        font-size: 14px;
+        font-weight: normal;
+    }
+}

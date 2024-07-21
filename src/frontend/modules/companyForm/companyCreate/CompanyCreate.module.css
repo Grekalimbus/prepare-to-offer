@@ -27,3 +27,8 @@
     background: var(--shadow-black);
     border-radius: 5px;
 }
+@media (max-width: 750px) {
+    .formBlock {
+        width: 95%;
+    }
+}

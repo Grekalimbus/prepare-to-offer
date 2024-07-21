@@ -25,3 +25,9 @@
     width: 40px;
     color: var(--flamingo);
 }
+@media (max-width: 450px) {
+    .buttonAdd {
+        font-size: 14px;
+        padding: 0 35px;
+    }
+}
