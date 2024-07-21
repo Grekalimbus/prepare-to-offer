@@ -31,3 +31,13 @@
     background: var(--shadow-black);
     border-radius: 5px;
 }
+@media (max-width: 710px) {
+    .commonWrapper {
+        padding: 0;
+        width: 99%;
+    }
+    .mainContent {
+        box-shadow: none;
+        padding: 10px;
+    }
+}
