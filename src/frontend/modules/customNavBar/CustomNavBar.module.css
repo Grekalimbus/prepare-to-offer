@@ -61,6 +61,7 @@
 }
 @media (max-width: 550px) {
     .wrapperNavBar {
+        overflow: auto;
         width: 100%;
     }
 }
