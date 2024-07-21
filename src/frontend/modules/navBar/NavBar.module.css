@@ -31,7 +31,6 @@
     flex-direction: column;
     justify-content: center;
 }
-
 .shadowBlock {
     background: #00000056;
     position: fixed;
@@ -41,4 +40,19 @@
     height: 100vh;
     z-index: 1;
     backdrop-filter: blur(2px);
+}
+@media (max-width: 550px) {
+    .shadowBlock {
+        display: none;
+    }
+    .wrapperNavBar {
+        width: 100%;
+        transform: translateX(-0%);
+    }
+    .wrapperNavBar.show {
+        transform: translateX(-0%);
+    }
+    .navBar {
+        border-right: none;
+    }
 }

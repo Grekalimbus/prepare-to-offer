@@ -5,15 +5,13 @@ import styles from "./ReusedLayout.module.css";
 
 const ReusedLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <>
+        <div className={styles.flexContainer}>
             <SelectCategoryButtons />
             <div className={styles.wrapper}>
-                <div className={styles.questionsContainer}>
-                    <div className={styles.flexContainer}>{children}</div>
-                    <CustomNavBar />
-                </div>
+                <CustomNavBar />
+                {children}
             </div>
-        </>
+        </div>
     );
 };
 

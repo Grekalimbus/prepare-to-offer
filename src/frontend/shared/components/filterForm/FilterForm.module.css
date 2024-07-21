@@ -5,3 +5,14 @@
     margin-top: 7px;
     margin-bottom: 7px;
 }
+@media (max-width: 710px) {
+    .form {
+        width: 95%;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 700px) and (min-height: 900px) {
+    .form {
+        margin-top: 15px;
+    }
+}

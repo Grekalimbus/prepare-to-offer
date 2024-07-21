@@ -1,14 +1,23 @@
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const useVisible = () => {
+    let isVisible = false;
+    const [isNavHide, setIsNavHide] = useState<boolean>(true);
     const path = usePathname();
 
-    const isVisible =
-        (path.includes("/questionsPage") &&
-            !["/questionsPage/addQuestion", "/questionsPage/favoriteQuestions"].includes(path)) ||
-        path.includes("/adminPage");
+    switch (true) {
+        case path.includes("/questionsPage") &&
+            !["/questionsPage/addQuestion", "/questionsPage/favoriteQuestions"].includes(path): {
+            isVisible = true;
+            break;
+        }
+        case path.includes("/adminPage"): {
+            isVisible = true;
+        }
+    }
 
-    return { isVisible };
+    return { isVisible, isNavHide, setIsNavHide };
 };
 
 export default useVisible;

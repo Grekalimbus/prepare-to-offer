@@ -1,5 +1,6 @@
 .header {
     height: 60px;
+    width: 100%;
     background-color: var(--shadow-black);
     display: flex;
     align-items: center;
@@ -7,6 +8,11 @@
     padding-left: 10px;
     padding-right: 10px;
     backdrop-filter: blur(4px);
+}
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .menuWrapper {
     width: 33%;
@@ -45,6 +51,14 @@
     backdrop-filter: blur(10px);
     transition: background-color 0.4s;
 }
+.iconNav {
+    display: none;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--flamingo);
+}
 @media (hover: hover) {
     .iconHomePage:hover {
         color: var(--flamingo);
@@ -70,14 +84,23 @@
 .menuMobileButton {
     display: none;
 }
-
 .menuMobileButtonIcon {
     width: 50px;
     height: 50px;
     color: var(--shadow-white);
     background-color: var(--shadow-black);
 }
-
 .content {
     flex: 1 0 auto;
+}
+@media (max-width: 900px) {
+    .header {
+        justify-content: center;
+    }
+    .flexContainer {
+        display: none;
+    }
+    .iconNav {
+        display: block;
+    }
 }
