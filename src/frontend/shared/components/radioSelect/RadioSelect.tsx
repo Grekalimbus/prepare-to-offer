@@ -1,3 +1,4 @@
+import { useTechnologyNav } from "@/app/store";
 import { useState } from "react";
 import styles from "./RadioSelect.module.css";
 
@@ -13,6 +14,7 @@ interface Props {
 
 const RadioSelect = ({ array, name, textForSelect }: Props) => {
     const [selectedDifficulty, setSelectedDifficulty] = useState("");
+    const { setValue } = useTechnologyNav();
 
     return (
         <>
@@ -28,7 +30,9 @@ const RadioSelect = ({ array, name, textForSelect }: Props) => {
                                 checked={selectedDifficulty === item.value}
                                 onChange={() => setSelectedDifficulty(item.value)}
                             />
-                            <span className={styles.checkmark}>{item.text}</span>
+                            <span onClick={() => setValue(item.value)} className={styles.checkmark}>
+                                {item.text}
+                            </span>
                         </label>
                     );
                 })}

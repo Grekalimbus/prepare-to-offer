@@ -1,6 +1,6 @@
-import LoginGoogle from "@/frontend/ui/Buttons/loginGoogle/LoginGoogle";
-import LongPainted from "@/frontend/ui/Buttons/longPainted/LongPainted";
-import Separator from "@/frontend/ui/separator/Separator";
+import LoginGoogle from "@/frontend/shared/ui/Buttons/loginGoogle/LoginGoogle";
+import LongPainted from "@/frontend/shared/ui/Buttons/longPainted/LongPainted";
+import Separator from "@/frontend/shared/ui/separator/Separator";
 import { signIn } from "next-auth/react";
 
 const LowerSectionForm = () => {

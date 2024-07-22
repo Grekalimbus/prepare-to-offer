@@ -5,7 +5,7 @@ import useUser from "@/frontend/domains/user/useUser";
 import LoadingSkeleton from "@/frontend/shared/components/loadingSkeleton/LoadingSkeleton";
 import Text from "@/frontend/shared/components/text/Text";
 import WrapperMessage from "@/frontend/shared/components/wrapperMessage/WrapperMessage";
-import AdminControls from "@/frontend/ui/Buttons/adminControls/AdminControls";
+import AdminControls from "@/frontend/shared/ui/Buttons/adminControls/AdminControls";
 import { useEffect } from "react";
 import { handleFilterQuestions } from "../helpers/filterQuestions";
 import styles from "../QuestionsCards.module.css";

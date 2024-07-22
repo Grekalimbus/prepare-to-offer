@@ -1,6 +1,6 @@
 "use client";
 import InputWithError from "@/frontend/shared/components/inputWithError/InputWithError";
-import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
+import InputLight from "@/frontend/shared/ui/Input/inputLight/InputLight";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";

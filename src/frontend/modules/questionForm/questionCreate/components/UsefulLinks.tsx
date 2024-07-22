@@ -1,5 +1,5 @@
 import InputWithRemoveButton from "@/frontend/shared/components/inputRemoveButton/InputWithRemoveButton";
-import AddInput from "@/frontend/ui/Buttons/addInput/AddInput";
+import AddInput from "@/frontend/shared/ui/Buttons/addInput/AddInput";
 import { useState } from "react";
 import { MdLink } from "react-icons/md";
 

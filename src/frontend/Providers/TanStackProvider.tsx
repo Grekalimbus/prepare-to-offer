@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 
 const queryClient = new QueryClient();
 
-const Provider = ({ children }: { children: ReactNode }) => {
+const TanStackProvider = ({ children }: { children: ReactNode }) => {
     return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
 
-export default Provider;
+export default TanStackProvider;

@@ -6,8 +6,8 @@ import FieldForCodeSlice from "@/frontend/shared/components/fieldForCodeSlice/Fi
 import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
 import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
 import Text from "@/frontend/shared/components/text/Text";
-import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
-import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
+import DefaultButton from "@/frontend/shared/ui/Buttons/defaultButton/DefaultButton";
+import InputLight from "@/frontend/shared/ui/Input/inputLight/InputLight";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./CompanyCreate.module.css";

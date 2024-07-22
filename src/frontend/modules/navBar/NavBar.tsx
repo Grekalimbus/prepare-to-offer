@@ -2,9 +2,9 @@
 import { useNavBar } from "@/app/store";
 import useUser from "@/frontend/domains/user/useUser";
 import ModalPolicy from "@/frontend/shared/components/modalWindow/modalPolicy/ModalPolicy";
-import NavLink from "@/frontend/ui/Buttons/NavLink/NavLink";
-import ButtonInNav from "@/frontend/ui/Buttons/buttonInNav/ButtonInNav";
-import Hide from "@/frontend/ui/Buttons/hide/Hide";
+import NavLink from "@/frontend/shared/ui/Buttons/NavLink/NavLink";
+import ButtonInNav from "@/frontend/shared/ui/Buttons/buttonInNav/ButtonInNav";
+import Hide from "@/frontend/shared/ui/Buttons/hide/Hide";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./NavBar.module.css";

@@ -1,5 +1,5 @@
 import { useNavBar } from "@/app/store";
-import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
+import DefaultButton from "@/frontend/shared/ui/Buttons/defaultButton/DefaultButton";
 import Link from "next/link";
 import { IoHome } from "react-icons/io5";
 import { LuMenuSquare } from "react-icons/lu";

@@ -1,6 +1,6 @@
 import InputWithRemoveButton from "@/frontend/shared/components/inputRemoveButton/InputWithRemoveButton";
 import Text from "@/frontend/shared/components/text/Text";
-import AddInput from "@/frontend/ui/Buttons/addInput/AddInput";
+import AddInput from "@/frontend/shared/ui/Buttons/addInput/AddInput";
 import { useState } from "react";
 import { BsPatchQuestionFill } from "react-icons/bs";
 const Questions = () => {

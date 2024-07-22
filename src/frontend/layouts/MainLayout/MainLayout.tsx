@@ -1,6 +1,6 @@
 "use client";
 import NavBar from "@/frontend/modules/navBar/NavBar";
-import Provider from "@/frontend/Providers/Provider";
+import TanStackProvider from "@/frontend/Providers/TanStackProvider";
 import NextTopLoader from "nextjs-toploader";
 import React, { ReactNode } from "react";
 import MainFooter from "../MainFooter/MainFooter";
@@ -16,12 +16,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <>
             <main className={styles.layout}>
                 <NextTopLoader />
-                <Provider>
+                <TanStackProvider>
                     <MainHeader />
                     {children}
                     <MainFooter />
                     <NavBar />
-                </Provider>
+                </TanStackProvider>
             </main>
             <div id="modals"></div>
         </>
