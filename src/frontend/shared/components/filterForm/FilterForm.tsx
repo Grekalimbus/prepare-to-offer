@@ -1,6 +1,6 @@
 "use client";
-import Find from "@/frontend/ui/Buttons/find/Find";
-import InputDark from "@/frontend/ui/Input/inputDark/InputDark";
+import Find from "@/frontend/shared/ui/Buttons/find/Find";
+import InputDark from "@/frontend/shared/ui/Input/inputDark/InputDark";
 import { FormEvent } from "react";
 import styles from "./FilterForm.module.css";
 

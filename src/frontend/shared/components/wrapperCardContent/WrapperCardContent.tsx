@@ -1,6 +1,6 @@
 "use client";
 import useUser from "@/frontend/domains/user/useUser";
-import AcceptAll from "@/frontend/ui/Buttons/acceptAll/AcceptAll";
+import AcceptAll from "@/frontend/shared/ui/Buttons/acceptAll/AcceptAll";
 import { ReactNode } from "react";
 import styles from "./WrapperCard.module.css";
 

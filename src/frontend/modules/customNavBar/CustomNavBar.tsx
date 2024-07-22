@@ -1,6 +1,6 @@
 "use client";
-import ButtonInCustomNav from "@/frontend/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
-import Hide from "@/frontend/ui/Buttons/hide/Hide";
+import ButtonInCustomNav from "@/frontend/shared/ui/Buttons/buttonInCustomNav/ButtonInCustomNav";
+import Hide from "@/frontend/shared/ui/Buttons/hide/Hide";
 import { FaThList } from "react-icons/fa";
 import styles from "./CustomNavBar.module.css";
 import useGetNavValues from "./helpers/useGetNavValues";

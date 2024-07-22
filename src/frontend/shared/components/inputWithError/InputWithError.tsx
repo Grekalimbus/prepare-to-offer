@@ -1,4 +1,4 @@
-import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
+import InputLight from "@/frontend/shared/ui/Input/inputLight/InputLight";
 import styles from "./InputWithError.module.css";
 
 export interface Props {

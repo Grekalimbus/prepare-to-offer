@@ -8,9 +8,9 @@ import RadioSelect from "@/frontend/shared/components/radioSelect/RadioSelect";
 
 import { useTechnologyNav } from "@/app/store";
 import SuccessMessage from "@/frontend/shared/components/successMessage/SuccessMessage";
-import DefaultButton from "@/frontend/ui/Buttons/defaultButton/DefaultButton";
-import InputLight from "@/frontend/ui/Input/inputLight/InputLight";
-import TextArea from "@/frontend/ui/Input/textArea/TextArea";
+import DefaultButton from "@/frontend/shared/ui/Buttons/defaultButton/DefaultButton";
+import InputLight from "@/frontend/shared/ui/Input/inputLight/InputLight";
+import TextArea from "@/frontend/shared/ui/Input/textArea/TextArea";
 import { FormEvent, useRef, useState } from "react";
 import { FaRegFileCode } from "react-icons/fa";
 import styles from "./QuestionCreate.module.css";

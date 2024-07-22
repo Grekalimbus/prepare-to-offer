@@ -19,6 +19,7 @@ const handleSubmit = async ({
     const checkbox = formData.get("checkbox") as string;
     const technology = formData.get("technology") as string;
     const completeData = { question, answer, sliceOfCode, links, technology };
+    console.log("technology", technology);
     if (!technology) {
         setErrorMessage("Чтобы отправить форму, выберите технологию из списка");
         setIsError(true);

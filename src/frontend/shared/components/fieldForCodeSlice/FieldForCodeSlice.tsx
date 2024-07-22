@@ -1,4 +1,4 @@
-import TextArea from "@/frontend/ui/Input/textArea/TextArea";
+import TextArea from "@/frontend/shared/ui/Input/textArea/TextArea";
 import React, { ReactElement, useState } from "react";
 import styles from "./FieldForCodeSlice.module.css";
 

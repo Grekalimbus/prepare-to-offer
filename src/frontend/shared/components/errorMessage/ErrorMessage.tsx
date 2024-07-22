@@ -1,4 +1,4 @@
-import SmallClose from "@/frontend/ui/Buttons/smallClose/SmallClose";
+import SmallClose from "@/frontend/shared/ui/Buttons/smallClose/SmallClose";
 import { IoWarning } from "react-icons/io5";
 import Modal from "../modalWindow/Modal";
 import styles from "./ErrorMessage.module.css";

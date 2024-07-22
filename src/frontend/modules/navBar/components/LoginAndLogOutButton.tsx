@@ -1,4 +1,4 @@
-import NavLink from "@/frontend/ui/Buttons/NavLink/NavLink";
+import NavLink from "@/frontend/shared/ui/Buttons/NavLink/NavLink";
 import { signOut, useSession } from "next-auth/react";
 
 const LoginAndLogOutButton = () => {
